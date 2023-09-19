@@ -1,9 +1,30 @@
+// import React from "react";
+
+// function Home() {
+//   return (
+//     <h2>Helloooo</h2>
+//   );
+// }
+
+// export default Home;
+
 import React from "react";
+import ZoomSlider from "../components/ZoomSlider/ZoomSlider";
+import Navbar from "../components/Navbar";
 
-function Home() {
+const app = () => {
   return (
-    <h2>Helloooo</h2>
-  );
-}
+    <div
+      style={{
+        color: "#FFF"
+      }}
+    >
+      <Navbar />
+      <ZoomSlider />
 
-export default Home;
+     
+    </div>
+  );
+};
+
+export default app;
