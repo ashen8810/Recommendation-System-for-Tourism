@@ -1,12 +1,12 @@
 import './App.css';
-import Navbar from "./components/Navbar";
 import Homepage from "./pages/Homepage";
+import Schedule from "./pages/Schedule";
 
 
 function App() {
   return (
     <div className="App">
-      <Homepage/>
+      <Schedule/>
     </div>
   );
 }
