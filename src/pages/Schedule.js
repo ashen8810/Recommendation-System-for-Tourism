@@ -6,6 +6,7 @@ import Map from "../components/Maps";
 
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import Header from "../components/Header/Header"
 
 
 const app = () => {
@@ -15,6 +16,7 @@ const app = () => {
         color: "#000"
       }}
     >
+      <Header/>
       <ZoomSlider/>
 
 
