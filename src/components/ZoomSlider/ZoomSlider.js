@@ -16,7 +16,7 @@ export default function BasicSlider() {
   return (
     <>
     <HeroSlider
-      height={"100vh"}
+      height={"80vh"}
       autoplay
       controller={{
         initialSlide: 1,
