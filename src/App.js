@@ -12,6 +12,7 @@ import Layout from "pages/layout"
 import Dashboard from "pages/dashboard";
 import Users from "pages/users";
 import Geography from "pages/geography";
+import Footer from './components/Footer/Footer';
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
         </Routes>
       </ThemeProvider>
       </BrowserRouter>
+      <Footer/>
     </div>
   );
 }

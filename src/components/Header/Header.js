@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import './Header.css'
-import logo from './myimages.jpg';
+import logo from '../myimages.jpg';
 import Login from '../../pages/Login'; 
 import Register from "../../pages/Register";
 

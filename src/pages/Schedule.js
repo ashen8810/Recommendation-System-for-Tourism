@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Header from "../components/Header/Header"
 import Button from '@mui/material/Button';
-
+import Footer from "components/Footer/Footer";
 
 const app = () => {
   return (
@@ -23,7 +23,7 @@ const app = () => {
       <Navbar />
       <ZoomSlider/>
       <br/><br/>
-
+      <Footer/>
 
       <Box sx={4}>
       <Grid container spacing={2} columns={32}>
