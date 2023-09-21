@@ -3,4 +3,5 @@
       "baseUrl": "src"
     },
     "include": ["src"]
+    // this is only for the configuration
   }
