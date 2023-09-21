@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       {/*<Schedule/>*/}
-      <Header />
+      {/* <Header /> */}
       
       <BrowserRouter>
       <ThemeProvider theme={theme}>
