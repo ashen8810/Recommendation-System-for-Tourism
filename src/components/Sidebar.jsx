@@ -17,7 +17,7 @@ import {
   ChevronLeft,
   ChevronRightOutlined,
   HomeOutlined,
-  ShoppingCartOutlined,
+  CalendarMonthOutlinedIcon,
   Groups2Outlined,
   ReceiptLongOutlined,
   PublicOutlined,
@@ -44,7 +44,7 @@ const navItems = [
   },
   {
     text: "Calender",
-    icon: <ShoppingCartOutlined />,
+    icon: <CalendarMonthOutlined/>,
   },
   {
     text: "Users",
