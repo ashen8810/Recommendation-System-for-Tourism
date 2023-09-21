@@ -1,6 +1,8 @@
 import React from 'react'
 import {FaArrowCircleLeft, FaArrowCircleRight, FaStar} from 'react-icons/fa'
 
+
+
 const Accomodation = (props) => {
   return (
     
