@@ -1,0 +1,51 @@
+.schedules{ 
+    margin-left: 5%;
+    margin-right: 5%;
+    display: grid;
+    grid-template-rows: repeat(auto-fill, minmax(240px, 1fr));
+    grid-gap: 0;
+    row-gap: 0px !important;
+}
+
+@media screen and (max-width: 767px) {
+    .schedules {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-gap: 0px;
+      margin-left: 10%;
+    }
+}
+
+.schedule-content {
+    display: inline-flex;
+    position: relative;
+    width: auto;
+    height: fit-content;
+    text-align: left;
+    background-color: rgb(179, 185, 182);
+    border-radius: 5px;
+    object-fit: cover;
+    transition: transform 0.2s ease-in-out;
+}
+
+.schedule-content:hover {
+    transform: scale(1.05);
+}
+
+.content-text{
+    margin-left: 1%;
+    
+}
+
+.tick-icon{
+    width:50px;
+    height: 50px;
+    margin-left: 10px;
+    margin-top: 25px;
+    display: inline;
+}
+
+.schedule-name{
+    text-align: left;
+    
+}
+
