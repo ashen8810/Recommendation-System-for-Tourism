@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import './Header.css'
 import logo from '../myimages.jpg';
-import Login from '../../pages/Login'; 
+import Login from '../../pages/Login';
 import Register from "../../pages/Register";
 
 export default function App() {
@@ -33,9 +33,9 @@ export default function App() {
         <div className="right-menu">
           <button className="search">🌐</button>
           <button className="login-button" onClick={openLoginPopup}>Log in</button>
-      {showLoginPopup && <Login onClose={closeLoginPopup} />}
-      <button className="register-button" onClick={openRegisterPopup}>Register</button>
-      {showRegisterPopup && <Register onClose={closeRegisterPopup} />}
+          {showLoginPopup && <Login onClose={closeLoginPopup} />}
+          <button className="register-button" onClick={openRegisterPopup}>Register</button>
+          {showRegisterPopup && <Register onClose={closeRegisterPopup} />}
         </div>
       </nav>
     </header>
