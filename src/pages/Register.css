@@ -95,7 +95,9 @@ button {
     text-align: center;
     font-size: small;
 }
-
+.log{
+    color: rgb(69, 77, 247);
+}
 .error {
     color: red;
     font-size: 14px;
@@ -109,10 +111,11 @@ button {
 .google-image {
     max-width: 30px; 
     border-radius: 50%;
-    margin-right: 5px; 
+    margin-right: 5px;
   }
 .facebook-image {
-    max-width: 37px; 
+    max-width:30px; 
     border-radius: 50%;
-    margin-right: 5px; 
+    margin-right: 5px;
+    padding: 0px;
   }

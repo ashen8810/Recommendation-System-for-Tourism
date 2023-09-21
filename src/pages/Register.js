@@ -127,7 +127,7 @@ export default function Register({ onClose }) {
 
         <div className="bottom">
           Already have an account?
-          <a href="/Login"> Log in</a>
+          <a className="log" href="/Login"> Log in</a>
         </div>
       </div>
     </div>

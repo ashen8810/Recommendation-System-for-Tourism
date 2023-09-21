@@ -78,20 +78,25 @@ export default function Login({ onClose }) {
                         <button className="logIn-button" type="button" onClick={handleLogin}>Log in</button>
                         <p className="or">or</p>
                         <div>
+                            <>
                             <button className="google-button">
                                 <img src={Google} alt="Logo" className="google-image" />
                                 Signup with Google
                             </button>
+                            </>
+                            <>
                             <button className="facebook-button">
                                 <img src={Facebook} alt="Logo" className="facebook-image" />
                                 Signup with Facebook
                             </button>
+                            </>
+                            
                         </div>
                     </form>
 
                     <div className="bottom">
                         Still not registered?
-                        <a href="/register"> Register</a>
+                        <a className="reg" href="/register"> Register</a>
                     </div>
                 </div>
             </div>
