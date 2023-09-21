@@ -1,28 +1,7 @@
-
-
-import React from "react";
-import ZoomSlider from "../components/ZoomSlider/ZoomSlider";
-
-const app = () => {
-  return (
-    <div
-      style={{
-        color: "#FFF"
-      }}
-    >
-      <ZoomSlider />
-
-     
-    </div>
-  );
-};
-
-
-
 import React from "react";
 import ZoomSlider from "../components/ZoomSlider/ZoomSlider";
 import Navbar from "../components/Navbar";
-import Accomodation from '../components/Card_Gallery/Accomodation/Accomodation';
+import Accomodation from '../components/Card_Gallery/accomodation/accomodation';
 import Grid from '@mui/material/Grid';
 import Carousel from 'better-react-carousel'
 
