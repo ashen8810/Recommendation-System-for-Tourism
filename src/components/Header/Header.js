@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import './Header.css'
-import logo from '../myimages.jpg';
-import Login from '../../pages/Login';
-import Register from "../../pages/Register";
+import logo from './websiteLogo.jpg';
+import Login from '../../pages/Login/Login';
+import Register from "../../pages/Register/Register";
 
 export default function App() {
   const [showLoginPopup, setShowLoginPopup] = useState(false);

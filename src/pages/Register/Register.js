@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './Register.css';
-import Google from './google-logo.png'
-import Facebook from './facebook.png'
+import Google from '../Login/google-logo.png';
+import Facebook from '../Login/google-logo.png';
 //import Login from "./Register";
 
 export default function Register({ onClose }) {

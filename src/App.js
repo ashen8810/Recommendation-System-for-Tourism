@@ -25,7 +25,7 @@ function App() {
     <div className="App">
       {/*<Schedule/>*/}
      <Header /> 
-      
+     {/*
       <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline/>
@@ -38,7 +38,7 @@ function App() {
           </Route>
         </Routes>
       </ThemeProvider>
-      </BrowserRouter>
+  </BrowserRouter> */}
       <Footer/>
     </div>
   );
