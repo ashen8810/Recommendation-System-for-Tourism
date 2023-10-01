@@ -1,0 +1,118 @@
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 9999; /* Higher z-index to make it appear on top of other content */
+  }
+  
+.login-popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.login-content {
+    background-color: #ccd3d7;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.close {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    height: 40px;
+    width: 40px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 5%;
+    border-radius: 5px;
+    line-height: 40px;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.login-content {
+    text-align: left;
+    color: black;
+}
+
+.or {
+    text-align: center;
+    margin: none;
+}
+
+.logIn-button {
+    border-radius: 20px;
+    background-color: rgb(4, 182, 199);
+    color: #fff;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.google-button,
+.facebook-button {
+    color: black;
+    background-color: transparent;
+    display:inline-flex;
+  align-items: center;
+}
+
+.logIn-button:hover,
+.google-button:hover,
+.facebook-button:hover {
+    background-color: rgb(23, 107, 135);
+}
+
+.bottom {
+    margin-top: 50px;
+    text-align: center;
+    font-size: small;
+}
+
+.reg{
+    color: rgb(69, 77, 247);
+}
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}

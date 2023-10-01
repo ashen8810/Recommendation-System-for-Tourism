@@ -1,0 +1,49 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(23, 107, 135);
+    color: #fff;
+    padding: 20px;
+}
+
+.logo {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    margin-top: 35px;
+}
+
+.footer-section {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.footer-copyright {
+    text-align: center;
+    background-color: rgb(23, 107, 135);
+    margin-top: 75px;
+    clear: both;
+}
+
+.footer-text {
+    font-size: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+a {
+    color: white;
+}

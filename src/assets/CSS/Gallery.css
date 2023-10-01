@@ -1,0 +1,29 @@
+.gallery {
+    margin-top: 5%;
+    margin-left: 10%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-gap: 10px;
+    padding-bottom: 20px;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .gallery {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-gap: 5px;
+      margin-left: 10%;
+    }
+  }
+  
+  .gallery__item {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(196, 206, 202);
+    border-radius: 5px;
+    object-fit: cover;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .gallery__item:hover {
+    transform: scale(1.05);
+  }
