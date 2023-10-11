@@ -5,6 +5,7 @@ import App from './App';
 import { configureStore } from '@reduxjs/toolkit';
 import globalReducer from 'state';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from "react-router-dom";
 
 
 const store = configureStore({
@@ -17,9 +18,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     // <App />
     <React.StrictMode>
-     <Provider store={store}>
+    <BrowserRouter>
       <App />
-    </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
