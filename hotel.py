@@ -127,7 +127,7 @@ def requirementbased(city,number,price,features):
     reqbased.drop_duplicates(subset='Name',keep='first',inplace=True)
     return reqbased[['Name','Price',"Features",'similarity']].head(5)
 
-res = requirementbased('Kandy',2,2100,'i want Air conditioned room and a Coffee machine')
+res = requirementbased('Kandy',2,2100,'i want Air conditioned room and coffee machine')
 with open("result.txt","w") as f:
    f.write(str(res))
 
