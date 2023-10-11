@@ -129,6 +129,11 @@ def requirementbased(city,number,price,features):
 
 res = requirementbased('Kandy',2,2100,'i want Air conditioned room and coffee machine')
 with open("result.txt","w") as f:
-   f.write(str(res))
-
+   s = ""
+   j = 0
+   for i in res["Name"]:
+      s = s+" "+i+"   - "+str(res["similarity"][j])+"\n"
+      j=j+1
+   f.write(str(s))
+ 
 
