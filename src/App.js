@@ -32,8 +32,8 @@ function App() {
       <CssBaseline />
     <div className="App">
       {/*<Schedule/>*/}
-      <Header />
-      <Preferences />
+      {/* <Header /> */}
+      {/* <Preferences /> */}
       <Sidebar isSidebar={isSidebar} />
           <main className="content">
             <Topbar setIsSidebar={setIsSidebar} />
