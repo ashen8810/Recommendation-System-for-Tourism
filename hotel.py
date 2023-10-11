@@ -23,7 +23,7 @@ data.Location = data.Location.str.replace(", Sri Lanka", "")
 from bs4 import BeautifulSoup
 def column4(data):
   d = []
-  soup = BeautifulSoup(data, 'lxml')
+  soup = BeautifulSoup(data, 'html.parser')
   f = soup.findAll("li",{"class":"kml-col-12-12 kml-col-6-12-m"})
   for i in f:
     d.append(i.text)
