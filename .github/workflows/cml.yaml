@@ -21,6 +21,7 @@ jobs:
           pip install -r requirements.txt
           python hotel.py
       - name: Write CML report
+      - permissions: write-all
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
