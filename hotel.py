@@ -132,7 +132,7 @@ with open("result.txt","w") as f:
    s = ""
    j = 0
    for i in res["Name"]:
-      s = s+" "+i+"   - "+str(res["similarity"][j])+"\n"
+      s = s+" "+i+"  - "+str(res["similarity"][j])+"\n"
       j=j+1
    f.write(str(s))
  
