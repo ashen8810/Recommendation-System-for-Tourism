@@ -1,16 +1,3 @@
-import Navbar from 'components/Navbar'
-import Sidebar from 'components/Sidebar'
-import React from 'react'
-
-const Dashboard = () => {
-  return (
-    <div>
-        
-    </div>
-  )
-}
-
-export default Dashboard
 import { Box, Button, IconButton, Typography, useTheme, useMediaQuery } from "@mui/material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
