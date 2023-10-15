@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PopupForm from "./../components/PrefForm/PopUpForm";
+import PopupForm from "./PopUpForm.js";
 // Change the import name to match the component's name
 
 class FinalForm extends Component {
