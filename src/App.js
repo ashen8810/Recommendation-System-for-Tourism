@@ -20,7 +20,9 @@ import "./App.css";
 import Preferences from "./pages/Preferences";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-
+import Schedule from "./pages/Schedule";
+import Login from "pages/Login/Login";
+import Homepage from "./pages/Homepage";
 function App() {
   //Setting up material ui.
   const [theme, colorMode] = useMode();
@@ -29,7 +31,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Preferences />
+      <Homepage />
       <Footer />
     </div>
   );

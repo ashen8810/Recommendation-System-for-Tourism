@@ -83,10 +83,10 @@ const styles = {
   },
 };
 const steps = [
-  "Personal Information",
-  "Contact Information",
-  "Account Information",
-  "Dates",
+  "Trip Information",
+  "Date Information",
+  "More Information",
+  "More",
 ];
 
 class MultiStepForm extends Component {
@@ -183,7 +183,7 @@ class MultiStepForm extends Component {
         <div style={styles.container}>
           {step === 0 && (
             <div>
-              <h2 style={styles.stepHeader}>Step 1: Personal Information</h2>
+              <h2 style={styles.stepHeader}>Step 1: Trip Information</h2>
               <label htmlFor="dest">Where do you want to go? :</label>
               <select
                 type="select"
@@ -217,7 +217,7 @@ class MultiStepForm extends Component {
           )}
           {step === 1 && (
             <div>
-              <h2 style={styles.stepHeader}>Step 2: Contact Information</h2>
+              <h2 style={styles.stepHeader}>Step 2: Date Information</h2>
               <label htmlFor="from">From? :</label>
 
               <input
@@ -227,9 +227,9 @@ class MultiStepForm extends Component {
                 onChange={this.handleInputChange}
                 style={styles.input}
               />
-              {errors.from &&
+              {errors.from && (
                 <div style={styles.errorStyles}>{errors.from}</div>
-              }
+              )}
 
               <label htmlFor="to">To? :</label>
 
@@ -245,7 +245,7 @@ class MultiStepForm extends Component {
           )}
           {step === 2 && (
             <div>
-              <h2 style={styles.stepHeader}>Step 3: Account Information</h2>
+              <h2 style={styles.stepHeader}>Step 3: More Information</h2>
               <input
                 type="password"
                 name="password"
@@ -259,7 +259,7 @@ class MultiStepForm extends Component {
 
           {step === 3 && (
             <div>
-              <h2 style={styles.stepHeader}>Step 4: Dates</h2>
+              <h2 style={styles.stepHeader}>Step 4: More Information</h2>
               <input
                 type="date"
                 name="password"

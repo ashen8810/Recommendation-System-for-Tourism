@@ -1281,3 +1281,47 @@ export const mockGeographyData = [
     value: 171135,
   },
 ];
+export const items = [
+  {
+    id: "1",
+    image: "2.jpg",
+    name: "Mirissa",
+    rating: 2,
+    index: "4",
+  },
+  {
+    id: "2",
+    image: "2.jpg",
+    name: "Peradeniya Botnical garden",
+    rating: 1,
+    index: "4",
+  },
+  {
+    id: "3",
+    image: "2.jpg",
+    name: "Polonnaruwa Lake",
+    rating: 3,
+    index: "4",
+  },
+  {
+    id: "4",
+    image: "2.jpg",
+    name: "Sigiriya",
+    rating: 3,
+    index: "4",
+  },
+  {
+    id: "5",
+    image: "2.jpg",
+    name: "Jaffna Fort",
+    rating: 3,
+    index: "4",
+  },
+  {
+    id: "6",
+    image: "2.jpg",
+    name: "Galle face",
+    rating: 3,
+    index: "4",
+  },
+];
