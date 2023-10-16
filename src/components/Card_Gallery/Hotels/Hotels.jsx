@@ -1,11 +1,14 @@
+import React from 'react';
+import {FaArrowCircleLeft, FaArrowCircleRight, FaStar} from 'react-icons/fa';
+
 import React, { useState } from 'react'
 import { FaArrowCircleRight, FaStar} from 'react-icons/fa'
-import images from './placeDetails';
+import images from './hotelDetails.js';
 import Popupwin from './Popupwin.jsx';
 
 const noImages = 7;
 
-const Places = () => {
+const Hotels= () => {
     const[next,setNext] = useState(noImages);
     const[openPopup,setOpenPopup] = useState(null);
 
@@ -63,7 +66,7 @@ const Places = () => {
 
             {next < images.length && (
                 <div className='placeCard view'>
-                    <img src='https://st2.depositphotos.com/1006362/5945/i/950/depositphotos_59454467-stock-photo-sri-lanka.jpg' className='placeImage' alt='placecollage'></img>
+                    <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRER2NOLbnnbnwh2EOzSOf4bOLVp1Rpxm15YA&usqp=CAU' className='placeImage' alt='placecollage'></img>
                     <div className='viewMoreContent'>
                         <FaArrowCircleRight className='arrow' onClick={handleMoreImage}></FaArrowCircleRight> 
                         <br></br>
@@ -79,7 +82,7 @@ const Places = () => {
 };
   
    
-export default Places;
+export default Hotels;
 
 // export const ViewMore =() =>{
 //     return(
@@ -93,3 +96,25 @@ export default Places;
 // }
 
 
+
+
+const Accomodation = (props) => {
+  return (
+    
+    <div className='placeList'>
+        <div key={props.id} className='placeCard'>
+            <img src={props.image} alt='Place' className='placeImage'></img>
+            <div className='placeCard_content'>
+                <h3 className='placeName'>{props.name}</h3>
+                <div className='placeRating'>
+                    {[...Array(props.rating)].map((index) => (
+                        <FaStar id={index +1} key = {index}/>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </div>
+  )
+}
+
+export default Accomodation

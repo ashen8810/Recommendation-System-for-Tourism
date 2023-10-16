@@ -4,7 +4,8 @@ const accomodationData = [
     id:1,
     name: 'Anuradhapura',
     image: 'https://media.istockphoto.com/id/824016044/photo/vintage-colour-effect-of-polonnaruwa-ancient-vatadage.jpg?s=612x612&w=0&k=20&c=8xPi05YUMvle7Y2Xz3y0Gspk-ZhYnyf9N4Z8Rytwp10=',
-    rating: 5
+    rating: 5,
+    description:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis \nparturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate"
     },
 
     {
