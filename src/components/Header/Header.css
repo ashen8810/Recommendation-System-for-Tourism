@@ -18,7 +18,7 @@
   }
   
   /* Logo Image */
-  .logo-image {
+  .logo-image{
     max-width: 40px;
     border-radius: 50%;
     margin-right: 10px;
@@ -47,6 +47,13 @@
     background-color: rgb(23, 107, 135);
     border: none;
     padding: 7px 10px;
+  }
+
+  .search-image{
+    max-width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: 5px;
   }
   
   /* Register and Login Buttons */

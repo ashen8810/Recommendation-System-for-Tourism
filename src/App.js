@@ -20,6 +20,9 @@ import "./App.css";
 import Preferences from "./pages/Preferences";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
+import HomePage from './pages/Homepage';
+import { Place } from "@mui/icons-material";
+import HotelPage  from "./components/Card_Gallery/places/places";
 
 function App() {
   //Setting up material ui.
@@ -27,13 +30,17 @@ function App() {
   const [isSidebar, setIsSidebar] = useState(true);
 
   return (
+
+    <div>
+      <Header/>
+    {/* 
     <ColorModeContext.Provider value={colorMode}>
     <ThemeProvider theme={theme}>
       <CssBaseline />
     <div className="App">
-      {/*<Schedule/>*/}
-      {/* <Header /> */}
-      {/* <Preferences /> */}
+      <Schedule/>
+      <Header /> 
+      <Preferences />
       <Sidebar isSidebar={isSidebar} />
           <main className="content">
             <Topbar setIsSidebar={setIsSidebar} />
@@ -51,13 +58,13 @@ function App() {
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/geography" element={<Geography />} />
             </Routes>
-            {/* <Topbar/>  */}
-            {/* <Sidebar/> */}
-            {/* <Dashboard/> */}
-            {/* <Team/>
+             <Topbar/>  
+            <Sidebar/> 
+             <Dashboard/> 
+             <Team/>
             <Geography/>
-            <Invoices/> */}
-            {/* <Contacts/> */}
+            <Invoices/> 
+             <Contacts/> 
         
             
           </main>
@@ -66,6 +73,9 @@ function App() {
     </div>
     </ThemeProvider>
     </ColorModeContext.Provider>
+
+    */}
+    </div>
   );
 }
 

@@ -3,6 +3,7 @@ import './Header.css'
 import logo from './websiteLogo.jpg';
 import Login from '../../pages/Login/Login';
 import Register from "../../pages/Register/Register";
+import Search from "./search-logo.jpg";
 
 export default function App() {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
@@ -31,7 +32,9 @@ export default function App() {
         </div>
 
         <div className="right-menu">
-          <button className="search">🌐</button>
+          <button className="search">
+          <img src={Search} alt="Logo" className="search-image" />
+          </button>
           <button className="login-button" onClick={openLoginPopup}>Log in</button>
           {showLoginPopup && <Login onClose={closeLoginPopup} />}
           <button className="register-button" onClick={openRegisterPopup}>Register</button>
