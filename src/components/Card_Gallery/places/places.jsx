@@ -1,28 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-import {FaArrowCircleLeft, FaArrowCircleRight, FaStar} from 'react-icons/fa'
-
-const Places = (props) => {
-  return (
-    
-    <div className='placeList'>
-        <div key={props.id} className='placeCard'>
-            <img src={props.image} alt='Place' className='placeImage'></img>
-            <div className='placeCard_content'>
-                <h3 className='placeName'>{props.name}</h3>
-                <div className='placeRating'>
-                    {[...Array(props.rating)].map((index) => (
-                        <FaStar id={index +1} key = {index}/>
-                    ))}
-                </div>
-            </div>
-        </div>
-    </div>
-  )
-}
-
-export default Places
-=======
 import React, { useState } from 'react'
 import { FaArrowCircleRight, FaStar} from 'react-icons/fa'
 import images from './data.js';
@@ -93,4 +68,3 @@ export default Palette;
 // }
 
 
->>>>>>> 0ece65e6c403352736dc0e655fef8fcf1b89fb6a
