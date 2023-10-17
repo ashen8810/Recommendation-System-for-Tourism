@@ -12,10 +12,11 @@ const app = () => {
       <ZoomSlider />
       <div className="body">
         <br />
-
-        <h2>Places To Visit</h2>
+    
         <div className="visitingPlace">
-          <Carousel cols={5} rows={1} gap={0} loop>
+        <h2 className="place">Places To Visit</h2>       
+
+          <Carousel cols={5} rows={1} gap={22} loop>
             <Carousel.Item>
               <Accomodation
                 id="1"
@@ -48,7 +49,7 @@ const app = () => {
                 id="1"
                 image = "https://www.tripbibo.com/blog/wp-content/uploads/2021/06/dambulla-cave-temple_srilanka-1024x591.jpg"
                 name="Dambulla"
-                rating="4"
+                rating="5"
                 index="4"
               />
             </Carousel.Item>
@@ -57,7 +58,7 @@ const app = () => {
                 id="1"
                 image = "https://media.istockphoto.com/id/1129078125/photo/the-girl-travels-by-train-to-beautiful-places-beautiful-girl-traveling-by-train-among.jpg?s=612x612&w=0&k=20&c=HCHXlPWt7QQ1rfwGrVZ3_AV37U8YVmQ_7HXYja-dOEY="
                 name="Ella"
-                rating="4"
+                rating="2"
                 index="4"
               />
             </Carousel.Item>
@@ -66,7 +67,7 @@ const app = () => {
                 id="1"
                 image = "https://c.myholidays.com/blog/blog/content/images/2021/06/Trincomalee.jpg"
                 name="Hello"
-                rating="4"
+                rating="1"
                 index="4"
               />
             </Carousel.Item>

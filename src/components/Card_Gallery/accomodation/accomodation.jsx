@@ -9,11 +9,10 @@ const Accomodation = (props) => {
 
     const accomodationStyle = {
         backgroundColor: '#ffffff', 
-        padding: '1px', 
         width: '230px',
-        margin: '3px', 
         boxSizing: 'border-box',
-        borderRadius: '5px'
+        borderRadius: '5px',
+        marginLeft: '3px',
     };
 
     const imageStyle = {
@@ -31,6 +30,9 @@ const Accomodation = (props) => {
 
     const rateStyle = {
         textAlign: 'center',
+    }
+    const listStyle = {
+        margin:'3px'
     }
     return (
 
