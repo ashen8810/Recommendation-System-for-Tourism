@@ -1,0 +1,10 @@
+.body{ 
+    color : hsl(0, 0%, 0%);
+    background: linear-gradient(to bottom right, rgb(11, 88, 114), #ffffff);
+}
+
+.visitingPlace {
+    width: 95%; 
+    margin: 0 auto;
+    color: #283d44;
+  }

@@ -20,7 +20,7 @@ import "./App.css";
 import Preferences from "./pages/Preferences";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import HomePage from './pages/Homepage';
+import HomePage from './pages/HomePage/Homepage';
 import { Place } from "@mui/icons-material";
 import HotelPage  from "./components/Card_Gallery/places/places";
 
@@ -33,6 +33,8 @@ function App() {
 
     <div>
       <Header/>
+      <HomePage/>
+
     {/* 
     <ColorModeContext.Provider value={colorMode}>
     <ThemeProvider theme={theme}>
