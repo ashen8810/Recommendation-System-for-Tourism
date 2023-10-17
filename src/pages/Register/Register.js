@@ -13,6 +13,15 @@ export default function Register({ onClose }) {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  const [showOverlay, setShowOverlay] = useState(false);
+
+  const handleRegisterClick = () => {
+    setShowOverlay(true);
+  };
+  const handleCloseClick = () => {
+    setShowOverlay(false);
+    onClose();
+  };
 
   const validateEmail = () => {
     if (!email) {
@@ -53,7 +62,9 @@ export default function Register({ onClose }) {
   };
 
   return (
-    <div className="register-popup">
+    <>
+    {showOverlay && <div className="overlay" onClick={handleCloseClick}></div>}
+    <div className={`register-popup ${showOverlay ? "visible" : ""}`}>
       <div className="register-content">
         <span className="close" onClick={onClose}>&times;</span>
         <h2>Create Account</h2>
@@ -131,5 +142,7 @@ export default function Register({ onClose }) {
         </div>
       </div>
     </div>
+    </>
+
   );
 }
