@@ -17,10 +17,10 @@ import Delete from "./pages/delete";
 import Ban from "./pages/ban";
 import Advertisment from "./pages/advertisment";
 import "./App.css";
-import Preferences from "./pages/Preferences";
+import Preferences from "./pages/Preferences/Preferences";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import Schedule from "./pages/Schedule";
+import Schedule from "./pages/Schedules/Schedule";
 import Login from "pages/Login/Login";
 import Homepage from "./pages/Homepage";
 
@@ -32,7 +32,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Schedule />
+      <Preferences />
       <Footer />
     </div>
   );

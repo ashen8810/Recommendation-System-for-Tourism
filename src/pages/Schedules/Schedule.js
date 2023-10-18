@@ -1,13 +1,14 @@
 import React from "react";
-import ZoomSlider from "../components/ZoomSlider/ZoomSlider";
-import Navbar from "../components/Navbar";
-import Map from "../components/Maps";
-import "../assets/CSS/bootstrap.min.css";
+import ZoomSlider from "../../components/ZoomSlider/ZoomSlider";
+import Navbar from "../../components/Navbar";
+import "../../assets/CSS/bootstrap.min.css";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Header from "../components/Header/Header";
+import Header from "../../components/Header/Header";
 import Button from "@mui/material/Button";
+import TravelItinerary from "./SchedulesPart";
+import Map from "../../components/Maps/Leaflet";
 
 const app = () => {
   return (
@@ -23,7 +24,9 @@ const app = () => {
 
         <Box sx={4}>
           <Grid container spacing={2} columns={32}>
-            <Grid item xs={15}></Grid>
+            <Grid item xs={15}>
+              <TravelItinerary />
+            </Grid>
             <Grid item xs={15}>
               <Map />
             </Grid>
