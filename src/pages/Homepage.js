@@ -348,15 +348,11 @@ const Homepage = () => {
 
       <br></br>
       <br></br>
-      <br></br>
-      <br></br>
 
       <h2>Community Stories</h2>
       <br></br>
       <br></br>
-      <br></br>
-
-      <Grid container spacing={5}>
+      <Grid container spacing={2}>
         {items.map((item, index) => (
           <Grid item>
             <Item>

@@ -100,7 +100,10 @@ class MultiStepForm extends Component {
         people: 0,
         from: "",
         to: "",
-        phone: "",
+        hotel: "",
+        trip: "",
+        min: 0,
+        max: 0,
       },
     };
   }
@@ -121,14 +124,23 @@ class MultiStepForm extends Component {
         errors.from = "Date is required";
       }
       if (!formData.to) {
-        errors.phone = "Date is required";
+        errors.to = "Date is required";
       }
     } else if (step === 2) {
-      if (!formData.password) {
-        errors.password = "Password is required";
+      if (!formData.hotel) {
+        errors.hotel = "Description is required";
+      }
+      if (!formData.trip) {
+        errors.trip = "Description is required";
+      }
+    } else if (step === 3) {
+      if (formData.min == "0$") {
+        errors.min = "value is required";
+      }
+      if (formData.max < 1) {
+        errors.max = "value is required";
       }
     }
-
     return errors;
   };
 
@@ -246,28 +258,49 @@ class MultiStepForm extends Component {
           {step === 2 && (
             <div>
               <h2 style={styles.stepHeader}>Step 3: More Information</h2>
-              <input
-                type="password"
-                name="password"
-                value={formData.password}
+              <textarea
+                type="text"
+                name="hotel"
+                value={formData.hotel}
                 onChange={this.handleInputChange}
-                placeholder="Password"
+                placeholder="What kind of hotel do you need? "
                 style={styles.input}
               />
+              {errors && <div style={styles.errorStyles}>{errors.hotel}</div>}
+              <textarea
+                type="text"
+                name="trip"
+                value={formData.trip}
+                onChange={this.handleInputChange}
+                placeholder="What kind of trip are you planing? "
+                style={styles.input}
+              />
+              {errors && <div style={styles.errorStyles}>{errors.trip}</div>}
             </div>
           )}
 
           {step === 3 && (
             <div>
-              <h2 style={styles.stepHeader}>Step 4: More Information</h2>
+              <h2 style={styles.stepHeader}>Step 4: Price Information</h2>
               <input
-                type="date"
-                name="password"
-                value={formData.password}
+                type="number"
+                name="min"
+                value={formData.min}
                 onChange={this.handleInputChange}
-                placeholder="Password"
+                // placeholder="0$"
                 style={styles.input}
               />
+              {errors && <div style={styles.errorStyles}>{errors.min}</div>}
+
+              <input
+                type="number"
+                name="max"
+                value={formData.max}
+                onChange={this.handleInputChange}
+                // placeholder="0$"
+                style={styles.input}
+              />
+              {errors && <div style={styles.errorStyles}>{errors.max}</div>}
             </div>
           )}
           <div>

@@ -1,0 +1,109 @@
+/* Accommodation.css */
+
+.place-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    transition: transform 0.3s ease-in-out, transform 1s ease-in-out; /* Add transition */
+
+}
+
+.place-card {
+    width: 250px; /* Set a fixed width */
+    height: 300px; /* Set a fixed height */
+    border: 1px solid #bbb9b9;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    animation: floatUp 1s ease-in-out infinite alternate; /* Add animation */
+}
+
+
+
+.place-card:hover {
+    transform: scale(1.13);
+}
+
+.place-image {
+    width: 100%;
+    height: 60%; /* Adjust as needed */
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out; /* Add animation */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.place-card-content {
+    margin-top: 10px;
+    text-align: center;
+    animation: slideIn 1s ease-in-out; /* Add animation */
+    transition: transform 0.3s ease-in-out, transform 1s ease-in-out; /* Add transition */
+
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.place-name {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #333; /* Text color */
+}
+
+.place-rating {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: #FFD700; /* Golden color for stars */
+}
+
+.place-rating .react-icon {
+    fill: #FFD700; /* Golden color for stars */
+}
+@keyframes colorChange {
+    0% {
+        fill: #FFD700; /* Golden color for stars */
+    }
+    100% {
+        fill: #FF5733; /* A different color */
+    }
+}
+.place-card:hover {
+    border-color: #007BFF; /* Change the border color to a different color */
+    transition: transform 0.3s ease-in-out, transform 1s ease-in-out; /* Add transition */
+
+}
+.place-name:hover {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: text-shadow 0.3s ease-in-out;
+}
+.place-card {
+    background: rgb(200,200,200);
+    /* Your other styles */
+}

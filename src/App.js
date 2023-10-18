@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Topbar from "./pages/global/Topbar";
-import Sidebar from "./pages/global/Sidebar";
+// import Sidebar from "./pages/global/Sidebar";
 import Dashboard from "./pages/dashboard";
 import Team from "./pages/team";
 import Contacts from "./pages/contacts";
@@ -23,6 +23,7 @@ import Header from "./components/Header/Header";
 import Schedule from "./pages/Schedule";
 import Login from "pages/Login/Login";
 import Homepage from "./pages/Homepage";
+
 function App() {
   //Setting up material ui.
   const [theme, colorMode] = useMode();
@@ -31,7 +32,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Homepage />
+      <Schedule />
       <Footer />
     </div>
   );

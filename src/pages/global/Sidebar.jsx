@@ -15,12 +15,11 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-import profileImage from "../../assets/profile.jpg"
-import PersonRemoveOutlinedIcon from '@mui/icons-material/PersonRemoveOutlined';
-import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
-import PersonOffOutlinedIcon from '@mui/icons-material/PersonOffOutlined';
-import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
-
+import profileImage from "../../assets/profile.jpg";
+import PersonRemoveOutlinedIcon from "@mui/icons-material/PersonRemoveOutlined";
+import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
+import PersonOffOutlinedIcon from "@mui/icons-material/PersonOffOutlined";
+import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -119,7 +118,7 @@ const Sidebar = () => {
                 </Typography>
               </Box>
             </Box>
-          )} 
+          )}
 
           {/* menue items */}
 
@@ -175,7 +174,7 @@ const Sidebar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-               Accounts
+              Accounts
             </Typography>
             <Item
               title="Create User"
@@ -200,8 +199,6 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            
-           
 
             <Typography
               variant="h6"
