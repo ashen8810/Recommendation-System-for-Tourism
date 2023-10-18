@@ -1281,3 +1281,47 @@ export const mockGeographyData = [
     value: 171135,
   },
 ];
+export const items = [
+  {
+    id: "1",
+    image: 'https://media.istockphoto.com/id/1181382649/photo/colombo-sri-lanka-december-05-2018-view-of-the-colombo-city-skyline-with-modern-architecture.jpg?s=612x612&w=0&k=20&c=XIS9COAwhGXkQYqGKHcabMEpc64B_uwT2utuonAoWl0=',
+    name: "Colombo",
+    rating: "3",
+    index: "4",
+  },
+  {
+    id: "2",
+    image: "https://assets.traveltriangle.com/blog/wp-content/uploads/2015/02/Sigiriya-rock-fortress-in-Sri-Lanka.jpg",
+    name: "Seegiriya",
+    rating: "5",
+    index: "4",
+  },
+  {
+    id: "3",
+    image: "https://www.tusktravel.com/blog/wp-content/uploads/2022/02/Bentota-Beach-Sri-Lanka2.jpg",
+    name: "Bentota",
+    rating: "4",
+    index: "4",
+  },
+  {
+    id: "4",
+    image: "https://www.tripbibo.com/blog/wp-content/uploads/2021/06/dambulla-cave-temple_srilanka-1024x591.jpg",
+    name: "Dambulla",
+    rating: "5",
+    index: "4",
+  },
+  {
+    id: "5",
+    image: "https://media.istockphoto.com/id/1129078125/photo/the-girl-travels-by-train-to-beautiful-places-beautiful-girl-traveling-by-train-among.jpg?s=612x612&w=0&k=20&c=HCHXlPWt7QQ1rfwGrVZ3_AV37U8YVmQ_7HXYja-dOEY=",
+    name: "Ella",
+    rating: "2",
+    index: "4",
+  },
+  {
+    id: "6",
+    image: "https://c.myholidays.com/blog/blog/content/images/2021/06/Trincomalee.jpg",
+    name: "Munneshwaram",
+    rating: "1",
+    index: "4",
+  },
+];

@@ -1,20 +1,24 @@
-.body{ 
-    color : hsl(0, 0%, 0%);
-    background: linear-gradient(to bottom right, rgb(11, 88, 114), #ffffff);
+body {
+  color: hsl(0, 0%, 0%);
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./background.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
 
-.visitingPlace {
-    width: 95%; 
-    margin: 1px auto;
+
+
+.visitingPlace, .Lodgings, .stories {
+    width: 97%; 
+    margin: 0px auto;
     color: #283d44;
   }
 
  
-   .place{
+   .place, .lodging, .communityStories{
     right: 0;
-    background: linear-gradient(to right, rgb(101, 187, 216), rgb(60, 124, 145,0));
+    background: linear-gradient(to right, rgb(17, 169, 220), rgb(60, 124, 145,0));
     color: black;
     margin-left: -15px;
+    margin-bottom: 0px;
     padding-left: 20px;
   }
   
