@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+  .heading{
+    text-align: left;
+    margin-left: 100px;
+    font-size: 40px;
+    font-weight: 600;
+    text-shadow: -2px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+  .heading:hover{
+  
+    text-decoration: underline;
+    text-underline-position: below;
+    text-underline-offset: 2px;
+    text-decoration-color: rgb(12, 178, 204);
+    translate: 2px;
+  }
+  .main{
+    margin-top: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  
+  .banner{
+    display: block;
+    position: relative;
+    padding:8px 8px;
+    height: 150px;
+    background-image: url('https://cdn.pixabay.com/photo/2017/09/27/13/37/srilanka-2792097_640.jpg');
+    background-color: rgb(203, 212, 212);
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    width: auto;
+    z-index: 10;
+  }
+  
+  
+  /* .profile-pic{
+    position: absolute;
+    align-items: center;
+    margin-left: 30px;
+    margin-top: 100px;
+    height: 110px;
+    width: 110px;
+    border:5px solid white;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    z-index:2px;
+  } */
+  
+  .camera-icon{
+    position: absolute;
+    display: flex;
+    margin-top: 14%;
+    margin-left: 7%;
+    height:25px;
+    width: 20px;
+    color: rgb(255, 255, 255);
+  }
+  
+  .desc{
+  
+    text-align: center;
+    margin-left:200px;
+    width: 600px;
+    background-color:transparent;
+    
+    
+  }
+  
+  .icon{
+    padding-right: 100px;
+    padding-left: 20px;
+    
+  }
+  
+  .topic{
+    display: flex;
+    position:relative;
+    justify-content: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: azure;
+    margin-top: 80px;
+    margin-left: -85%;
+  }
+  
+  .material-symbols-outlined {
+    margin-top: 25px;
+    font-size: 30px;
+    color:white;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'wdth' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }
+  
+
+
+  .plus-div{
+    display: block;
+    position: relative;
+    margin-top: -69px;
+    margin-left: 15%;
+   
+  }
+  
+  @media screen and (max-width: 767px) {
+    .gallery {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-gap: 5px;
+      margin-left: 10%;
+    }
+
+    .camera-icon{
+    position: fixed;
+    display: flex;
+    margin-top: 25%;
+    margin-left: 12%;
+    height:25px;
+    width: 20px;
+    color: rgb(255, 255, 255);
+    }
+  
+  }

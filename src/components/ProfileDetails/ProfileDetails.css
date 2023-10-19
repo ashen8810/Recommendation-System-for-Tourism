@@ -1,0 +1,52 @@
+.detailsCard{
+    width: 500px;
+    height: 138px;
+    display: block;
+    text-align: left;
+    color: White;
+    font-size: 12px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.contact-info{
+    
+    display: inline-flex;
+    position:relative;
+    justify-content: center;
+    padding-inline: 5px;
+    flex-flow: row;
+    column-gap: 30px;
+    margin-top: -250px;
+    
+    
+}
+
+.material-symbols-outlined{
+    font-size: 20px;
+}
+
+h1{
+    margin-left: 10px;
+}
+
+p{
+    margin-left: 10px;
+}
+.contact-info:hover{
+    color:rgb(123, 182, 240);
+}
+
+@media screen and (max-width: 767px) {
+    .detailsCard{
+        width:min-content;
+        overflow:hidden;
+        height: 60px;
+        display: block;
+        text-align: left;
+        color: White;
+        font-size: 12px;
+        border-radius: 10px;
+        background-color: rgba(0,0,0,0.4);
+    }
+}
