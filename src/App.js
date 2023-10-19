@@ -23,6 +23,8 @@ import Header from "./components/Header/Header";
 import Schedule from "./pages/Schedules/Schedule";
 import Login from "pages/Login/Login";
 import Homepage from "./pages/HomePage/Homepage";
+import Hotels from "pages/Hotels/Hotels";
+
 
 function App() {
   //Setting up material ui.
@@ -31,6 +33,7 @@ function App() {
 
   return (
     <div>
+     
       <Header />
       <Homepage/>
       <Footer />

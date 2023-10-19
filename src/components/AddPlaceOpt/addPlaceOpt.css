@@ -1,0 +1,25 @@
+.topLineOPt{
+    display: flex;
+    position: fixed;  
+}
+
+.addPlace{
+    margin-top: 4px;
+    margin-left:95%;  
+    position: fixed;
+}
+
+
+.homes{
+    margin-left: 1%;
+    position: fixed;
+   
+}
+
+.addPlace:hover{
+    color: rgb(106, 108, 108);
+}
+
+.homes :hover{
+    color: rgb(106, 108, 108);
+}
