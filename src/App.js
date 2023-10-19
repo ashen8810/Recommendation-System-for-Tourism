@@ -24,6 +24,7 @@ import Schedule from "./pages/Schedules/Schedule";
 import Login from "pages/Login/Login";
 import Homepage from "./pages/HomePage/Homepage";
 import Hotels from "pages/Hotels/Hotels";
+import Places from "pages/places/places";
 
 
 function App() {

@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { FaArrowCircleRight, FaStar} from 'react-icons/fa'
 import images from './placeDetails';
-import Popupwin from './Popupwin.jsx';
+import Popupwin from '../../components/Popupwin';
+import '../../assets/CSS/Hotels.css'
+import AddPlaceOpt from 'components/AddPlaceOpt/AddPlaceOpt';
 
 const noImages = 7;
 
@@ -22,6 +24,8 @@ const Places = () => {
     }
 
     return (
+        <>
+        <AddPlaceOpt/>
         <div className='placeList'>
             {images.slice(0,next).map((images,index) =>{
                 return(
@@ -73,23 +77,12 @@ const Places = () => {
                 </div>
             )}
         </div>
+        </>
     );
     
 
 };
   
    
-export default Places;
-
-// export const ViewMore =() =>{
-//     return(
-//         <div className='placeCard'>
-//             <FaArrowCircleRight className='arrow'></FaArrowCircleRight>
-//             <br></br>
-//             <span className='text'> View More</span>
-
-//         </div>
-//     )
-// }
 
 
