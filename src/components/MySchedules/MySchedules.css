@@ -1,0 +1,61 @@
+.container{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2%;
+    
+}
+
+.schedules{
+   
+    display: grid;
+    grid-gap: 10px; /* Adjust the gap as needed */
+    grid-template-rows: repeat(auto-fit, minmax(140px, 1fr));
+     
+      
+      
+}
+
+@media screen and (max-width: 767px) {
+    .schedules {
+      grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+      grid-gap: 0px;
+      margin-left: 10%;
+    }
+}
+
+.schedule-content {
+    display: inline-flex;
+    position: relative;
+    border: 1px solid rgb(220, 220, 220);
+    width: auto;
+    height: fit-content;
+    background-image: linear-gradient(rgb(49, 220, 239),rgb(34, 238, 200));
+    border-radius: 5px;
+    object-fit: cover;
+    transition: transform 0.2s ease-in-out;
+}
+
+.schedule-content:hover {
+    transform: scale(1.05);
+}
+
+.content-text{
+    line-height: 21px;
+    text-align: left;
+    margin-left: 3px;
+}
+
+
+.tick-icon{
+    width:50px;
+    height: 50px;
+    margin-left: 10px;
+    margin-top: 25px;
+    display: inline;
+}
+
+.schedule-name{
+    text-align: left;
+    
+}
+

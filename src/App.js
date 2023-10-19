@@ -26,6 +26,8 @@ import Homepage from "./pages/HomePage/Homepage";
 import Hotels from "pages/Hotels/Hotels";
 import Places from "pages/places/places";
 import HotelOwnerProfile from "pages/HotelOwnerProfile";
+import TavellerProfile from "pages/TravellerProfile/TravellerProfile";
+import { Home } from "@mui/icons-material";
 
 
 
@@ -38,7 +40,7 @@ function App() {
     <div>
      
       <Header />
-      <HotelOwnerProfile/>
+      <Homepage/>
       <Footer />
     </div>
   );
