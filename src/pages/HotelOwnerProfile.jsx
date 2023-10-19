@@ -3,6 +3,7 @@ import {FaCamera,FaPlus} from 'react-icons/fa'
 import '../assets/CSS/HotelGallery.css';
 import ProfileDetails from '../components/ProfileDetails/ProfileDetails';
 import HotelGallery from '../components/HotelGallery';
+import '../assets/CSS/HotelGallery.css';
 import '../assets/CSS/PageStyles.css'
 import Profile from 'components/UpdateProfileImage/Profile';
 

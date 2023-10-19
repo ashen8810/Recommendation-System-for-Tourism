@@ -25,6 +25,8 @@ import Login from "pages/Login/Login";
 import Homepage from "./pages/HomePage/Homepage";
 import Hotels from "pages/Hotels/Hotels";
 import Places from "pages/places/places";
+import HotelOwnerProfile from "pages/HotelOwnerProfile";
+
 
 
 function App() {
@@ -36,7 +38,7 @@ function App() {
     <div>
      
       <Header />
-      <Homepage/>
+      <HotelOwnerProfile/>
       <Footer />
     </div>
   );
