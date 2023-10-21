@@ -1,0 +1,27 @@
+
+/* Add this style in your CSS file */
+.plantrip {
+    background-color: rgb(0 30 255 / 57%);
+    color: white;
+    padding: 20px;
+    padding-bottom: 10px;
+    padding-top: 8px;
+    border-radius: 20px;
+    margin-top: 20px;
+    font-size: 30px;
+    transition: background-color 0.3s ease, font-size 0.3s ease;
+    position: relative; /* Ensure the z-index works */
+    z-index: 1; /* Set a higher z-index for the button */
+  }
+  
+  .plantrip:hover {
+    background-color:   rgb(15, 15, 205);
+    font-size: 33px;
+    z-index: 2; /* Increase the z-index on hover to bring the button to the front */
+  }
+  
+  /* Optionally, you can add a z-index to the Overlay or Wrapper to control their stacking order */
+  /* .Overlay {
+    z-index: 0;
+  } */
+  

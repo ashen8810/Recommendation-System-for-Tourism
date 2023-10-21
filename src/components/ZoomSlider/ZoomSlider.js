@@ -8,7 +8,9 @@ import Subtitle from "../UI/Subtitle/Subtitle";
 import { Button } from "@mui/material";
 import { ClassNames } from "@emotion/react";
 import Schedule from '../../pages/Schedules/Schedule';
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ColorModeContext } from "theme";
+import '../../assets/CSS/planYourTripButton.css'
 // Images
 const im1 = "https://drive.google.com/uc?export=view&id=1OdPPRaP4aLAHumJaJgCZGjQC2aq1zwrH";
 const im2 = "https://drive.google.com/uc?export=view&id=1f3acDsb9QDtBqSJB4ueMPrRNHXOBRFgK";
@@ -20,7 +22,6 @@ export default function BasicSlider() {
   const navigate = useNavigate();
   return (
     <>
-    <button className="plantrip" onClick={() => navigate('Schedules')}>Plan your trip</button>
       <HeroSlider
         height={"80vh"}
         autoplay
@@ -38,13 +39,16 @@ export default function BasicSlider() {
             ),
           onAfterSliding: (nextSlide) =>
             console.debug("onAfterSliding(nextSlide): ", nextSlide),
-           
+
         }}
       >
         <Overlay>
           <Wrapper>
             <Title>Discover Amazing Places In </Title>
             <Subtitle>Sri Lanka</Subtitle>
+            <button
+              className="plantrip"
+              onClick={() => navigate('Schedules')}>Plan your trip</button>
           </Wrapper>
         </Overlay>
 
@@ -72,7 +76,7 @@ export default function BasicSlider() {
             backgroundImageSrc: im4,
           }}
         />
-        
+
       </HeroSlider>
     </>
   );
