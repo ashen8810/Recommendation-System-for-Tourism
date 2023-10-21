@@ -6,7 +6,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import globalReducer from 'state';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from "react-router-dom";
-
+import { ProSidebarProvider } from 'react-pro-sidebar';
 
 const store = configureStore({
 
@@ -19,7 +19,9 @@ root.render(
     // <App />
     <React.StrictMode>
     <BrowserRouter>
+    <ProSidebarProvider>
       <App />
+    </ProSidebarProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

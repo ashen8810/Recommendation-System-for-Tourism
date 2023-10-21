@@ -1,0 +1,23 @@
+.maindiv{
+    z-index: 9999;
+    position: fixed;
+    display: flex;
+    margin-top: 0;
+}
+.link {
+    color: black;
+}
+
+h1 {
+    color: #165a72;
+    margin: 50px auto;
+    font-size: 40px;
+}
+.menu1 {
+   
+    margin-top: 20px;
+}
+
+h2 {
+    color: #165a72;
+}

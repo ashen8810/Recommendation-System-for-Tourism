@@ -1,5 +1,6 @@
 import { Typography, Box, useTheme } from "@mui/material";
 import React from "react";
+import HomeSideBar from "./HomeSideBar";
 
 const Header = ({ title, subtitle }) => {
   const theme = useTheme();

@@ -1,11 +1,13 @@
 /* Navigation Bar */
 .navbar {
-    display: flex;
+    position: fixed;
+   
     justify-content: space-between;
     align-items: center;
     background-color: rgb(23, 107, 135);
     padding: 3px 20px; 
     color: white;
+    z-index: 9999;
   }
   
   /* Menu Button */

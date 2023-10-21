@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
 import Topbar from "./pages/global/Topbar";
 // import Sidebar from "./pages/global/Sidebar";
 import Dashboard from "./pages/dashboard";
@@ -10,7 +9,7 @@ import Form from "./pages/form";
 import Line from "./pages/line";
 import Pie from "./pages/pie";
 import Geography from "./pages/geography";
-import { CssBaseline, Menu, ThemeProvider } from "@mui/material";
+import { CssBaseline,Switch,ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./pages/calendar/calendar";
 import Delete from "./pages/delete";
@@ -23,27 +22,57 @@ import Header from "./components/Header/Header";
 import Schedule from "./pages/Schedules/Schedule";
 import Login from "pages/Login/Login";
 import Homepage from "./pages/HomePage/Homepage";
-import Hotels from "pages/Hotels/Hotels";
-import Places from "pages/places/places";
-import HotelOwnerProfile from "pages/HotelOwnerProfile";
-import TavellerProfile from "pages/TravellerProfile/TravellerProfile";
 import { Home } from "@mui/icons-material";
-
+import HomeSideBar from "./components/HomeSideBar";
+import { ProSidebarProvider, useProSidebar } from "react-pro-sidebar";
+import { Sidebar,Menu,MenuItem,SubMenu,uaeProSidebar } from "react-pro-sidebar";
+import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
+import { BrowserRouter, Link ,Route,Routes} from "react-router-dom";
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import HomeIcon from '@mui/icons-material/Home';
+import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
+import LuggageOutlinedIcon from '@mui/icons-material/LuggageOutlined';
+import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined'
+import HikingIcon from '@mui/icons-material/Hiking';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import Hotels from 'pages/Hotels/Hotels';
+import Places from 'pages/places/places';
+import HotelOwnerProfile from 'pages/HotelOwnerProfile';
+import TavellerProfile from 'pages/TravellerProfile/TravellerProfile';
+import PageNotFound from './components/PageNotFound';
+import DoDisturbOnIcon from '@mui/icons-material/DoDisturbOn';
+import "../src/assets/CSS/HomeSideBar.css";
+import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
+import OpenInFullIcon from '@mui/icons-material/OpenInFull';
+import { useSetState } from "@mantine/hooks";
+import { icon } from "leaflet";
 
 
 function App() {
-  //Setting up material ui.
-  const [theme, colorMode] = useMode();
-  const [isSidebar, setIsSidebar] = useState(true);
+  return(
+   <div>
+    <Header/>
+    <Routes>
+        <Route path='/' element ={<Homepage/>}/>
+        <Route path='Dashboard' element ={<Dashboard/>}/>
+        <Route path='Traveler Profile' element ={<TavellerProfile/>}/>
+        <Route path='Hotel Owner' element ={<HotelOwnerProfile/>}/>
+        <Route path='Hotels' element ={<Hotels/>}/>
+        <Route path='Places' element ={<Places/>}/>
+        {/* <Route path='*' element ={<PageNotFound/>}/> */}
+      </Routes>
+    
+    <Footer/>
+   
+   </div>
+      
 
-  return (
-    <div>
-     
-      <Header />
-      <Homepage/>
-      <Footer />
-    </div>
   );
 }
+    
 
 export default App;
+    
+
+

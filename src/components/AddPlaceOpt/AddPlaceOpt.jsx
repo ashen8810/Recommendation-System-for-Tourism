@@ -1,8 +1,11 @@
 import React,{useState} from 'react'
 import './addPlaceOpt.css'
+import HomeSideBar from 'components/HomeSideBar';
+import { Home } from '@mui/icons-material';
 
 const AddPlaceOpt = () => {
-    const[isOpen,setIsOpen] = useState(false)
+    
+
   return (
     <div className='topLineOPt'>
     <div className='addPlace'>
@@ -12,7 +15,7 @@ const AddPlaceOpt = () => {
      
     </div>
     <div className='homes'>
-        <span class="material-symbols-outlined home" title='Goto Home'>
+        <span class="material-symbols-outlined home" title='Goto Home' >
             home
         </span>
     </div>
