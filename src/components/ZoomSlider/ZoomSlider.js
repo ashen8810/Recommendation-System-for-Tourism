@@ -5,15 +5,22 @@ import HeroSlider, { Overlay, Slide } from "hero-slider";
 import Wrapper from "../UI/Wrapper/Wrapper";
 import Title from "../UI/Title/Title";
 import Subtitle from "../UI/Subtitle/Subtitle";
-
+import { Button } from "@mui/material";
+import { ClassNames } from "@emotion/react";
+import Schedule from '../../pages/Schedules/Schedule';
+import { Link,useNavigate } from "react-router-dom";
 // Images
 const im1 = "https://drive.google.com/uc?export=view&id=1OdPPRaP4aLAHumJaJgCZGjQC2aq1zwrH";
 const im2 = "https://drive.google.com/uc?export=view&id=1f3acDsb9QDtBqSJB4ueMPrRNHXOBRFgK";
 const im3 = "https://drive.google.com/uc?export=view&id=1ZRTeLtzxpTWHMXVRteOMQ48jHUo13ocY";
 const im4 = "https://drive.google.com/uc?export=view&id=1qk-44PuO6kt6zVZzDwVCevE5unhuafw1";
+
+
 export default function BasicSlider() {
+  const navigate = useNavigate();
   return (
     <>
+    <button className="plantrip" onClick={() => navigate('Schedules')}>Plan your trip</button>
       <HeroSlider
         height={"80vh"}
         autoplay
@@ -31,6 +38,7 @@ export default function BasicSlider() {
             ),
           onAfterSliding: (nextSlide) =>
             console.debug("onAfterSliding(nextSlide): ", nextSlide),
+           
         }}
       >
         <Overlay>
@@ -64,6 +72,7 @@ export default function BasicSlider() {
             backgroundImageSrc: im4,
           }}
         />
+        
       </HeroSlider>
     </>
   );

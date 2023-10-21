@@ -60,6 +60,7 @@ function App() {
         <Route path='Hotel Owner' element ={<HotelOwnerProfile/>}/>
         <Route path='Hotels' element ={<Hotels/>}/>
         <Route path='Places' element ={<Places/>}/>
+        <Route path='Schedules' element ={<Schedule/>}/>
         {/* <Route path='*' element ={<PageNotFound/>}/> */}
       </Routes>
     
