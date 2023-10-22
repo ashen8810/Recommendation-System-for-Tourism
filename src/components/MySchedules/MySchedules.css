@@ -29,8 +29,10 @@
     border: 1px solid rgb(220, 220, 220);
     width: auto;
     height: fit-content;
-    background-image: linear-gradient(rgb(49, 220, 239),rgb(34, 238, 200));
+    background-image: linear-gradient(rgb(123, 218, 228),rgb(113, 239, 216));
     border-radius: 5px;
+    border:rgb(186, 184, 184) solid 2px;
+    border-style:outset;
     object-fit: cover;
     transition: transform 0.2s ease-in-out;
 }
@@ -40,21 +42,27 @@
 }
 
 .content-text{
+    color: rgb(123, 128, 128);
     line-height: 21px;
     text-align: left;
     margin-left: 3px;
+    padding-bottom: 15px;
 }
 
 
 .tick-icon{
     width:50px;
     height: 50px;
+
     margin-left: 10px;
-    margin-top: 25px;
+    margin-top: 20px;
     display: inline;
 }
 
 .schedule-name{
+    color:beige;
+    font-weight:bolder;
+    padding-top: 15px;
     text-align: left;
     
 }

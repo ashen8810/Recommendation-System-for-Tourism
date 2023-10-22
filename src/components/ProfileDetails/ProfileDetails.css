@@ -1,6 +1,7 @@
 .detailsCard{
     width: 500px;
     height: 138px;
+    margin-top: 30px;
     display: block;
     text-align: left;
     color: White;
@@ -13,17 +14,25 @@
     
     display: inline-flex;
     position:relative;
+
     justify-content: center;
     padding-inline: 5px;
     flex-flow: row;
+    
+    cursor: pointer;
     column-gap: 30px;
-    margin-top: -250px;
-    
-    
+    margin-top: -250px; 
 }
 
+.contact-info:hover{
+   color: rgba(0, 255, 251, 0.764);
+}
 .material-symbols-outlined{
     font-size: 20px;
+}
+
+.material-symbols-outlined:hover{
+    color:rgba(0, 255, 251, 0.764) ;
 }
 
 h1{

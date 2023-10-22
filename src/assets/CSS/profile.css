@@ -23,10 +23,11 @@
     position: absolute;
     align-items: center;
     margin-left: 30px;
-    margin-top: 100px;
+    margin-top: 200px;
     height: 110px;
     width: 110px;
-    border:5px solid white;
+    
+    box-shadow: rgb(216, 214, 214) 4px 4px 4px;
     border-radius: 50%;
     background-position: center;
     background-size: cover;
