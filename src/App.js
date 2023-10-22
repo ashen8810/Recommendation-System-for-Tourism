@@ -47,6 +47,7 @@ import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import { useSetState } from "@mantine/hooks";
 import { icon } from "leaflet";
+import Map from "./components/Maps/Maps";
 
 
 function App() {
@@ -75,5 +76,3 @@ function App() {
 
 export default App;
     
-
-

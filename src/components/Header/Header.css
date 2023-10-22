@@ -60,7 +60,7 @@
   /* Register and Login Buttons */
   .register-button,
   .login-button {
-    color: rgb(23, 107, 135);
+    color: rgb(0, 0, 0);
     background-color: white;
     border: none;
     padding: 5px 15px;
@@ -76,6 +76,6 @@
   .register-button:hover,
   .login-button:hover,
   .search:hover {
-    background-color: #b1cbe7;
+    background-color: #3a96f8;
   }
   

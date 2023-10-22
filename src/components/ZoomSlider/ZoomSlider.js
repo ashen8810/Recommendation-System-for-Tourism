@@ -10,12 +10,18 @@ import { ClassNames } from "@emotion/react";
 import Schedule from '../../pages/Schedules/Schedule';
 import { Link, useNavigate } from "react-router-dom";
 import { ColorModeContext } from "theme";
-import '../../assets/CSS/planYourTripButton.css'
+import '../../assets/CSS/planYourTripButton.css';
+import img1 from './image1.jpg';
+import img2 from './image2.jpg';
+import img3 from './image3.jpg';
+import img4 from './image4.jpg';
+
+
 // Images
-const im1 = "https://drive.google.com/uc?export=view&id=1OdPPRaP4aLAHumJaJgCZGjQC2aq1zwrH";
-const im2 = "https://drive.google.com/uc?export=view&id=1f3acDsb9QDtBqSJB4ueMPrRNHXOBRFgK";
-const im3 = "https://drive.google.com/uc?export=view&id=1ZRTeLtzxpTWHMXVRteOMQ48jHUo13ocY";
-const im4 = "https://drive.google.com/uc?export=view&id=1qk-44PuO6kt6zVZzDwVCevE5unhuafw1";
+const im1 = img1;
+const im2 = img2;
+const im3 = img3;
+const im4 = img4;
 
 
 export default function BasicSlider() {
