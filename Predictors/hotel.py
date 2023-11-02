@@ -64,4 +64,4 @@ def requirementbased(city,number,price,features):
     reqbased.drop_duplicates(subset='Name',keep='first',inplace=True)
     return reqbased[['Name','Price',"Features",'similarity']].head(5)
 
-requirementbased('Colombo',2,2000,'need a pool kitchen with wifi')
+requirementbased('Colombo',2,2000,'need a pool kitchen with wifi and tv')
