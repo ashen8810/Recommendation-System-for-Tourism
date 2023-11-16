@@ -48,12 +48,14 @@ import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import { useSetState } from "@mantine/hooks";
 import { icon } from "leaflet";
 import Map from "./components/Maps/Maps";
+import SearchBar from './components/SearchBar/SearchBar';
 
 
 function App() {
   return(
    <div>
     <Header/>
+    
     <Routes>
         <Route path='/' element ={<Homepage/>}/>
         <Route path='Dashboard' element ={<Dashboard/>}/>
@@ -62,11 +64,13 @@ function App() {
         <Route path='Hotels' element ={<Hotels/>}/>
         <Route path='Places' element ={<Places/>}/>
         <Route path='Schedules' element ={<Schedule/>}/>
-        {/* <Route path='*' element ={<PageNotFound/>}/> */}
-      </Routes>
-    
-    <Footer/>
+        {/* <Route path='*' element ={<PageNotFound/>}/>  */}
+    </Routes>
+     
+
+    <Footer/> 
    
+
    </div>
       
 

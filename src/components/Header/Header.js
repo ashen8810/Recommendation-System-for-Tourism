@@ -5,12 +5,14 @@ import Login from '../../pages/Login/Login';
 import Register from "../../pages/Register/Register";
 import Search from "./search-logo.jpg";
 import HomeSideBar from "components/HomeSideBar";
+import SearchBar from "components/SearchBar/SearchBar";
 
 
 export default function App() {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showRegisterPopup, setShowRegisterPopup] = useState(false);
   const[isSidebarOpen,setIsSidebarOpen] = useState(false);
+  const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
 
   const handleClick = e=>{
     setIsSidebarOpen(!isSidebarOpen);
@@ -34,6 +36,14 @@ export default function App() {
   const closeRegisterPopup = () => {
     setShowRegisterPopup(false);
   };
+  
+  const openSearchBar = () => {
+    setIsSearchBarOpen(true);
+  };
+
+  const closeSearchBar = () => {
+    setIsSearchBarOpen(false);
+  };
 
   return (
     <>
@@ -46,13 +56,17 @@ export default function App() {
         </div>
 
         <div className="right-menu">
-          <button className="search">
+          <button className="search" onClick={openSearchBar}>
           <img src={Search} alt="Logo" className="search-image" />
           </button>
+          {isSearchBarOpen && <SearchBar onClose={closeSearchBar} />}
+
           <button className="login-button" onClick={openLoginPopup}>Log in</button>
           {showLoginPopup && <Login onClose={closeLoginPopup} />}
+
           <button className="register-button" onClick={openRegisterPopup}>Register</button>
           {showRegisterPopup && <Register onClose={closeRegisterPopup} />}
+          
         </div>
       </nav>
     </header>

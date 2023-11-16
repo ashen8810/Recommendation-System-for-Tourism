@@ -1,0 +1,17 @@
+/* SearchBar.css */
+.search-bar {
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .search-bar input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .search-bar button {
+    margin-right: 8px;
+  }
+  
