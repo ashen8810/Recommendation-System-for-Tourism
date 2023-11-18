@@ -1,17 +1,35 @@
 /* SearchBar.css */
+
 .search-bar {
-    padding: 16px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
   }
   
   .search-bar input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 8px;
+    padding-right: 100px;
+    margin-right: 5px;
   }
   
   .search-bar button {
-    margin-right: 8px;
+    outline: none; /* Remove default outline on button click */
+    border: none; /* Remove default button border */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Add a smooth transition for color changes */
   }
   
+
+  .search-bar input {
+    outline: none; /* Remove default input outline on click */
+    transition: border-color 0.3s; /* Add a smooth transition for border color changes */
+  }
+  
+  .search-bar input:focus {
+    border-color:  rgb(0, 0, 0);; /* Change border color on focus */
+  }
+  
+  .search-bar button:hover {
+    background-color: rgba(47, 47, 47, 0.199); /* Change background color on hover */
+  }
+  
+  .search-bar button:active {
+    background-color:  rgb(23, 126, 160);; /* Change background color on click */
+  }
