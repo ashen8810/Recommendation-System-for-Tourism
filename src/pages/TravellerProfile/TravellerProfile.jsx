@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 import {FaCamera,FaPlus} from 'react-icons/fa'
 import '../../assets/CSS/Gallery.css';
 import '../../components/MySchedules/MySchedules.css';
@@ -8,27 +9,45 @@ import HotelGallery from '../../components/HotelGallery';
 import MySchedules  from '../../components/MySchedules/MySchedules';
 import content from '../../components/MySchedules/schedules';
 import ProfileImg from 'components/UpdateProfileImage/Profile';
+import Profile from 'components/UpdateProfileImage/Profile';
+import EditProfilePopup from 'components/EditProfilePopup';
 
 const TavellerProfile = () => {
+  
+    const[clicked,setIsClicked] = useState(false);
+  
+    const handleClick =()=>{
+      setIsClicked(!clicked);
+    }
+    
+    const closePopup=()=>{
+      setIsClicked(false);
+    }
   return (
     <div className='main'>
         <div className='banner'>
             <div className='pic'>
-              <ProfileImg/>
-               <FaCamera className='camera-icon'></FaCamera>
+                <Profile/>
+               
             </div>
             <div className='desc'>
                 <ProfileDetails/>
+                
             </div>
+            <div className='camera' onClick={() =>{
+              handleClick();
+            }}>
+            <span class="material-symbols-outlined edit">
+              edit
+            </span>
+            </div>
+            {clicked && <EditProfilePopup onClose={closePopup}/>}
         </div>
 
         
-       <div className='topic'>
-          <h2>My Schedules</h2>
-          <div className='advertisments'>
-          
+        <div className='Profilebody'>
+          <h3 className='topic'>My Schedules</h3>
         </div>
-        </div> 
 
         {content.map(content => (
         <MySchedules
@@ -38,15 +57,13 @@ const TavellerProfile = () => {
         />
 
       ))} 
-      <div>
-        <div className='topic'>
-          <h2>My Uploads</h2>  
-        </div>
-        <div className='plus-div'>
-        <span class="material-symbols-outlined">
-        add_photo_alternate
-        </span>
-        </div>
+      <div className='Profilebody'>
+          <h3 className='topic'>My Uploads</h3> 
+      </div>
+      <div className="addUploads">
+            <span class="material-symbols-outlined">
+              add_photo_alternate
+            </span>
       </div>
 
         <HotelGallery/>

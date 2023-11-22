@@ -68,16 +68,18 @@ code {
   z-index:2px;
 } 
 
-.camera{
-  margin-top: 2%;
+.edit{
+  cursor: pointer;
+  margin-top: 3%;
   margin-left: 95%;
   height: 45px;
-  width: 35px;
-  color: beige;
+  width: 45px;
+  font-size: 30px;
+  color: rgb(193, 193, 183);
   
 }
 
-.camera:hover{
+.edit:hover{
   color:cadetblue;
 }
 
@@ -91,6 +93,16 @@ code {
   background-color:transparent;
 }
 
+.addPhoto .material-symbols-outlined{
+  font-size: 30px;
+  margin-left: 5%;
+  margin-top: 2%;
+}
+
+.addUploads .material-symbols-outlined{
+  font-size: 30px;
+  
+}
 
 
 .icon{
@@ -105,27 +117,28 @@ code {
 
 
 }
-h1{
+
+.topic{
+ color: rgb(7, 7, 7);
+ margin-left: 5px;
+ font-size: 50px;
+}
+
+/* h1{
   display: flex;
   position:relative;
   justify-content: center;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: rgb(16, 17, 17);
   margin-top: 45%;
-  margin-left: -78%;
-}
+  margin-left: 5%;
+} */
 
 
-.material-symbols-outlined {
-  margin-top: 25px;
-  font-size: 30px;
-  color:rgb(17, 16, 16);
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'wdth' 400,
-  'GRAD' 0,
-  'opsz' 24
+.Profilebody{
+  margin-top: 75px;
+  display: flex;
+  position: relative;
 }
 
 

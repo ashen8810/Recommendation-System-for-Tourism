@@ -30,25 +30,27 @@ const HotelOwnerProfile = () => {
                 <ProfileDetails/>
                 
             </div>
-            <FaCamera className='camera'
-            onClick={() =>{
+            <div className='camera' onClick={() =>{
               handleClick();
             }}>
-            </FaCamera>
+            <span class="material-symbols-outlined edit">
+              edit
+            </span>
+            </div>
             {clicked && <EditProfilePopup onClose={closePopup}/>}
         </div>
  
-      <div>
-        <div className='topic'>
-          <h2>My Hotels</h2>
-        </div>
-        <div className='plus-div'>
-        <span class="material-symbols-outlined">
-            add_photo_alternate
-        </span>
-        </div>
+      <div className='Profilebody'>
+        
+          <h3 className='topic'>My Hotels</h3>
+        
+    
       </div>
-
+      <div className='addPhoto'>
+      <span class="material-symbols-outlined">
+            add_photo_alternate
+          </span>
+          </div>
         <HotelGallery/>
       
     </div>
