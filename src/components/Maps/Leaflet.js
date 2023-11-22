@@ -11,9 +11,9 @@ import { MapContainer, TileLayer, Marker } from "react-leaflet";
 const defaultCenter = [80.0, 7.0];
 const defaultZoom = 5;
 
-export default function Map() {
-  const markerPosition = [51.505, -0.09]; // Replace with the coordinates of the location you want to mark
-  
+export default function Map(props) {
+  const markerPosition = [props.xcoord,props.ycoord]; // Replace with the coordinates of the location you want to mark
+  // 51.505, -0.09
   return (
     <div>
       <MapContainer

@@ -5,7 +5,9 @@ const accomodationData = [
     name: 'Antara Peace Haven Tangalle Resort',
     image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/60/05/14/reception.jpg?w=300&h=300&s=1',
     rating: 5,
-    description:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis \nparturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate"
+    description:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis \nparturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate",
+    x:34545.6,
+    y:353454.76
     },
 
     {

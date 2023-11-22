@@ -98,6 +98,7 @@ body {
   .viewMore{
     margin-top: -25px;
     margin-left: 85%;
+    cursor: pointer;
     color:white;
   }
 

@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import StarRating from './StarRating';
 
+import Leaflet from 'components/Maps/Leaflet';
 
 const Popupwin = (props) => {
-  
+
+
 const [isOpen,setIsOpen] = useState(true);
+
 
 const handleClose = () => {
   setIsOpen(false);
@@ -26,10 +29,12 @@ const handleClose = () => {
             {props.description}
         </div>
       </div>
-      
+
       <div className='photo'>
         <img id={props.id} src={props.src} alt='bg'/>
-        
+        <Leaflet
+        xcoord = {props.x}
+        ycoord = {props.y}/>
       </div>
       <div className='imageContent review'>
           <div className='review-profile'>
