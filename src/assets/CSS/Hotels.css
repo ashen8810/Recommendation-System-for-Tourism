@@ -20,14 +20,22 @@ body {
   
   
   .placeList{
-    display: grid;
-    grid-template-columns: 350px 350px 350px 350px;
+    display: flex;
+    grid-template-columns: auto;
+    column-gap: 2%;
     grid-template-rows: auto;
     margin-top: 5%;
+    margin-left: 8%;
     
-    grid-row-gap: 10%;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
     padding-bottom: 20px;
+    row-gap: 5%;
+  }
+
+  .placeList > * {
+    width: calc(25% - 25px); /* Adjust the width as needed */
+    box-sizing: border-box;
+    margin-bottom: 10%;
   }
   
   .placeCard{
