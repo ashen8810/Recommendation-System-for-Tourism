@@ -1,0 +1,43 @@
+.updateProfilePopup{
+    height:max-content;
+    width: 51%;
+    border-radius: 5px;
+    margin-left: 50%;
+    background-color: rgba(14, 14, 14, 0.893);
+    z-index: 5250;
+    padding-bottom: 15px;
+
+
+}
+
+.profileForm{
+    
+    margin-left: 5%;
+    color: rgb(254, 254, 254);
+    
+}
+
+.inputField{
+    background-color: transparent;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: auto;
+    color: antiquewhite;
+   
+}
+
+.closeForm{
+    color: beige;
+    margin-left: 90%;
+    cursor: pointer;
+    
+}
+
+.closeForm:hover{
+    color:rgb(17, 80, 75);
+}
+
+.FormTopic{
+    color: bisque;
+    margin-left: 5%;
+}
