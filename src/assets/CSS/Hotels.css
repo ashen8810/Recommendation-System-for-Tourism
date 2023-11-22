@@ -150,10 +150,11 @@ body {
 .PopupWin{
   height: 80%;
   width: 50%;
-  border:1px solid rgb(245, 245, 245);
+  border:1.5px solid rgb(174, 169, 169);
   border-style:ridge;
   border-radius: 15px;
-  margin-left: 2%;
+  box-shadow: inset;
+  margin-left: 25%;
   margin-right: 25%;
   display: block;
   position: absolute;
@@ -168,72 +169,75 @@ body {
   width: 95%;
   line-height: 20px;
   font-size: 15px;
+  padding-bottom: 5px;
 
 }
 .photo{
   border-radius: 15px;
-  height:50%;
-  width: 100%;
-  background-color: rgb(202, 207, 206);
-  background-position: center ;
-  background-size: cover;
-  background-image: url("https://mir-s3-cdn-cf.behance.net/projects/404/63e87632313591.Y3JvcCw0MDUwMCwzMTcwMCwwLDA.jpg");
+  width:600px;
+  height: 50%;
+  background-color:transparent;
+  /* background-position: center ;
+  background-size: cover; */
+  /* background-image: url("https://mir-s3-cdn-cf.behance.net/projects/404/63e87632313591.Y3JvcCw0MDUwMCwzMTcwMCwwLDA.jpg"); */
 }
 
-.img{
- width: fit-content;
- height: fit-content;
+.photo{
+ width: 100%;
+ height: 50%;
+ margin-left: 5%;  
+}
 
-  
+.photo .img{
+  border-radius: 12px;
 }
 
 .imageContent{
   margin-top: 30px;
+  margin-left: 5%;
   display: block;
   position: relative;
   justify-content: center;
   text-align: left;
-  margin-left: 10%;
   line-height: 2px;
   
 }
 
 .handleClose{
-  margin-left: 90%;
-  margin-top: -15px;
-  color: rgb(249, 246, 246);
+  margin-left: 95%;
+  cursor: pointer;
+  color: rgb(15, 15, 15);
   transition: transform 0.5s ease-in-out;
 }
 
 .handleClose:hover{
   transform: scale(1.1);
+  color:rgb(27, 97, 109);
 }
 
-.imageContent .review{
-  
-  margin-left:10%;
+.review{
+ height: fit-content;
+ width: 100%;
+ display: block;
+ position: relative;
+ justify-content: center;
+ border: black;
   
 }
 
 .getReview{
- 
-  background: transparent;
-  font-size: 15px;
-  width:fit-content;
-  height: fit-content;
-  border: none;
-  width: 600px;
+  height: 35px;
+  width: 80%;
+  margin-left: 15px;
+  border-color:  black ;
+  border-radius: 20px;
+  overflow:scroll;
   
 }
 
 .review-profile{
-  padding-right: 5px;
-  border-radius: 50%;
-  background-color: rgb(249, 249, 249);
-  border: 1px solid rgb(244, 239, 239);
-  width: 40px;
-  height: 40px;
-  transition: transform .5s ease;
+  display: inline-block;
+  position: relative;
   
 }
 
@@ -244,9 +248,10 @@ body {
 }
 
 .material-symbols-outlined {
-  font-size: 40px;
+  font-size: 50px;
   text-align: center;
   margin-left: 2.3px;
+  margin-top: 2px;
   font-variation-settings:
   'FILL' 0,
   'wght' 400,
@@ -256,12 +261,12 @@ body {
   'opsz' auto
 }
 
-.starRating{
+/* .starRating{
   margin-left: -5%;
   margin-top: 2%;
   display: inline-flex;
   position: relative;
-}
+} */
 
 /* .imageContent > h3{
   text-align: left;

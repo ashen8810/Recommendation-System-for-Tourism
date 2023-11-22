@@ -13,13 +13,10 @@ const handleClose = () => {
 
   return isOpen ?(
     <div className='PopupWin'>
-      <div className='photo'>
-        <img id={props.id} src={props.image} alt='bg'/>
-        <div onClick={handleClose} className='handleClose'>
+      <div onClick={handleClose} className='handleClose'>
         <span class="material-symbols-outlined">
           cancel
         </span>
-        </div>
       </div>
       <div className='imageContent'>
         <h3>{props.name}</h3>
@@ -29,13 +26,20 @@ const handleClose = () => {
             {props.description}
         </div>
       </div>
+      
+      <div className='photo'>
+        <img id={props.id} src={props.src} alt='bg'/>
+        
+      </div>
       <div className='imageContent review'>
           <div className='review-profile'>
-          <span class="material-symbols-outlined">
-            person
-          </span>
+            
+            <span class="material-symbols-outlined personIcon">
+              person
+            </span>
+            <input  for='getReview' className='getReview' type='text' ></input> 
           </div>
-          <textarea for='getReview' className='getReview' type='text' placeholder='Your Comments here...'></textarea> 
+          
           <StarRating/>
 
       </div>

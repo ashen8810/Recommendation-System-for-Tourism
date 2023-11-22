@@ -18,10 +18,18 @@
    
 }
 
-.addPlace:hover{
-    color: rgb(106, 108, 108);
+.homes .home:hover{
+    color:rgb(27, 97, 109);
 }
 
-.homes :hover{
-    color: rgb(106, 108, 108);
+.addPlace .loc:hover {
+    color:rgb(27, 97, 109);
+}
+
+.homes .home{
+    font-size: 40px;
+}
+
+.addPlace .loc{
+    font-size: 40px;
 }
