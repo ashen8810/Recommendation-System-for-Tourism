@@ -4,7 +4,7 @@ import images from './hotelDetails'
 import '../../assets/CSS/Hotels.css'
 import Popupwin from '../../components/Popupwin'
 import AddPlaceOpt from 'components/AddPlaceOpt/AddPlaceOpt'
-import Leaflet from 'components/Maps/Leaflet'
+
 const noImages = 7;
 
 const Hotels= () => {
@@ -67,12 +67,6 @@ const Hotels= () => {
                     />
             )}
 
-           {/* {openPopup!== null && (
-            <Leaflet
-                xcoord ={images[openMap].x}
-                ycoord ={images[openMap].y}
-                /> 
-           )} */}
 
             {next < images.length && (
                 <div className='placeCard view'>

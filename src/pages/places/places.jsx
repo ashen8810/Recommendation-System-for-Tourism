@@ -5,6 +5,7 @@ import Popupwin from '../../components/Popupwin';
 import '../../assets/CSS/Hotels.css'
 import AddPlaceOpt from 'components/AddPlaceOpt/AddPlaceOpt';
 
+
 const noImages = 7;
 
 const Places = () => {
@@ -59,6 +60,8 @@ const Places = () => {
                     name = {images[openPopup].name}
                     src = {images[openPopup].image}
                     description ={images[openPopup].description}
+                    x = {images[openPopup].x}
+                    y = {images[openPopup].y}
                     onClose = {closeImagePopup}
                     />
             )}

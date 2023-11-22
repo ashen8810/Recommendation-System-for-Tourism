@@ -151,6 +151,13 @@ code {
  
 }
 
+.showMore{
+  cursor: pointer;
+}
+
+.showMore:hover{
+  color:cadetblue;
+}
 @media screen and (max-width: 767px) {
   .gallery {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));

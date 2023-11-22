@@ -15,7 +15,11 @@ import EditProfilePopup from 'components/EditProfilePopup';
 const TavellerProfile = () => {
   
     const[clicked,setIsClicked] = useState(false);
-  
+    const[showMore,setShowMore] = useState(true);
+
+    const handleShowMore = () =>{
+      setShowMore(!showMore);
+    }
     const handleClick =()=>{
       setIsClicked(!clicked);
     }
@@ -43,20 +47,32 @@ const TavellerProfile = () => {
             </div>
             {clicked && <EditProfilePopup onClose={closePopup}/>}
         </div>
-
+        
         
         <div className='Profilebody'>
           <h3 className='topic'>My Schedules</h3>
+          <div className="addUploads">
+            {showMore? 
+            <span class="material-symbols-outlined showMore" onClick={()=>handleShowMore()}>
+              expand_more
+            </span> : <span class="material-symbols-outlined showMore" onClick={()=>handleShowMore()}>
+              expand_less
+            </span>
+            }
+
+          </div>
         </div>
 
-        {content.map(content => (
+        {showMore? content.map(content => (
         <MySchedules
           key = {content.key}
           name ={content.name}
           description = {content.Description}
         />
 
-      ))} 
+        )): null} 
+
+        
       <div className='Profilebody'>
           <h3 className='topic'>My Uploads</h3> 
       </div>
