@@ -18,14 +18,13 @@ import TavellerProfile from 'pages/TravellerProfile/TravellerProfile';
 import Dashboard from 'pages/dashboard';
 import Homepage from '../pages/HomePage/Homepage';
 import DoDisturbOnIcon from '@mui/icons-material/DoDisturbOn';
-
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import { useState } from "react";
 import { useSetState } from "@mantine/hooks";
 import { icon } from "leaflet";
 
-const HomeSideBar = (onClose) => {
+const HomeSideBar = (props,onClose) => {
   //const {collapseSidebar} = useProSidebar();
   const[collapsed, setcollapsed] = useState(false);
   const[isOpen,setIsOpen] = useSetState(false);
@@ -65,6 +64,22 @@ const HomeSideBar = (onClose) => {
           HomePage
         </MenuItem>
 
+        {props.type == 'traveller'?
+          <MenuItem icon={<HikingIcon/>}
+          component={<Link to="Traveler Profile" className="link"/>}
+          > My Profile </MenuItem>  
+          :
+          props.type == 'Hotel owner'?
+          <MenuItem icon={<BusinessCenterIcon/>}
+          component={<Link to="Hotel Owner" className="link"/>}
+        > My Profile</MenuItem>
+        :
+        <MenuItem icon={<AdminPanelSettingsOutlinedIcon/>}
+        component={<Link to="Dashboard" className="link"/>}
+        > Dahsboard</MenuItem>
+        }
+
+{/* 
         <MenuItem icon={<HikingIcon/>}
         component={<Link to="Traveler Profile" className="link"/>}
         > Traveller Profile </MenuItem>
@@ -76,16 +91,22 @@ const HomeSideBar = (onClose) => {
 
         <MenuItem icon={<AdminPanelSettingsOutlinedIcon/>}
         component={<Link to="Dashboard" className="link"/>}
-        > Dahsboard</MenuItem>
+        > Dahsboard</MenuItem>*/}
 
-        <MenuItem icon={<LogoutRoundedIcon/>}
+        <MenuItem icon={<LuggageOutlinedIcon />}
         component={<Link to="Hotels" className="link"/>}
-        > Hotels </MenuItem>
+        > Hotels </MenuItem> 
 
         <MenuItem icon={<PlaceOutlinedIcon/>}
         component={<Link to="Places" className="link"/>}
         > Places</MenuItem>
-        <MenuItem> Logout </MenuItem>
+
+         <MenuItem icon={<LogoutRoundedIcon/>}
+        component={<Link to="" className="link"/>}
+        > Log Out</MenuItem>
+
+      
+        
       </Menu>
     </Sidebar>
     {/* <section>

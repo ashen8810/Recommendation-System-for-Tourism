@@ -64,7 +64,7 @@ function App() {
         <Route path='Hotels' element ={<Hotels/>}/>
         <Route path='Places' element ={<Places/>}/>
         <Route path='Schedules' element ={<Schedule/>}/>
-        {/* <Route path='*' element ={<PageNotFound/>}/>  */}
+        <Route path='*' element ={<PageNotFound/>}/> 
     </Routes>
      
 
