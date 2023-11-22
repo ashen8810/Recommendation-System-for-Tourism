@@ -27,6 +27,7 @@ import { icon } from "leaflet";
 
 const HomeSideBar = (onClose) => {
   const {collapseSidebar} = useProSidebar();
+  
   const[isOpen,setIsOpen] = useSetState(false);
 
   const handleClick =e =>{
@@ -44,7 +45,7 @@ const HomeSideBar = (onClose) => {
         onClick={() =>{
           handleClick();
         }}>
-          {setIsOpen ? (
+          {isOpen? (
             <>
               <OpenInFullIcon/>
             </>
