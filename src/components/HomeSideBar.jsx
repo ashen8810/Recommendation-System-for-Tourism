@@ -26,32 +26,33 @@ import { useSetState } from "@mantine/hooks";
 import { icon } from "leaflet";
 
 const HomeSideBar = (onClose) => {
-  const {collapseSidebar} = useProSidebar();
-  
+  //const {collapseSidebar} = useProSidebar();
+  const[collapsed, setcollapsed] = useState(false);
   const[isOpen,setIsOpen] = useSetState(false);
 
-  const handleClick =e =>{
-    collapseSidebar();
-    setIsOpen(onClose);
+  const handleClick =() =>{
+      setcollapsed(!collapsed);
   }
 
+  const handleOpen = () =>{
+    setIsOpen(true);
+  }
   return (
     <div style={{ display: "flex", height: "100vh" }} className="maindiv">
-    <Sidebar className="sidebarbody">
+    <Sidebar collapsed = {collapsed} className="sidebarbody">
       <Menu>
         <MenuItem 
-        component={<Link to='Navigate' className="link"/>}
         className="menu1"
         onClick={() =>{
           handleClick();
         }}>
-          {isOpen? (
+          {collapsed? (
             <>
               <OpenInFullIcon/>
             </>
           ):
             <>
-              <CloseFullscreenIcon/>
+             <CloseFullscreenIcon/>
             </>
           }
           
@@ -64,20 +65,14 @@ const HomeSideBar = (onClose) => {
           HomePage
         </MenuItem>
 
-        <MenuItem 
-        icon={<AccountCircleRoundedIcon/>}
-        component={<Link to="Profile Page" className="link"/>}
-        > Profile Pages </MenuItem>
+        <MenuItem icon={<HikingIcon/>}
+        component={<Link to="Traveler Profile" className="link"/>}
+        > Traveller Profile </MenuItem>
 
-        <SubMenu label="ProfilePages">
-          <MenuItem icon={<HikingIcon/>}
-          component={<Link to="Traveler Profile" className="link"/>}
-          > Traveller Profile </MenuItem>
-
-          <MenuItem icon={<BusinessCenterIcon/>}
-          component={<Link to="Hotel Owner" className="link"/>}
-          > Hotel Owner Profile</MenuItem>
-        </SubMenu>
+        <MenuItem icon={<BusinessCenterIcon/>}
+        component={<Link to="Hotel Owner" className="link"/>}
+        > Hotel Owner Profile</MenuItem>
+        
 
         <MenuItem icon={<AdminPanelSettingsOutlinedIcon/>}
         component={<Link to="Dashboard" className="link"/>}
