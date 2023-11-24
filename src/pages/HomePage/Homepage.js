@@ -17,7 +17,7 @@ const app = () => {
         <div className="visitingPlace">
           <h2 className="place">Places To Visit</h2>
           <br />
-          <Carousel cols={5} rows={1} gap={2} loop>
+          <Carousel cols={4} rows={1} gap={0} loop>
             {items.map((item, index) => (
               <Carousel.Item key={item.id}>
                 <Accomodation
@@ -37,7 +37,7 @@ const app = () => {
         <div className="Lodgings">
           <h2 className="lodging">Lodgings</h2>
           <br />
-          <Carousel cols={5} rows={1} gap={2} loop>
+          <Carousel cols={4} rows={1} gap={2} loop>
             {items.map((item, index) => (
               <Carousel.Item key={item.id}>
                 <Accomodation

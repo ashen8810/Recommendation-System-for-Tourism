@@ -7,11 +7,11 @@
 }
 
 .place-card {
-    background-color: #e1f6ff;
-    width: 230px;
+    background-color: #e7e7e7;
+    width: 300px;
     box-sizing: border-box;
-    border-radius: 5px;
-    margin-left: 3px;
+    border-radius: 10px;
+    /* margin-left: 3px; */
     transition: transform 0.5s ease-in-out;
     transform-origin: center bottom;
     position: relative;
@@ -22,10 +22,11 @@
 }
 
 .place-image {
-    width: 200px;
-    height: 120px;
-    margin: 15px;
-    box-shadow: 0px 15px 30px #283d44;
+    width: 280px;
+    height: 150px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 7px 20px 10px #000000a6; 
 }
 
 @keyframes fadeIn {
@@ -41,7 +42,7 @@
 .place-card-content {
     margin-top: 10px;
     text-align: center;
-    animation: slideIn 1s ease-in-out;
+    animation: slideIn 0.7s ease-in-out;
     transition: transform 0.5s ease-in-out;
 }
 
@@ -67,6 +68,5 @@
 }
 
 .place-name:hover {
-    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
-    transition: text-shadow 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
 }

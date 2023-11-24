@@ -7,7 +7,7 @@ const Accommodation = (props) => (
         <div key={props.id} className="place-card">
             <img src={props.image} alt="Place" className="place-image" />
             <div className="place-card-content">
-                <h3 className="place-name">{props.name}</h3>
+                <h4 className="place-name">{props.name}</h4>
                 <div className="place-rating">
                     {[...Array(5)].map((_, index) => (
                         <FaStar
