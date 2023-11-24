@@ -5,6 +5,7 @@ from account.views import (
     UserProfileView,
     UserRegistrationView,
     SendPasswordResetEmailView,
+    UserPasswordResetView,
 )
 
 # from account.views import UserRegistrationView
@@ -17,5 +18,10 @@ urlpatterns = [
         "send-reset-password-email/",
         SendPasswordResetEmailView.as_view(),
         name="send-reset-password-email",
+    ),
+    path(
+        "reset-password/<str:uid>/<str:token>/",
+        UserPasswordResetView.as_view(),
+        name="reset-password",
     ),
 ]
