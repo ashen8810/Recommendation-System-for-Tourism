@@ -20,14 +20,23 @@ import Homepage from '../pages/HomePage/Homepage';
 import DoDisturbOnIcon from '@mui/icons-material/DoDisturbOn';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useSetState } from "@mantine/hooks";
 import { icon } from "leaflet";
 
 const HomeSideBar = (props,onClose) => {
   //const {collapseSidebar} = useProSidebar();
+  
   const[collapsed, setcollapsed] = useState(false);
-  const[isOpen,setIsOpen] = useSetState(false);
+  const[isOpen,setIsOpen] = useState(false);
+
+  // useEffect(() => {
+  //   let handler = () => {
+  //     setIsOpen(!isOpen);
+  //   };
+  //   document.addEventListener("mousedown",handler)
+    
+  // })
 
   const handleClick =() =>{
       setcollapsed(!collapsed);
@@ -64,7 +73,7 @@ const HomeSideBar = (props,onClose) => {
           HomePage
         </MenuItem>
 
-        {props.type == 'traveller'?
+        {/* {props.type == 'traveller'?
           <MenuItem icon={<HikingIcon/>}
           component={<Link to="Traveler Profile" className="link"/>}
           > My Profile </MenuItem>  
@@ -77,21 +86,21 @@ const HomeSideBar = (props,onClose) => {
         <MenuItem icon={<AdminPanelSettingsOutlinedIcon/>}
         component={<Link to="Dashboard" className="link"/>}
         > Dahsboard</MenuItem>
-        }
+        } */}
 
-{/* 
+
         <MenuItem icon={<HikingIcon/>}
         component={<Link to="Traveler Profile" className="link"/>}
         > Traveller Profile </MenuItem>
 
         <MenuItem icon={<BusinessCenterIcon/>}
-        component={<Link to="Hotel Owner" className="link"/>}
+        component={<Link to="Hotel Owner" className="link"/>} 
         > Hotel Owner Profile</MenuItem>
         
 
         <MenuItem icon={<AdminPanelSettingsOutlinedIcon/>}
         component={<Link to="Dashboard" className="link"/>}
-        > Dahsboard</MenuItem>*/}
+        > Dahsboard</MenuItem>
 
         <MenuItem icon={<LuggageOutlinedIcon />}
         component={<Link to="Hotels" className="link"/>}
@@ -109,18 +118,7 @@ const HomeSideBar = (props,onClose) => {
         
       </Menu>
     </Sidebar>
-    {/* <section>
-      <Routes>
-        <Route path='/' element ={<Homepage/>}/>
-        <Route path='Dashboard' element ={<Dashboard/>}/>
-        <Route path='Traveler Profile' element ={<TavellerProfile/>}/>
-        <Route path='Hotel Owner' element ={<HotelOwnerProfile/>}/>
-        <Route path='Hotels' element ={<Hotels/>}/>
-        <Route path='Places' element ={<Places/>}/>
-        {/* <Route path='*' element ={<PageNotFound/>}/> */}
-
-      {/* </Routes>
-    </section> */} 
+    
     </div>
   )
 }
