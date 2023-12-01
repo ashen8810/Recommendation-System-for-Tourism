@@ -1,9 +1,10 @@
 from django.db import models
 
+
 class Place(models.Model):
     PlaceId = models.AutoField(primary_key=True)
-    UserId = models.CharField(max_length=10) #fix this later
-    AdminId = models.CharField(max_length=10)#fix this later
+    UserId = models.CharField(max_length=10)  # fix this later
+    AdminId = models.CharField(max_length=10)  # fix this later
     DateCreated = models.DateField()
     ContactNumber = models.CharField(max_length=10)
     PlaceName = models.CharField(max_length=250)
@@ -19,14 +20,16 @@ class Place(models.Model):
     def __str__(self):
         return self.PlaceName
 
+
 class Comment(models.Model):
     CommentId = models.AutoField(primary_key=True)
-    UserId = models.CharField(max_length=10)#fix this later
-    AdminId = models.CharField(max_length=10)#fix this later
+    UserId = models.CharField(max_length=10)  # fix this later
+    AdminId = models.CharField(max_length=10)  # fix this later
     IsApproved = models.BooleanField()
 
     def __str__(self):
         return self.CommentId
+
 
 class Image(models.Model):
     ImageId = models.AutoField(primary_key=True)
