@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     "account",
     "Places",
     "dashboard",
+    "hotel",
+    "advertisement",
+    "schedule",
 ]
 
 MIDDLEWARE = [
