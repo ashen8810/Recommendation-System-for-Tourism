@@ -89,9 +89,9 @@ WSGI_APPLICATION = "backendapi.wsgi.application"
 DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'recommendation_system_db',
+        'NAME': 'mydb',
         'USER': 'root',
-        'PASSWORD': '19981021itb',
+        'PASSWORD': 'Ashen@12345',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }

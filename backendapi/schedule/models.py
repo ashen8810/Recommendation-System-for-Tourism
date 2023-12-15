@@ -6,7 +6,7 @@ class Schedule(models.Model):
     partner = models.CharField(max_length=50)
     fromDate = models.DateTimeField()
     toDate = models.DateTimeField()
-    destination = models.CharField(max_length=50)
+    destination = models.CharField(max_length=500)
     description = models.CharField(max_length=255)
 
     def __str__(self):

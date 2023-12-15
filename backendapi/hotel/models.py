@@ -2,14 +2,14 @@ from django.db import models
 from account.models import User
 
 class Hotel(models.Model):
-    hotelID = models.CharField(max_length=5, primary_key=True)
+    hotelID = models.CharField(max_length=8, primary_key=True)
     hotelName = models.CharField(max_length=50)
-    coordinateX = models.IntegerField()
-    coordinateY = models.IntegerField()
-    description = models.CharField(max_length=255)
-    website = models.CharField(max_length=50)
+    coordinateX = models.DecimalField(max_digits=8, decimal_places=5)
+    coordinateY = models.DecimalField(max_digits=8, decimal_places=5)
+    description = models.CharField(max_length=1000)
+    website = models.CharField(max_length=150)
     noOfReviews = models.IntegerField()
-    availability = models.CharField(max_length=3)
+    availability = models.CharField(max_length=8)
     createdDate = models.DateField()
     starRate = models.IntegerField()
 
@@ -49,7 +49,7 @@ class HotelComments(models.Model):
 class HotelImages(models.Model):
     imageID = models.CharField(max_length=7, primary_key=True)
     hotelID = models.ForeignKey(Hotel, on_delete=models.CASCADE)
-    image = models.BinaryField()
+    image = models.TextField(max_length=20000)
 
     def __str__(self):
         return f"Image ID: {self.imageID}, Hotel ID: {self.hotelID.hotelID}"
