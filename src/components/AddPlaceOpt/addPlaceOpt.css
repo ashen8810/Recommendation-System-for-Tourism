@@ -44,8 +44,11 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 16px;
     position: fixed;
+    width: 500px;
+    height: 700px;
     top: 50%; /* Adjust this value as needed */
-    right: 0;
+    right: 20%;
+    overflow: scroll;
     transform: translate(0, -50%);
       
 }
@@ -161,4 +164,8 @@
 
 .uploadbtn:hover {
   background-color: #d84315;
+}
+
+.descriptionArea{
+    width: 90%;
 }
