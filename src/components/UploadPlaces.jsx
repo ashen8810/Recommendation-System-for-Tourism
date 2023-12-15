@@ -18,6 +18,7 @@ import Map from './Maps/Leaflet';
   const[placeContact,setPlaceContact] = useState("")
   const[placeLocation,setPlaceLocation] = useState("")
   const[placeWebsite,setPlaceWebsite] = useState("")
+  const[placeCategory,setPlaceCategory] = useState("")
 
 
   const handleClose = () =>{
@@ -59,7 +60,7 @@ import Map from './Maps/Leaflet';
               <label className='addPlaceFormLabel'>
                 Select a Category:
                 <br></br>
-                <select value={selectedValue} >
+                <select>
                 <option value ="">Select ...</option>
                 <option value ="Option1">Indoor</option>
                 <option value ="Option1">Outdoor</option>
