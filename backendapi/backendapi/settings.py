@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     "account",
     "Places",
     "hotel",
-    # "advertisement",
+    "advertisement",
     "schedule",
     "dashboard",
 
