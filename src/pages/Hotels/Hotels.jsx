@@ -5,12 +5,14 @@ import '../../assets/CSS/Hotels.css'
 import Popupwin from '../../components/Popupwin'
 import AddPlaceOpt from 'components/AddPlaceOpt/AddPlaceOpt'
 
+
 const noImages = 7;
 
 const Hotels= () => {
     const[openMap,setOpenMap] = useState(null);
     const[next,setNext] = useState(noImages);
     const[openPopup,setOpenPopup] = useState(null);
+    const [openUpdatePlacePopup,setUpdatePlacePopup] = useState(null);
 
     const viewOnMap = (imageIndex) =>{
         setOpenMap(imageIndex);
@@ -28,9 +30,18 @@ const Hotels= () => {
         setOpenPopup(null);
     }
 
+    const closeUpdatePlacePopup = () =>{
+        setUpdatePlacePopup(null);
+    }
+
     return (
         <>
+        <div className='addPlaceMain'>
+      
         <AddPlaceOpt/>
+           
+       
+        </div>
         <div className='placeList'>
             {images.slice(0,next).map((images,index) =>{
                 return(
