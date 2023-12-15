@@ -17,8 +17,8 @@ class Hotel(models.Model):
         return f"Hotel ID: {self.hotelID}, Name: {self.hotelName}, Rating: {self.starRate}"
 
 class HotelOwnerHotels(models.Model):
-    userID = models.ForeignKey(User, on_delete=models.CASCADE)
-    hotelId = models.ForeignKey(Hotel, on_delete=models.CASCADE, primary_key=True)
+    userID = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    hotelId = models.ForeignKey(Hotel, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"User ID: {self.userID.userId}, Hotel ID: {self.hotelId.hotelID}"

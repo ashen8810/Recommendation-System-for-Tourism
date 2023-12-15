@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Place, Comment, Image
+from .models import Place, PlaceComments, PlaceImages
 from .serializer import PlaceSerializer, CommentSerializer, ImageSerializer
 from rest_framework.filters import SearchFilter, OrderingFilter
 
@@ -39,7 +39,7 @@ class CommentList(APIView):
     """
 
     def get(self, request):
-        comments = Comment.objects.all()
+        comments = PlaceComments.objects.all()
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data)
 
@@ -58,8 +58,8 @@ class CommentDetail(APIView):
 
     def get(self, request, comment_id):
         try:
-            comment = Comment.objects.get(CommentId=comment_id)
-        except Comment.DoesNotExist:
+            comment = PlaceComments.objects.get(CommentId=comment_id)
+        except PlaceComments.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         serializer = CommentSerializer(comment)
@@ -67,8 +67,8 @@ class CommentDetail(APIView):
 
     def put(self, request, comment_id):
         try:
-            comment = Comment.objects.get(CommentId=comment_id)
-        except Comment.DoesNotExist:
+            comment = PlaceComments.objects.get(CommentId=comment_id)
+        except PlaceComments.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         serializer = CommentSerializer(comment, data=request.data)
@@ -80,7 +80,7 @@ class CommentDetail(APIView):
 
 class ImageList(APIView):
     def get(self, request):
-        images = Image.objects.all()
+        images = PlaceImages.objects.all()
         serializer = ImageSerializer(images, many=True)
         return Response(serializer.data)
 
@@ -95,8 +95,8 @@ class ImageList(APIView):
 class ImageDetail(APIView):
     def get(self, request, image_id):
         try:
-            image = Image.objects.get(ImageId=image_id)
-        except Image.DoesNotExist:
+            image = PlaceImages.objects.get(ImageId=image_id)
+        except PlaceImages.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         serializer = ImageSerializer(image)
@@ -104,8 +104,8 @@ class ImageDetail(APIView):
 
     def put(self, request, image_id):
         try:
-            image = Image.objects.get(ImageId=image_id)
-        except Image.DoesNotExist:
+            image = PlaceImages.objects.get(ImageId=image_id)
+        except PlaceImages.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         serializer = ImageSerializer(image, data=request.data)

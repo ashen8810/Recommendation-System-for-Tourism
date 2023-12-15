@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
+    # "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -44,10 +44,11 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "account",
     "Places",
-    "dashboard",
     "hotel",
-    "advertisement",
+    # "advertisement",
     "schedule",
+    "dashboard",
+
 ]
 
 MIDDLEWARE = [
@@ -87,8 +88,12 @@ WSGI_APPLICATION = "backendapi.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'recommendation_system_db',
+        'USER': 'root',
+        'PASSWORD': '19981021itb',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
@@ -143,8 +148,7 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = "account.User"
-
+AUTH_USER_MODEL = 'account.User'
 
 # Email configuration
 

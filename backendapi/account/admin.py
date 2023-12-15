@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Admin,User,Notification,GetNotification
+
+admin.site.register(Admin)
+admin.site.register(User)
+admin.site.register(Notification)
+admin.site.register(GetNotification)

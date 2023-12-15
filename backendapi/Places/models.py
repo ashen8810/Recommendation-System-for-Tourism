@@ -47,7 +47,7 @@ class Place(models.Model):
     placeId = models.CharField(max_length=5, primary_key=True)
     userId = models.ForeignKey(User, on_delete=models.CASCADE)
     adminId = models.ForeignKey(Admin, on_delete=models.CASCADE)
-    createdDate = models.DateField()
+    createdDate = models.DateTimeField(auto_now_add=True)
     contactNumber = models.CharField(max_length=10)
     placeName = models.CharField(max_length=50)
     coordinateX = models.IntegerField()
@@ -56,7 +56,7 @@ class Place(models.Model):
     website = models.CharField(max_length=50)
     openingTime = models.TimeField()
     closingTime = models.TimeField()
-    isUserUploaded = models.CharField(max_length=3)
+    isUserUploaded = models.BooleanField()
     description = models.CharField(max_length=255)
 
     def __str__(self):

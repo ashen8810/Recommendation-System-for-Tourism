@@ -13,8 +13,8 @@ class Schedule(models.Model):
         return f"Schedule ID: {self.scheduleId}, Partner: {self.partner}, Destination: {self.destination}"
 
 class UserSchedule(models.Model):
-    userId = models.ForeignKey(User, on_delete=models.CASCADE)
-    scheduleId = models.ForeignKey(Schedule, on_delete=models.CASCADE, primary_key=True)
+    userId = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    scheduleId = models.ForeignKey(Schedule, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"User ID: {self.userId.userId}, Schedule ID: {self.scheduleId.scheduleId}"
