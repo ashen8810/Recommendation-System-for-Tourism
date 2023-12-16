@@ -1349,7 +1349,7 @@ export const review = [
     id: "4",
     name: "Ever Melisandre",
     image: "https://www.tripbibo.com/blog/wp-content/uploads/2021/06/dambulla-cave-temple_srilanka-1024x591.jpg",
-    discription: "The experience of seeing elephants up close was incredible, but the crowds were overwhelming. It's heartwarming to witness the conservation efforts, but improvements in visitor management are needed.",
+    discription: "Dambulla Cave Temple is a marvel, showcasing ancient artistry within Sri Lanka's cultural embrace. Dating back to the 1st century BC, this temple complex unveils a rich history and spiritual significance. The ascent to the caves is a modest climb, unveiling a treasure trove of well-preserved murals and over 150 Buddha statues. The intricate details and vibrant colors of these ancient artworks provide a captivating glimpse into the island's religious and artistic heritage. The serene ambiance within the caves enhances the spiritual journey. While the climb is accessible, the cultural riches embedded in Dambulla make it a must-visit, offering a profound connection to Sri Lanka's past.",
   },
   {
     id: "5",

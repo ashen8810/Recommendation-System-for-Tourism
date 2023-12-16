@@ -11,6 +11,11 @@
   color: #283d44;
 }
 
+.stories{
+  width: 75%;
+  margin-left: 20px;
+}
+
 .place,
 .lodging,
 .communityStories {
