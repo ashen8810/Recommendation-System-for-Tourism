@@ -1,0 +1,52 @@
+.review-list {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+  }
+  
+  .review-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px; /* Set your preferred fixed width */
+    height: 400px; /* Set your preferred fixed height */
+    margin: 10px;
+  }
+  
+  .review-card-content {
+    padding: 16px;
+  }
+  
+  .user-name {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .review-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .review {
+    max-height: 150px; /* Set your preferred maximum height for the description */
+    overflow-y: auto;
+    scrollbar-color: gray; /* Change the color of the scrollbar track */
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+  }
+  
+  /* Optional: Change the color of the scrollbar thumb (handle) */
+  .review::-webkit-scrollbar-thumb {
+    background-color: gray;
+  }
+  
+  /* Optional: Change the color of the scrollbar track (the area the thumb moves along) */
+  .review::-webkit-scrollbar-track {
+    background-color: #ddd;
+  }
+  
+  /* Add more styles as needed */
+  

@@ -1,9 +1,12 @@
 import React from "react";
 import ZoomSlider from "../../components/ZoomSlider/ZoomSlider";
 import Accomodation from "../../components/Card_Gallery/accomodation/accomodation";
+import ReviewCard from "../../components/Card_Gallery/communityStories/reviewCard"; 
 import Grid from "@mui/material/Grid";
 import Carousel, { Item } from "better-react-carousel";
 import { items } from "../../data/mockData";
+import { review } from "../../data/mockData";
+
 import './HomePage.css'
 
 const app = () => {
@@ -58,15 +61,14 @@ const app = () => {
           <h2 className="communityStories">Community Stories</h2>
           <br />
           <Grid container spacing={3}>
-            {items.map((item, index) => (
-              <Grid item>
+            {review.map((review, index) => (
+              <Grid review>
                 <Item>
-                  <Accomodation
-                    id={item.id}
-                    image={item.image}
-                    name={item.name}
-                    rating={item.rating}
-                    index={item.index}
+                  <ReviewCard
+                    id={review.id}
+                    image={review.image}
+                    name={review.name}
+                    discription={review.discription}
                   />
                 </Item>
               </Grid>

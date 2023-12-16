@@ -1325,3 +1325,72 @@ export const items = [
     index: "4",
   },
 ];
+
+export const review = [
+  {
+    id: "1",
+    name: "Harvey Roxie",
+    image: 'https://media.istockphoto.com/id/1181382649/photo/colombo-sri-lanka-december-05-2018-view-of-the-colombo-city-skyline-with-modern-architecture.jpg?s=612x612&w=0&k=20&c=XIS9COAwhGXkQYqGKHcabMEpc64B_uwT2utuonAoWl0=',
+    discription: "Hiking to Ella Rock was an amazing experience! The panoramic views at the top were breathtaking. The trail was challenging, but the sense of accomplishment made it totally worth it.",
+  },
+  {
+    id: "2",
+    name: "Rossini Frances",
+    image: "https://assets.traveltriangle.com/blog/wp-content/uploads/2015/02/Sigiriya-rock-fortress-in-Sri-Lanka.jpg",
+    discription: "Sigiriya Rock is a mesmerizing testament to ancient ingenuity. This 5th-century fortress in Sri Lanka boasts awe-inspiring architecture and captivating frescoes. The climb, though steep, is rewarded with magical summit views—a panorama of lush greenery and ancient ruins. The meticulously preserved frescoes reveal vibrant colors and intricate details, offering a glimpse into the rich cultural tapestry of the past. Despite the physical challenge, reaching the top provides a profound sense of accomplishment. Sigiriya seamlessly combines natural beauty, historical wonder, and adventure, leaving an indelible mark on those fortunate enough to experience its heights.",
+  },
+  {
+    id: "3",
+    name: "Ferrara Clifford",
+    image: "https://www.tusktravel.com/blog/wp-content/uploads/2022/02/Bentota-Beach-Sri-Lanka2.jpg",
+    discription: "Galle Fort is a charming blend of history and modernity. The cobblestone streets, quaint cafes, and the ocean breeze make it a perfect destination. Don't miss the sunset at the ramparts!",
+  },
+  {
+    id: "4",
+    name: "Ever Melisandre",
+    image: "https://www.tripbibo.com/blog/wp-content/uploads/2021/06/dambulla-cave-temple_srilanka-1024x591.jpg",
+    discription: "The experience of seeing elephants up close was incredible, but the crowds were overwhelming. It's heartwarming to witness the conservation efforts, but improvements in visitor management are needed.",
+  },
+  {
+    id: "5",
+    name: "Daenerys Targaryen",
+    image: "https://media.istockphoto.com/id/1129078125/photo/the-girl-travels-by-train-to-beautiful-places-beautiful-girl-traveling-by-train-among.jpg?s=612x612&w=0&k=20&c=HCHXlPWt7QQ1rfwGrVZ3_AV37U8YVmQ_7HXYja-dOEY=",
+    discription: "The cave paintings and statues in Dambulla Cave Temple are mesmerizing. The spirituality and tranquility inside the caves create a unique atmosphere. It's a must-visit for anyone interested in history and culture.",
+  },
+  {
+    id: "6",
+    name: "Anya Stark",
+    image: "https://c.myholidays.com/blog/blog/content/images/2021/06/Trincomalee.jpg",
+    discription: "Mirissa Beach is a paradise for sun-seekers. The golden sands and the laid-back vibe make it a perfect spot to unwind. The beachside restaurants serve delicious seafood, adding to the overall experience",
+  },
+  {
+    id: "7",
+    name: "Anya Stark",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD6T63zgfJvj_3sLTOHE6UNGCMiHo_fOHEqw&usqp=CAU",
+    discription: "Climbing Adam's Peak during the pilgrimage season was a spiritual journey. The sunrise from the summit was breathtaking. The stairs can be challenging, but the sense of achievement is incomparable.",
+  },
+  {
+    id: "8",
+    name: "Anya Stark",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB-vTdD03UoYjwvEI40GcU3uvpqZDdnYgXOQ&usqp=CAU",
+    discription: "Yala National Park is a wildlife enthusiast's dream! We were lucky to spot leopards, elephants, and a variety of birds. The safari guides were knowledgeable, making the experience memorable.",
+  },
+  {
+    id: "9",
+    name: "Anya Stark",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKnm5UPnwGvXtVyIAKBzAwz1I58dneGvaHDg&usqp=CAU",
+    discription: "Horton Plains is a nature lover's paradise. The World's End viewpoint offers breathtaking views of the landscape. The hike is invigorating, and the diverse flora and fauna are simply mesmerizing.",
+  },
+  {
+    id: "10",
+    name: "Anya Stark",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx39mahQCDQHK5Pa3rN1rdbxJxk8Z_dfKhng&usqp=CAU",
+    discription: "Horton Plains is a nature lover's paradise. The World's End viewpoint offers breathtaking views of the landscape. The hike is invigorating, and the diverse flora and fauna are simply mesmerizing.",
+  },
+  {
+    id: "11",
+    name: "Anya Stark",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFGujGHRafP4DvpyWj_sGnnCEVmrXLOF_DQw&usqp=CAU",
+    discription: "The cave paintings and statues in Dambulla Cave Temple are mesmerizing. The spirituality and tranquility inside the caves create a unique atmosphere. It's a must-visit for anyone interested in history and culture.",
+  },
+];
