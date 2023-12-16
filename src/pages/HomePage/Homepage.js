@@ -1,7 +1,8 @@
 import React from "react";
 import ZoomSlider from "../../components/ZoomSlider/ZoomSlider";
 import Accomodation from "../../components/Card_Gallery/accomodation/accomodation";
-import ReviewCard from "../../components/Card_Gallery/communityStories/reviewCard"; 
+import ReviewCard from "../../components/Card_Gallery/communityStories/reviewCard";
+import FirstAdvertisement from "../../components/Advertisement/FirstAdvertisement ";
 import Grid from "@mui/material/Grid";
 import Carousel, { Item } from "better-react-carousel";
 import { items } from "../../data/mockData";
@@ -35,7 +36,11 @@ const app = () => {
           </Carousel>
         </div>
 
-        <br />
+        <br /><br/>
+
+        <FirstAdvertisement />
+
+        <br/><br/>
 
         <div className="Lodgings">
           <h2 className="lodging">Lodgings</h2>
