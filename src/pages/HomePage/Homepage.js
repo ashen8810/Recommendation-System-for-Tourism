@@ -3,6 +3,7 @@ import ZoomSlider from "../../components/ZoomSlider/ZoomSlider";
 import Accomodation from "../../components/Card_Gallery/accomodation/accomodation";
 import ReviewCard from "../../components/Card_Gallery/communityStories/reviewCard";
 import FirstAdvertisement from "../../components/Advertisement/FirstAdvertisement ";
+import SecondAdvertisement from "../../components/Advertisement/SecondAdvertisement";
 import Grid from "@mui/material/Grid";
 import Carousel, { Item } from "better-react-carousel";
 import { items } from "../../data/mockData";
@@ -11,12 +12,14 @@ import { review } from "../../data/mockData";
 import './HomePage.css'
 
 const app = () => {
+
   return (
     <div>
 
       <ZoomSlider />
       <div className="body">
-        <br />
+
+        <br /><br />
 
         <div className="visitingPlace">
           <h2 className="place">Places To Visit</h2>
@@ -36,11 +39,11 @@ const app = () => {
           </Carousel>
         </div>
 
-        <br /><br/>
+        <br /><br /><br />
 
         <FirstAdvertisement />
 
-        <br/><br/>
+        <br /><br />
 
         <div className="Lodgings">
           <h2 className="lodging">Lodgings</h2>
@@ -60,25 +63,34 @@ const app = () => {
           </Carousel>
         </div>
 
-        <br />
+        <br /><br /><br /><br />
 
-        <div className="stories">
-          <h2 className="communityStories">Community Stories</h2>
-          <br />
-          <Grid container spacing={3}>
-            {review.map((review, index) => (
-              <Grid review>
-                <Item>
-                  <ReviewCard
-                    id={review.id}
-                    image={review.image}
-                    name={review.name}
-                    discription={review.discription}
-                  />
-                </Item>
-              </Grid>
-            ))}
-          </Grid>
+        <div className="last_container">        
+          <div className="stories">
+            <h2 className="communityStories">Community Stories</h2>
+
+            <br /><br />
+
+            <Grid container spacing={3}>
+              {review.map((review, index) => (
+                <Grid review>
+                  <Item>
+                    <ReviewCard
+                      id={review.id}
+                      image={review.image}
+                      name={review.name}
+                      discription={review.discription}
+                    />
+                  </Item>
+                </Grid>
+              ))}
+            </Grid>
+          </div>
+
+          <div className="secondAdd">
+            <SecondAdvertisement />
+          </div>
+
         </div>
 
         <br /><br /><br />

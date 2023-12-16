@@ -4,16 +4,29 @@
 }
 
 .visitingPlace,
-.Lodgings,
-.stories {
+.Lodgings{
   width: 97%;
   margin: 0px auto;
   color: #283d44;
 }
 
+.last_container {
+  display: flex;
+}
+
 .stories{
-  width: 75%;
+  flex: 15;
   margin-left: 20px;
+}
+
+.secondAdd{
+  flex: 5;
+  margin-right: 0px;
+  margin-top: 20%;
+  padding-right: 10px;
+  display: flex;
+  justify-content: flex-end; 
+  position: relative
 }
 
 .place,
