@@ -1,0 +1,47 @@
+.contact-us-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+  }
+  
+  .heading-tag {
+    color: #1b7479;
+  }
+  
+  .contact-info {
+    margin-top: 20px;
+  }
+  
+  .contact-label {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .social-links {
+    margin-top: 20px;
+  }
+  
+  .social-links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .social-links li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .contact-form-link, .feedback-link {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+  }
+  
+  .contact-form-link:hover, .feedback-link:hover {
+    text-decoration: underline;
+  }
+  
