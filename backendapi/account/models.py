@@ -73,13 +73,13 @@ class AdminManager(BaseUserManager):
 class Admin(AbstractBaseUser):
     # PREFIX = 'A'
 
-    adminId = models.UUIDField(
+    adminId = models.CharField(
         primary_key=True,
-        default=uuid.uuid4,
         editable=False,
         null=False,
         blank=False,
         db_column="adminId",
+        max_length=255
     )
     # adminId = models.CharField(max_length=10, primary_key=True, unique=True, editable=False,null=False,blank=False)
     adminName = models.CharField(
@@ -96,14 +96,7 @@ class Admin(AbstractBaseUser):
     country = models.CharField(
         max_length=100, null=False, blank=False, db_column="country"
     )  # country cannot be null
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(
-        default=True
-    )  # Set as True to grant admin staff privileges
-    is_superuser = models.BooleanField(
-        default=True
-    )  # Set as True to grant superuser privileges
-
+    
     # def save(self, *args, **kwargs):
     #     if not self.adminId:
     #         self.adminId = self.generate_admin_id()
@@ -114,6 +107,11 @@ class Admin(AbstractBaseUser):
     #     return f'{self.PREFIX}{random_digits}'
 
     objects = AdminManager()
+    is_SuperUser = "none"
+    last_login = "none"
+
+    class Meta:
+        db_table = 'admin'
 
     USERNAME_FIELD = "email"
 
@@ -126,13 +124,14 @@ class Admin(AbstractBaseUser):
 
 #  Custom User Model
 class User(AbstractBaseUser):
-    userId = models.UUIDField(
+    userId = models.CharField(
         primary_key=True,
-        default=uuid.uuid4,
         editable=False,
         blank=False,
         null=False,
         db_column="userId",
+        max_length=255
+
     )
     # userId = models.CharField(
     #     max_length=5,
@@ -155,14 +154,11 @@ class User(AbstractBaseUser):
         blank=False,
         db_column="email",
     )
-    is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    isBanned = models.BooleanField(default=False, db_column="isBanned")
+    
+    isBanned = models.CharField(max_length=255,db_column="isBanned")
     country = models.CharField(max_length=15, db_column="country")
     type = models.CharField(max_length=15, db_column="type")
-
+    last_login = "none"
     class Meta:
         db_table = "user"
 
@@ -369,8 +365,9 @@ class User(AbstractBaseUser):
 
 
 class Notification(models.Model):
-    notificationId = models.UUIDField(
-        primary_key=True, default=uuid.uuid4, editable=False, db_column="NotificationId"
+    notificationId = models.CharField(
+        primary_key=True, editable=False, db_column="NotificationId",
+        max_length=255
     )
     adminId = models.ForeignKey(Admin, on_delete=models.CASCADE)
     content = models.CharField(max_length=255)
