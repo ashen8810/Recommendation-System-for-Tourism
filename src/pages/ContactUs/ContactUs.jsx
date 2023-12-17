@@ -4,28 +4,28 @@ import './ContactUs.css';
 const ContactUs = () => {
     return (
         <div className="contact-us-container">
-            <h2 className='heading-tag'>Get in Touch with Traveling Lanka Experts</h2>
+            <h1 className='heading-tag'>Get in Touch with Traveling Lanka Experts</h1>
             <p>
                 Welcome to our Travel Haven! Whether you have questions about exotic destinations, need personalized recommendations, or just want to share your amazing travel experiences, we're here for you. Connect with us using the options below, and let the journey begin!
             </p>
-            <div className="contact-info">
-                <p>
+            <div className="contact section">
+                <p className='visit us'>
                     <span className="contact-label">Visit Us:</span>
                     457/1, White Street, Kandy, Sri Lanka.
                 </p>
 
-                <p>
+                <p className='call us'>
                     <span className="contact-label">Call Us:</span>
                     Customer Care Hotline: 081-1000-2000 (081-1000-2001)
                 </p>
 
-                <p>
+                <p className='email us'>
                     <span className="contact-label">Email Us:</span>
                     General Inquiries: <a href="mailto:travelinglankainfo@gmail.com">travelinglankainfo@gmail.com</a><br />
                     Collaborations & Partnerships: <a href="travelinglankapartnership@gmail.com">travelinglankapartnership@gmail.com</a>
                 </p>
 
-                <p>
+                <p className='office hour'>
                     <span className="contact-label">Office Hours:</span>
                     Monday - Friday: 8:00 AM - 5:00 PM (GMT)
                 </p>

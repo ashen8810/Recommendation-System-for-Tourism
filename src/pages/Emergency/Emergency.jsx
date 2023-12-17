@@ -6,7 +6,7 @@ const EmergencyPage = () => {
 
         <>
             <div className="emergency-section">
-                <h2 className='heading-tag'>Emergency Information</h2>
+                <h1 className='heading-tag'>Emergency Information</h1>
                 <h3>Stay safe, have fun, and happy travels!</h3>
 
                 <div className="main-emergency">
@@ -26,7 +26,7 @@ const EmergencyPage = () => {
 
             <div className='emergency-container'>
                 <div className='places'>
-                <h4>Major Cities and Emergency Contact Number</h4>
+                <h4 >Major Cities and Emergency Contact Number</h4>
                     Colombo:
                     <ul>
                         <li>Police: <strong>011-2421026</strong></li>

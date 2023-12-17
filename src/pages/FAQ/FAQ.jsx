@@ -5,7 +5,7 @@ import './FAQ.css';
 const FAQsPage = () => {
     return (
         <div className="faqs-container">
-            <h2 className='heading-tag'>Frequently Asked Questions</h2>
+            <h1 className='heading-tag'>Frequently Asked Questions</h1>
 
             <div className="faq-section">
                 <h3>1. How can I create a travel schedule on your website?</h3>

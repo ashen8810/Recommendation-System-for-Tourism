@@ -10,7 +10,7 @@ import Form from "./pages/form";
 import Line from "./pages/line";
 import Pie from "./pages/pie";
 import Geography from "./pages/geography";
-import { CssBaseline,Switch,ThemeProvider } from "@mui/material";
+import { CssBaseline, Switch, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./pages/calendar/calendar";
 import Delete from "./pages/delete";
@@ -26,10 +26,9 @@ import Homepage from "./pages/HomePage/Homepage";
 import { Home } from "@mui/icons-material";
 import HomeSideBar from "./components/HomeSideBar";
 import { ProSidebarProvider, useProSidebar } from "react-pro-sidebar";
-import { Sidebar,Menu,MenuItem,SubMenu,uaeProSidebar } from "react-pro-sidebar";
+import { Sidebar, Menu, MenuItem, SubMenu, uaeProSidebar } from "react-pro-sidebar";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
-import { BrowserRouter, Link ,Route,Routes} from "react-router-dom";
-import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import HomeIcon from '@mui/icons-material/Home';
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
@@ -50,34 +49,41 @@ import { useSetState } from "@mantine/hooks";
 import { icon } from "leaflet";
 import Map from "./components/Maps/Maps";
 import SearchBar from './components/SearchBar/SearchBar';
-
+import ContactUs from "./pages/ContactUs/ContactUs";
+import Emergency from "./pages/Emergency/Emergency";
+import FAQ from "./pages/FAQ/FAQ";
+import About from "./pages/About/About";
 
 function App() {
-  return(
-   <div>
-    <Header/>
-    
-    <Routes>
-        <Route path='/' element ={<Homepage/>}/>
-        <Route path='Dashboard' element ={<Dashboard/>}/>
-        <Route path='Traveler Profile' element ={<TavellerProfile/>}/>
-        <Route path='Hotel Owner' element ={<HotelOwnerProfile/>}/>
-        <Route path='Hotels' element ={<Hotels/>}/>
-        <Route path='Places' element ={<Places/>}/>
-        <Route path='Schedules' element ={<Schedule/>}/>
-        <Route path='*' element ={<PageNotFound/>}/> 
-    </Routes>
-     
+  return (
+    <div>
 
-    <Footer/> 
-   
+      <Header />
 
-   </div>
+      <Routes>
+        <Route path='/' element={<Homepage />} />
+        <Route path='Dashboard' element={<Dashboard />} />
+        <Route path='Traveler Profile' element={<TavellerProfile />} />
+        <Route path='Hotel Owner' element={<HotelOwnerProfile />} />
+        <Route path='Hotels' element={<Hotels />} />
+        <Route path='Places' element={<Places />} />
+        <Route path='Schedules' element={<Schedule />} />
+        <Route path='*' element={<PageNotFound />} />
+        <Route path='/ContactUs' element={<ContactUs />} />
+        <Route path='/Emergency' element={<Emergency />} />
+        <Route path='/FAQ' element={<FAQ />} />
+        <Route path='/About' element={<About />} />
+
+      </Routes>
       
+
+      <Footer />
+
+    </div>
+
 
   );
 }
-    
+
 
 export default App;
-    

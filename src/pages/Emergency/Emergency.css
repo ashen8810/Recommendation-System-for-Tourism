@@ -13,6 +13,10 @@
     display: flex;
 }
 
+.emergency-container h4{
+    margin-left: -60px;
+}
+
 .places {
     flex: 5; 
     margin-left: 10%;}

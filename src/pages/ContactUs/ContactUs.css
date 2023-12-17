@@ -7,7 +7,10 @@
   }
   
   .heading-tag {
-    color: #1b7479;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    color: rgb(23, 107, 135);
   }
   
   .contact-info {
@@ -33,7 +36,7 @@
     margin-right: 10px;
   }
   
-  .contact-form-link, .feedback-link {
+  .contact-form-link {
     display: block;
     margin-top: 10px;
     text-decoration: none;
@@ -41,7 +44,7 @@
     font-weight: bold;
   }
   
-  .contact-form-link:hover, .feedback-link:hover {
+  .contact-form-link:hover:hover {
     text-decoration: underline;
   }
   

@@ -1,11 +1,10 @@
 .faqs-container {
-    text-align: center;
     font-family: 'Arial', sans-serif;
 }
 
 .faq-section {
     margin-bottom: 20px;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
 }
