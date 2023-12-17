@@ -1,0 +1,17 @@
+.about-us-container {
+    margin-bottom: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+.about-us-content h3{
+    margin-top: 40px;
+    margin-bottom: 15px;
+    margin-left: 10%;
+}
+
+.about-us-container p{
+    text-align: center;
+    line-height: 1.6;
+}
