@@ -110,5 +110,12 @@ def requirementbased(city,features):
     r = reqbased[['Name',"Tags",'similarity']].head(5)
     return r
 
-requirementbased('Colombo','beach jogging')
-
+res = requirementbased('Colombo','beach jogging')
+with open("result.txt","a") as f:
+   s = ""
+   j = 0
+   for i in res["Name"]:
+      s = s+" "+i+"  - "+str(res["similarity"][j])+"\n"
+      j=j+1
+   f.write(str(s))
+ 
