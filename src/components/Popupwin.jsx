@@ -7,7 +7,38 @@ const Popupwin = (props) => {
 
 
 const [isOpen,setIsOpen] = useState(true);
+const [dragStart, setDragStart] = useState(null);
+const [position, setPosition] = useState({ x: 0, y: 0 });
 
+const handleMouseDown = (e) => {
+  
+    setDragStart({
+      x: e.clientX,
+      y: e.clientY,
+    });
+}
+
+
+const handleMouseMove = (e) => {
+  if (dragStart) {
+    const offsetX = e.clientX - dragStart.x;
+    const offsetY = e.clientY - dragStart.y;
+
+    setPosition((prevPosition) => ({
+      x: prevPosition.x + offsetX,
+      y: prevPosition.y + offsetY,
+    }));
+
+    setDragStart({
+      x: e.clientX,
+      y: e.clientY,
+    });
+  }
+};
+
+const handleMouseUp = () => {
+  setDragStart(null);
+};
 
 const handleClose = () => {
   setIsOpen(false);
@@ -15,7 +46,12 @@ const handleClose = () => {
 }
 
   return isOpen ?(
-    <div className='PopupWin'>
+    <div className='PopupWin'
+    style={{ top: `${position.y}px`, left: `${position.x}px` }}
+    onMouseDown={handleMouseDown}
+    onMouseMove={handleMouseMove}
+    onMouseUp={handleMouseUp}
+  >
       <div onClick={handleClose} className='handleClose'>
         <span class="material-symbols-outlined">
           cancel
