@@ -159,6 +159,8 @@ body {
 .PopupWin{
   height: 80%;
   width: 50%;
+  margin-bottom: 2%;
+  padding-bottom: 30px;
   border:1.5px solid rgb(174, 169, 169);
   border-style:ridge;
   border-radius: 15px;
@@ -166,7 +168,7 @@ body {
   margin-left: 25%;
   margin-right: 25%;
   display: block;
-  position: absolute;
+  position: fixed;
   justify-content: center;
   align-items: center;
   background-color: rgb(255, 255, 255);

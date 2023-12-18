@@ -29,6 +29,11 @@ import Map from './Maps/Leaflet';
     inputRef.current.click();
   }
   
+  // const handleSubmit= async() ={
+  //   // let formField = new FormData();
+    
+  // }
+
   return (
     <>
     {isOpen && 
@@ -60,7 +65,7 @@ import Map from './Maps/Leaflet';
               <label className='addPlaceFormLabel'>
                 Select a Category:
                 <br></br>
-                <select>
+                <select value={placeCategory} onChange={(e) => e.target.value}>
                 <option value ="">Select ...</option>
                 <option value ="Option1">Indoor</option>
                 <option value ="Option1">Outdoor</option>
@@ -90,7 +95,7 @@ import Map from './Maps/Leaflet';
               <label className='SelectLocation'>
                Contact Number:
                 <br></br>
-                <input type="text" className='ContactNumber' name='ContactNumber'></input>
+                <input type="text" className='ContactNumber' name='ContactNumber' onChange={(e)=>e.target.value}></input>
               </label>
 
               <button type='submit' onClick={() => handleClick} className='uploadbtn'>Upload</button>

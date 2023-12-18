@@ -1,0 +1,205 @@
+commit d5cef9426c34935f9ddf27f5cd4c45eb5dabee44
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Fri Dec 15 15:14:18 2023 +0530
+
+    Updated add place pouup again
+
+commit 94f00c776a0cf7b2d88a342e4504f245d6996b15
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Fri Dec 15 15:12:30 2023 +0530
+
+    Updated add place pouup
+
+commit 1dc307a40b239a2f83b7224f1d77c538542acbfb
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Fri Dec 15 07:59:39 2023 +0530
+
+    add place option implemented
+
+commit 6a90e7d17bcacd9e0e74d9fbf0edb065e5c9ae6e
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Thu Dec 14 09:40:14 2023 +0530
+
+    resolved an error
+
+commit 9aabbd935b77289ad4c3ca1d71d1e524cd8e6018
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Tue Nov 28 21:57:12 2023 +0530
+
+    added some changes
+
+commit 211faa2f5893f3afdfa0c7a83c1bac4890a41dfb
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Thu Nov 23 00:26:20 2023 +0530
+
+    Updated sidebar to display only relevant profile pages according to the user type
+
+commit a7e31e217a144145846a1f3e8d5ff50a6bd84768
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Thu Nov 23 00:10:13 2023 +0530
+
+    created the view more and view less to view user schedules
+
+commit 6571add9a4eee2edc527c5c4007cafad97702b3e
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Wed Nov 22 23:36:25 2023 +0530
+
+    Enabled map viewing in the hotels and pages
+
+commit dbdddd9b026e0a1ebcfc25ed5f9be547e310ceef
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Wed Nov 22 22:37:53 2023 +0530
+
+    Updated Hotels and Places
+
+commit bd7fe17f66aa9d7b73c16012cf9925e5bc4ea8f7
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Wed Nov 22 22:32:33 2023 +0530
+
+    Updated Hotels adPlaceOpt and Popupwin
+
+commit 9feeb4bf9c4e0e7075ca4ab62621710f606bd4f2
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Wed Nov 22 20:39:18 2023 +0530
+
+    Enabled edit button in both profile pages
+
+commit 720ea71a38597408e1ae8cef9710336951ec6e80
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Wed Nov 22 17:46:40 2023 +0530
+
+    Commited with profile edit button functionality.
+
+commit 0db15deee6a532fa0a650daeece12b27144026b4
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Wed Nov 22 17:36:25 2023 +0530
+
+    Updated side bar
+
+commit dff73c4641b4c5262067afbd47af8593a756ba58
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Wed Nov 22 17:26:29 2023 +0530
+
+    commited with some sidebar changes
+
+commit b714e8467969b1cfb211a23f58dbd525e08ca152
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Fri Nov 10 09:30:00 2023 +0530
+
+    Updated some css
+
+commit 8693a5955f30a0037c8556124efd8d5e846dbb82
+Merge: ed326b2 7b55c4a
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Sat Oct 21 23:44:35 2023 +0530
+
+    Merge branch 'Front-End' of https://github.com/ashen8810/Recommendation-System-for-Tourism into Front-End
+
+commit ed326b28a9741fbdc26833ad6fcade86194befd1
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Sat Oct 21 23:43:55 2023 +0530
+
+    Edited some features
+
+commit 9ce38df68c8a5ddea6855159eb7ed7120abf48c4
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Sat Oct 21 15:27:48 2023 +0530
+
+    resolved conflict in letter colors
+
+commit bc36a492b39344e7717b19f7da6bcbf93ded4073
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Sat Oct 21 15:22:27 2023 +0530
+
+    added button to zoomslider
+
+commit a3b39e1bab8a76bec9064992171944e4c75386ff
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Sat Oct 21 13:02:50 2023 +0530
+
+    Added the Sidebar with routing
+
+commit 949e264b853b0482b7ff460f5ed56ddb47acc99e
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Fri Oct 20 01:08:24 2023 +0530
+
+    Added the Traveller Profile
+
+commit a6ee73fdb35a35d2ced39bc0295feeafef4938a5
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Fri Oct 20 00:22:00 2023 +0530
+
+    Edited TravellerProfile
+
+commit 33d0c4fdf2fa9b53fed7db23b805f4d81ee842b7
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Thu Oct 19 21:46:05 2023 +0530
+
+    Commited with HotelOwnerProfile
+
+commit dc58bb0db9693e8088a65403a3d5c6dc910b0b43
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Thu Oct 19 16:47:58 2023 +0530
+
+    Commited with Places page
+
+commit a25a3c110449e2f5ab4887435ce6ec5a6c7c6e22
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Thu Oct 19 16:22:59 2023 +0530
+
+    Added Hotels Page
+
+commit ba9716776846df74ad2fcdb1018e7cb394079da3
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Tue Oct 17 14:03:05 2023 +0530
+
+    reverted back
+
+commit d880def10d390c3b860076fc5d38fc56d439beeb
+Merge: 80a88f4 61bbd3d
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Tue Oct 17 13:49:40 2023 +0530
+
+    deleted unwanted files
+
+commit 80a88f4e74a77c992a33187c7f0721b9e1c94d7f
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Tue Oct 17 13:29:11 2023 +0530
+
+    reverted abck
+
+commit 61bbd3d70edb7082633c605f8c9984ae110b567a
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Mon Oct 16 10:51:55 2023 +0530
+
+    Added ProfilePages
+
+commit 8677c0a478a1c75326a472a46d368ce951f89b45
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Mon Oct 16 10:07:25 2023 +0530
+
+    Committed with edited Hotels and Places
+
+commit a55f1c598c1ce81bf1b38f40d78b01c1aa2f814c
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Fri Oct 13 19:34:19 2023 +0530
+
+    updated places component with viewmore opt
+
+commit 11ebc1f84338dfc78814d1347db905fcf0e688d1
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Thu Sep 21 12:08:54 2023 +0530
+
+    Commited pages TravellerProfile, MyHotels
+
+commit fda560b10cf48d1f73dd6b8537739e9a9fb601c3
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Thu Sep 21 11:41:35 2023 +0530
+
+    Added MyHotels and ProfileForTravellers
+
+commit 4c81b1a0ce9404160349986a63959b571456c02a
+Author: anneC98 <s18441@sci.pdn.ac.lk>
+Date:   Wed Sep 20 12:08:13 2023 +0530
+
+    commited with Card_Gallery component
