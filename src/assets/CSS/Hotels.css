@@ -189,6 +189,7 @@ body {
   padding-bottom: 5px;
 
 }
+
 .photo{
   border-radius: 15px;
   width:600px;
@@ -212,8 +213,7 @@ body {
 .imageContent{
   margin-top: 30px;
   margin-left: 5%;
-  display: block;
-  position: relative;
+  
   justify-content: center;
   text-align: left;
   line-height: 2px;
@@ -233,6 +233,7 @@ body {
 }
 
 .review{
+ margin-top: 10%;
  height: fit-content;
  width: 100%;
  display: block;
@@ -242,35 +243,49 @@ body {
   
 }
 
-.getReview{
-  height: 35px;
-  width: 80%;
-  margin-left: 15px;
-  border-color:  black ;
-  border-radius: 20px;
-  overflow:scroll;
-  
+
+.review-profile {
+  display: flex;
+  align-items: center;
+   /* Adjust margin as needed */
 }
 
-.review-profile{
-  display: inline-block;
-  position: relative;
-  
+.getPopupReview {
+  width: 100%; /* Set width to 100% initially */
+  min-height: 40px; /* Set a minimum height */
+  resize: vertical; /* Allow vertical resizing */
+  margin-right: 10px;
+  line-height: 1.5; /* Adjust margin as needed */
+  border: none;
+  outline: none;
 }
 
-.review-profile:hover{
+.getPopupReview:focus {
+  outline: none;
+}
+
+
+
+.starRating{
+  font-size: 15px;
+  margin-left: 20px;
+}
+
+
+/* .review-profile:hover{
   transform: scale(1.1);
   border-style: double;
   
-}
+} */
 
 
 
-.material-symbols-outlined {
-  font-size: 50px;
+.material-symbols-outlined.personIcon {
+  font-size: 40px;
   text-align: center;
-  margin-left: 2.3px;
-  margin-top: 2px;
+  margin-right: 40px;
+  margin-bottom: 25px;
+  
   font-variation-settings:
   'FILL' 0,
   'wght' 400,

@@ -14,15 +14,12 @@ const StarRating= () => {
     >
       {value < 1 ?
         <div>
-          <Typography component="h2">No rating given</Typography>
+          <Typography component="h9">No rating given</Typography>
           <Rating name="no-value" value={null} /> 
         </div>
         :
-        <div className='stars'>
-          <Typography variant="h9" component="h5">Rate</Typography>
-          <br></br>
-          <br></br>
-          <br></br>
+        <div className='stars' style={{ display: 'flex', alignItems: 'center',marginLeft:"5 px" }}>
+          <Typography variant="h9" component="h6" style={{ marginRight: '20px' }}>Rate:</Typography>
           <Rating
             name="simple-controlled"
             value={value}

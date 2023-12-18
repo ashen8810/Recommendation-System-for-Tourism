@@ -68,21 +68,25 @@ const handleClose = () => {
 
       <div className='photo'>
         <img id={props.id} src={props.src} alt='bg'/>
-        <Leaflet
-        xcoord = {props.x}
-        ycoord = {props.y}/>
+        
       </div>
+      
       <div className='imageContent review'>
           <div className='review-profile'>
-            
             <span class="material-symbols-outlined personIcon">
               person
             </span>
-            <input  for='getReview' className='getReview' type='text' ></input> 
+            <textarea  for='getReview' className='getPopupReview' type='text' placeholder='your comments here ...' ></textarea> 
           </div>
-          
-          <StarRating/>
+          <div className='starRating'>
+           <StarRating/>
+          </div>
+      </div>
 
+      <div className='mapSection'>
+        <Leaflet
+          xcoord = {props.x}
+          ycoord = {props.y}/>
       </div>
     </div>
   ): null;
