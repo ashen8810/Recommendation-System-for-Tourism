@@ -112,6 +112,7 @@ def requirementbased(city,features):
 
 res = requirementbased('Colombo','beach jogging')
 with open("result.txt","a") as f:
+   res = res.reset_index()
    s = ""
    j = 0
    for i in res["Name"]:
