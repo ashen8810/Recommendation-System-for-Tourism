@@ -49,6 +49,8 @@ import { useSetState } from "@mantine/hooks";
 import { icon } from "leaflet";
 import Map from "./components/Maps/Maps";
 import SearchBar from './components/SearchBar/SearchBar';
+import { ToastContainer } from "react-toastify";
+import VerifyEmail from "pages/verify/VerifyEmail";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import Emergency from "./pages/Emergency/Emergency";
 import FAQ from "./pages/FAQ/FAQ";
@@ -57,11 +59,14 @@ import About from "./pages/About/About";
 function App() {
   return (
     <div>
+    
 
       <Header />
-
+<ToastContainer/>
       <Routes>
         <Route path='/' element={<Homepage />} />
+        <Route path='/otp/verify' element={<VerifyEmail/>}/>
+        <Route path='/login' element={<Login/>}/>
         <Route path='Dashboard' element={<Dashboard />} />
         <Route path='Traveler Profile' element={<TavellerProfile />} />
         <Route path='Hotel Owner' element={<HotelOwnerProfile />} />
