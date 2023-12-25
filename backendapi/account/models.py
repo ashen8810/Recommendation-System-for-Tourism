@@ -10,12 +10,12 @@ class UserManager(BaseUserManager):
     def create_user(
         self,
         email,
-        name,
+        userName,
         password=None,
         password2=None,
         isBanned=False,
         country="",
-        type="",
+        user_type="hotel owner",
     ):
         """
         Creates and saves a User with the given parameters.
@@ -24,11 +24,12 @@ class UserManager(BaseUserManager):
             raise ValueError("User must have an email address")
 
         user = self.model(
+            userName=userName,
             email=self.normalize_email(email),
-            name=name,
             isBanned=isBanned,
             country=country,
-            type=type,
+            user_type=user_type,
+            userId=self.model().generate_user_id(),
         )
 
         user.set_password(
@@ -37,14 +38,13 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, name, password=None):
+    def create_superuser(self, email, password=None):
         """
         Creates and saves a superuser with the given email, name and password.
         """
         user = self.create_user(
             email,
             password=password,
-            name=name,
         )
         user.is_admin = True
         user.save(using=self._db)
@@ -61,8 +61,7 @@ class AdminManager(BaseUserManager):
             email=self.normalize_email(email),
             adminName=adminName,
             country=country,
-            is_staff=True,
-            is_superuser=True,
+            adminId=self.model().generate_admin_id(),
         )
         admin.set_password(password)  # Hashes the admin password before storing it.
         admin.save(using=self._db)
@@ -71,7 +70,7 @@ class AdminManager(BaseUserManager):
 
 # Admin user model
 class Admin(AbstractBaseUser):
-    # PREFIX = 'A'
+    PREFIX = "A"
 
     adminId = models.CharField(
         primary_key=True,
@@ -79,7 +78,7 @@ class Admin(AbstractBaseUser):
         null=False,
         blank=False,
         db_column="adminId",
-        max_length=255
+        max_length=255,
     )
     # adminId = models.CharField(max_length=10, primary_key=True, unique=True, editable=False,null=False,blank=False)
     adminName = models.CharField(
@@ -96,22 +95,17 @@ class Admin(AbstractBaseUser):
     country = models.CharField(
         max_length=100, null=False, blank=False, db_column="country"
     )  # country cannot be null
-    
-    # def save(self, *args, **kwargs):
-    #     if not self.adminId:
-    #         self.adminId = self.generate_admin_id()
-    #     super(Admin, self).save(*args, **kwargs)
-
-    # def generate_admin_id(self):
-    #     random_digits = ''.join(random.choices(string.digits, k=4))
-    #     return f'{self.PREFIX}{random_digits}'
 
     objects = AdminManager()
     is_SuperUser = "none"
-    last_login = "none"
+    # last_login = "none"
 
     class Meta:
-        db_table = 'admin'
+        db_table = "admin"
+
+    def generate_admin_id(self):
+        random_digits = "".join(random.choices(string.digits, k=4))
+        return f"{self.PREFIX}{random_digits}"
 
     USERNAME_FIELD = "email"
 
@@ -122,6 +116,9 @@ class Admin(AbstractBaseUser):
         return True
 
 
+AUTH_PROVIDERS = {"email": "email", "google": "google", "facebook": "facebook"}
+
+
 #  Custom User Model
 class User(AbstractBaseUser):
     userId = models.CharField(
@@ -130,22 +127,12 @@ class User(AbstractBaseUser):
         blank=False,
         null=False,
         db_column="userId",
-        max_length=255
-
+        max_length=255,
     )
-    # userId = models.CharField(
-    #     max_length=5,
-    #     unique=True,
-    #     # editable=False,
-    #     primary_key=True,
-    #     null=False,
-    #     blank=False,
-    #     db_column="UserId",
-    # )
     adminId = models.ForeignKey(
-        Admin, on_delete=models.CASCADE, null=True, blank=True, db_column="AdminId"
+        Admin, on_delete=models.CASCADE, null=True, blank=True, db_column="adminId"
     )  # Foreign key reference to Admin model
-    # name = models.CharField(max_length=200, db_column="Name")
+    userName = models.CharField(max_length=200, db_column="userName")
     email = models.EmailField(
         verbose_name="Email",
         max_length=255,
@@ -154,11 +141,17 @@ class User(AbstractBaseUser):
         blank=False,
         db_column="email",
     )
-    
-    isBanned = models.CharField(max_length=255,db_column="isBanned")
+
+    isBanned = models.CharField(max_length=255, db_column="isBanned", default="false")
     country = models.CharField(max_length=15, db_column="country")
-    type = models.CharField(max_length=15, db_column="type")
-    last_login = "none"
+    user_type = models.CharField(max_length=15, db_column="type", default="traveler")
+    auth_provider = models.CharField(
+        max_length=50, blank=False, null=False, default=AUTH_PROVIDERS.get("email")
+    )
+    isVerified = models.BooleanField(default=False)
+
+    # last_login = "none"
+
     class Meta:
         db_table = "user"
 
@@ -166,21 +159,14 @@ class User(AbstractBaseUser):
 
     #  Email can be used as username
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["name"]
-
-    # ? methods to create custom user id's
-    #   def generate_user_id(self):
-    #         prefix = 'U'
-    #         random_digits = ''.join(random.choices(string.digits, k=4))
-    #         return f'{prefix}{random_digits}'
-
-    #   def save(self, *args, **kwargs):
-    #         if not self.userId:
-    #             self.userId = self.generate_user_id()
-    #         super(User, self).save(*args, **kwargs)
+    REQUIRED_FIELDS = []
 
     def __str__(self):
         return self.email
+
+    def generate_user_id(self):
+        random_digits = "".join(random.choices(string.digits, k=4))
+        return f"U{random_digits}"
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
@@ -196,178 +182,24 @@ class User(AbstractBaseUser):
         return self.is_admin
 
 
+##########################################################################
+class OneTimePassword(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    otp = models.CharField(max_length=6)
+
+    def __str__(self):
+        return f"{self.user.first_name} - otp code"
 
 
 ##############################################################################3
 
-# from django.db import models
-# import random
-# import string
-# import uuid
-# from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
-
-
-# #  Custom User Manager
-# class UserManager(BaseUserManager):
-#     def create_user(
-#         self,
-#         email,
-#         name,
-#         password=None,
-#         password2=None,
-#         isBanned=False,
-#         country="",
-#         type="",
-#     ):
-#         """
-#         Creates and saves a User with the given parameters.
-#         """
-#         if not email:
-#             raise ValueError("User must have an email address")
-
-#         user = self.model(
-#             email=self.normalize_email(email),
-#             name=name,
-#             isBanned=isBanned,
-#             country=country,
-#             type=type,
-#         )
-
-#         user.set_password(
-#             password
-#         )  # This hashes the user password before storing in the database.
-#         user.save(using=self._db)
-#         return user
-
-#     def create_superuser(self, email, name, password=None):
-#         """
-#         Creates and saves a superuser with the given email, name and password.
-#         """
-#         user = self.create_user(
-#             email,
-#             password=password,
-#             name=name,
-#         )
-#         user.is_admin = True
-#         user.save(using=self._db)
-#         return user
-
-
-# # Admin user manager
-# class AdminManager(BaseUserManager):
-#     def create_admin(self, email, adminName, country, password=None, password2=None):
-#         if not email or not adminName or not country:
-#             raise ValueError("Email, adminname, and country must be required fields.")
-
-#         admin = self.model(
-#             email=self.normalize_email(email),
-#             adminName=adminName,
-#             country=country,
-#             is_staff=True,
-#             is_superuser=True,
-#         )
-#         admin.set_password(password)  # Hashes the admin password before storing it.
-#         admin.save(using=self._db)
-#         return admin
-
-
-# # Admin user model
-# class Admin(AbstractBaseUser):
-#     adminId = models.UUIDField(
-#         primary_key=True,
-#         default=uuid.uuid4,
-#         editable=False,
-#         null=False,
-#         blank=False,
-#         db_column="AdminId",
-#     )
-#     adminName = models.CharField(
-#         max_length=100, null=False, blank=False, db_column="AdminName"
-#     )
-#     email = models.EmailField(
-#         verbose_name="Email",
-#         max_length=225,
-#         unique=True,
-#         null=False,
-#         blank=False,
-#         db_column="Email",
-#     )
-#     country = models.CharField(
-#         max_length=100, null=False, blank=False, db_column="Country"
-#     )
-#     is_active = models.BooleanField(default=True)
-#     is_staff = models.BooleanField(default=True)
-#     is_superuser = models.BooleanField(default=True)
-
-#     objects = AdminManager()
-
-#     USERNAME_FIELD = "email"
-
-#     def has_perm(self, perm, obj=None):
-#         return True
-
-#     def has_module_perms(self, app_label):
-#         return True
-
-
-# # Custom User Model
-# class User(AbstractBaseUser):
-#     userId = models.UUIDField(
-#         primary_key=True,
-#         default=uuid.uuid4,
-#         editable=False,
-#         blank=False,
-#         null=False,
-#         db_column="UserId",
-#     )
-#     adminId = models.ForeignKey(
-#         Admin, on_delete=models.CASCADE, null=True, blank=True, db_column="AdminId"
-#     )
-#     name = models.CharField(max_length=200, db_column="Name")
-#     email = models.EmailField(
-#         verbose_name="Email",
-#         max_length=255,
-#         unique=True,
-#         null=False,
-#         blank=False,
-#         db_column="Email",
-#     )
-#     is_active = models.BooleanField(default=True)
-#     is_admin = models.BooleanField(default=False)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-#     isBanned = models.BooleanField(default=False, db_column="IsBanned")
-#     country = models.CharField(max_length=15, db_column="Country")
-#     type = models.CharField(max_length=15, db_column="Type")
-
-#     class Meta:
-#         db_table = "User"
-
-#     objects = UserManager()
-
-#     USERNAME_FIELD = "email"
-#     REQUIRED_FIELDS = ["name"]
-
-#     def __str__(self):
-#         return self.email
-
-#     def has_perm(self, perm, obj=None):
-#         return self.is_admin
-
-#     def has_module_perms(self, app_label):
-#         return True
-
-#     @property
-#     def is_staff(self):
-#         return self.is_admin
 
 ###############################################################################################
 
 
 class Notification(models.Model):
     notificationId = models.CharField(
-        primary_key=True, editable=False, db_column="NotificationId",
-        max_length=255
+        primary_key=True, editable=False, db_column="NotificationId", max_length=255
     )
     adminId = models.ForeignKey(Admin, on_delete=models.CASCADE)
     content = models.CharField(max_length=255)

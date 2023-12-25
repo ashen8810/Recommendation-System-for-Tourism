@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # "django.contrib.admin",
+    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -42,13 +42,14 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "rest_framework_simplejwt",
+    "rest_framework_simplejwt.token_blacklist",
     "account",
+    "social_account",
     "Places",
     "hotel",
     "advertisement",
     "schedule",
     "dashboard",
-
 ]
 
 MIDDLEWARE = [
@@ -87,13 +88,17 @@ WSGI_APPLICATION = "backendapi.wsgi.application"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+    # "default": {
+    #     "ENGINE": "django.db.backends.sqlite3",
+    #     "NAME": BASE_DIR / "db.sqlite3",
+    # }
     "default": {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mydb',
-        'USER': 'root',
-        'PASSWORD': 'Ashen@12345',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "db",
+        "USER": "root",
+        "PASSWORD": "Albert_isac_1",
+        "HOST": "127.0.0.1",
+        "PORT": "3306",
     }
 }
 
@@ -141,14 +146,31 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+# STATICFILES_DIRS = [
+#     OS.path.join(BASE_DIR, 'build/static')
+# ]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = 'account.User'
+# DJOSER= {
+#     'LOGIN_FIELD':'email',
+#     'USER_CREATE_PASSWORD_RETYPE':True,
+#     'PASSWORD_CHANGED_EMAIL_CONFIRMATION':True,
+#     'SEND_CONFIRMATION_EMAIL':True,
+#     'SET_PASSWORD_RETYPE':True,
+#     'PASSWORD_RESET_CONFIRM_URL':'password/reset/confirm/{uid}/{token}',
+#     'ACTIVATION_URL':'activate/{uid}/{token}',
+#     'SEND_ACTIVATION_EMAIL':True
+#     'SERIALIZERS':{
+
+#     }
+# }
+AUTH_USER_MODEL = "account.User"
 
 # Email configuration
 
@@ -162,8 +184,8 @@ EMAIL_USE_TLS = True
 
 # JWT Settings
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=20),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ACCESS_TOKEN_LIFETIME": timedelta(seconds=2),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=10),
     "AUTH_HEADER_TYPES": ("Bearer",),
     "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
     "USER_ID_FIELD": "userId",
@@ -181,3 +203,10 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]
+
+GOOGLE_CLIENT_ID = (
+    "840641876220-rsltjsucrr8ujgsfk4n9nnl1u3248n4l.apps.googleusercontent.com"
+)
+GOOGLE_CLIENT_SECRET = "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"
+
+SOCIAL_AUTH_PASSWORD = "rertywegfgfjjk"

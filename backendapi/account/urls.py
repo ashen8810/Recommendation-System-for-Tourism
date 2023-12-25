@@ -6,22 +6,39 @@ from account.views import (
     UserRegistrationView,
     SendPasswordResetEmailView,
     UserPasswordResetView,
+    AdminRegistrationView,
+    TestAuthenticationView,
+    SetNewPasswordView,
+    VerifyUserEmailView,
+    LogoutApiView,
 )
+
+from rest_framework_simplejwt.views import TokenRefreshView
 
 # from account.views import UserRegistrationView
 urlpatterns = [
     path("register/", UserRegistrationView.as_view(), name="register"),
+    path("registerAdmin/", AdminRegistrationView.as_view(), name="Admin-register"),
+    path("verify-email/", VerifyUserEmailView.as_view(), name="verify"),
     path("login/", UserLoginView.as_view(), name="login"),
+    path("test/", TestAuthenticationView.as_view(), name="test"),
     path("profile/", UserProfileView.as_view(), name="profile"),
     path("changepassword/", UserChangePasswordView.as_view(), name="changepassword"),
     path(
-        "send-reset-password-email/",
+        "password-reset/",
         SendPasswordResetEmailView.as_view(),
-        name="send-reset-password-email",
+        name="password-reset",
     ),
     path(
-        "reset-password/<str:uid>/<str:token>/",
+        "reset-password-confirm/<uidb64>/<token>",
         UserPasswordResetView.as_view(),
-        name="reset-password",
+        name="reset-password-confirm",
     ),
+    path(
+        "set-new-password/",
+        SetNewPasswordView.as_view(),
+        name="reset-password-confirm",
+    ),
+    path("logout/", LogoutApiView.as_view(), name="logout"),
+    path("token/refresh/", TokenRefreshView.as_view(), name="token-refresh"),
 ]
