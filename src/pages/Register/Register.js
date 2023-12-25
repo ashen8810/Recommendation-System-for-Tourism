@@ -2,18 +2,25 @@ import React, { useState } from "react";
 import './Register.css';
 import Google from '../Login/google-logo.png';
 import Facebook from '../Login/google-logo.png';
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios"
+import 'react-toastify/dist/ReactToastify.css';
 //import Login from "./Register";
 
 export default function Register({ onClose }) {
   const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
-  const [password, setPassword] = useState("");
+  // const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [userNameError, setuserNameError] = useState("");
+  const [countryError, setCountryError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const [showOverlay, setShowOverlay] = useState(false);
+  const [error, setError]=useState('')
 
   const handleRegisterClick = () => {
     setShowOverlay(true);
@@ -22,6 +29,19 @@ export default function Register({ onClose }) {
     setShowOverlay(false);
     onClose();
   };
+
+
+ const navigate=useNavigate()
+ const [formdata, setFormdata]=useState({
+        email:"",
+        userName:"",
+        password:"",
+        password2:"",
+        country:""
+    })
+  
+  const {email,userName,password,password2,country}=formdata  
+
 
   const validateEmail = () => {
     if (!email) {
@@ -33,6 +53,22 @@ export default function Register({ onClose }) {
     }
   };
 
+  const validateUserName = () => {
+    if (!userName) {
+      setuserNameError("UserName is required.");
+    } else {
+      setuserNameError("");
+    }
+  };
+
+  const validateCountry = () => {
+    if (!country) {
+      setCountryError("country is required.");
+    } else {
+      setCountryError("");
+    }
+  };
+
   const validatePassword = () => {
     if (!password) {
       setPasswordError("Password is required.");
@@ -41,7 +77,7 @@ export default function Register({ onClose }) {
     }
   };
   const validateConfirmPassword = () => {
-    if (password !== confirmPassword) {
+    if (password !== password2) {
       setConfirmPasswordError("Passwords do not match.");
     } else {
       setConfirmPasswordError("");
@@ -61,6 +97,35 @@ export default function Register({ onClose }) {
     }
   };
 
+
+  const handleOnchange = (e)=>{
+    setFormdata({...formdata, [e.target.name]:e.target.value})
+}
+
+const handleSubmit =async (e)=>{
+  e.preventDefault()
+  if(!email|| !userName || !password || !password2 || !country)
+  {
+    setError("all fields are required.")
+  }
+  else{
+    const response = await axios.post('http://localhost:8000/api/user/register/',formdata)
+    console.log(response.data)
+    const result=response.data
+    if (response.status === 201) {
+       navigate("/otp/verify")
+       toast.success(result.msg)
+       onClose()
+    }
+  }
+ 
+
+ 
+
+}
+
+
+
   return (
     <>
     {showOverlay && <div className="overlay" onClick={handleCloseClick}></div>}
@@ -68,21 +133,26 @@ export default function Register({ onClose }) {
       <div className="register-content">
         <span className="close" onClick={onClose}>&times;</span>
         <h2>Create Account</h2>
-        <form>
+        <form action="" onSubmit={handleSubmit}>
+        {error && <p className="error">{error}</p>}
           <label htmlFor="fullName">Full Name</label>
           <input
             type="text"
             id="fullName"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
+            name="userName"
+            value={userName}
+            onChange={handleOnchange}
+            onBlur={validateUserName}
           />
+          {userNameError && <p className="error">{userNameError}</p>}
 
           <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
+            name="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleOnchange}
             onBlur={validateEmail}
           />
           {emailError && <p className="error">{emailError}</p>}
@@ -91,9 +161,12 @@ export default function Register({ onClose }) {
           <select
             id="country"
             className="country"
-            value={selectedCountry}
-            onChange={handleCountryChange}
+            name="country"
+            value={country}
+            onChange={handleOnchange}
+            onBlur={validateCountry}
           >
+            <option value=" ">None</option>
             <option value="Australia">Australia</option>
             <option value="Canada">Canada</option>
             <option value="India">India</option>
@@ -101,13 +174,15 @@ export default function Register({ onClose }) {
             <option value="UK">UK</option>
             <option value="USA">USA</option>
           </select>
+          {countryError && <p className="error">{countryError}</p>}
 
           <label htmlFor="password">Password</label>
           <input
             type="password"
             id="password"
+            name="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleOnchange}
             onBlur={validatePassword}
           />
           {passwordError && <p className="error">{passwordError}</p>}
@@ -116,13 +191,14 @@ export default function Register({ onClose }) {
           <input
             type="password"
             id="confirmPassword"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            name="password2"
+            value={password2}
+            onChange={handleOnchange}
             onBlur={validateConfirmPassword}
           />
           {confirmPasswordError && <p className="error">{confirmPasswordError}</p>}
 
-          <button className="createAccount-button" type="button" onClick={handleRegister}>Create Account</button>
+          <button className="createAccount-button" type="submit" >Create Account</button>
           <p className="or">or</p>
           <div>
             <button className="google-button">
