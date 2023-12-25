@@ -19,6 +19,9 @@ const HotelOwnerProfile = () => {
   const closePopup=()=>{
     setIsClicked(false);
   }
+
+  let user=localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : ""
+  console.log(user)
   return (
     <div className='main'>
         <div className='banner'>
@@ -27,7 +30,7 @@ const HotelOwnerProfile = () => {
                
             </div>
             <div className='desc'>
-                <ProfileDetails/>
+                <ProfileDetails user={user}/>
                 
             </div>
             <div className='camera' onClick={() =>{

@@ -1,10 +1,10 @@
 import React from 'react'
 import './ProfileDetails.css';
 
-const ProfileDetails = () => {
+const ProfileDetails = ({user}) => {
   return (
     <div className='detailsCard'>
-      <h1>James Bond</h1>
+      <h1>{user && user.userName}</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
         sed do eiusmod tempor incididunt ut labore et dolore magna 
         aliqua. Convallis posuere morbi leo urna molestie at elementum.</p>
