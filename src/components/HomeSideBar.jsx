@@ -23,12 +23,16 @@ import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import { useState,useEffect } from "react";
 import { useSetState } from "@mantine/hooks";
 import { icon } from "leaflet";
+import AxiosInstance from "utils/AxiosInstance";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const HomeSideBar = (props,onClose) => {
   //const {collapseSidebar} = useProSidebar();
   
   const[collapsed, setcollapsed] = useState(false);
   const[isOpen,setIsOpen] = useState(false);
+  const navigate=useNavigate()
 
   // useEffect(() => {
   //   let handler = () => {
@@ -45,6 +49,20 @@ const HomeSideBar = (props,onClose) => {
   const handleOpen = () =>{
     setIsOpen(true);
   }
+
+  let user = JSON.parse(localStorage.getItem('user')) 
+  let refresh=localStorage.getItem('refresh') ? JSON.parse(localStorage.getItem('refresh')) : ""
+  const handleLogout = async ()=>{
+    const res = await AxiosInstance.post('logout/', {'refresh_token':refresh})
+    if (res.status === 204) {
+         localStorage.removeItem('access')
+         localStorage.removeItem('refresh')
+         localStorage.removeItem('user')
+         navigate('/')
+         toast.warn("logout successful")
+    }
+  }
+ 
   return (
     <div style={{ display: "flex", height: "100vh" }} className="maindiv">
     <Sidebar collapsed = {collapsed} className="sidebarbody">
@@ -73,23 +91,23 @@ const HomeSideBar = (props,onClose) => {
           HomePage
         </MenuItem>
 
-        {/* {props.type == 'traveller'?
+        {user && user.user_type.toLowerCase() === 'tourist'?
           <MenuItem icon={<HikingIcon/>}
           component={<Link to="Traveler Profile" className="link"/>}
           > My Profile </MenuItem>  
           :
-          props.type == 'Hotel owner'?
+          user && user.user_type.toLowerCase() === 'hotel owner'?
           <MenuItem icon={<BusinessCenterIcon/>}
           component={<Link to="Hotel Owner" className="link"/>}
         > My Profile</MenuItem>
-        :
+        : user &&
         <MenuItem icon={<AdminPanelSettingsOutlinedIcon/>}
         component={<Link to="Dashboard" className="link"/>}
         > Dahsboard</MenuItem>
-        } */}
+        }
 
 
-        <MenuItem icon={<HikingIcon/>}
+        {/* <MenuItem icon={<HikingIcon/>}
         component={<Link to="Traveler Profile" className="link"/>}
         > Traveller Profile </MenuItem>
 
@@ -100,7 +118,7 @@ const HomeSideBar = (props,onClose) => {
 
         <MenuItem icon={<AdminPanelSettingsOutlinedIcon/>}
         component={<Link to="Dashboard" className="link"/>}
-        > Dahsboard</MenuItem>
+        > Dahsboard</MenuItem> */}
 
         <MenuItem icon={<LuggageOutlinedIcon />}
         component={<Link to="Hotels" className="link"/>}
@@ -112,6 +130,7 @@ const HomeSideBar = (props,onClose) => {
 
          <MenuItem icon={<LogoutRoundedIcon/>}
         component={<Link to="" className="link"/>}
+        onClick={handleLogout}
         > Log Out</MenuItem>
 
       
