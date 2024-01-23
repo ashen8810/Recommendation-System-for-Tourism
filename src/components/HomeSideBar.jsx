@@ -15,7 +15,7 @@ import Hotels from 'pages/Hotels/Hotels';
 import Places from 'pages/places/places';
 import HotelOwnerProfile from 'pages/HotelOwnerProfile';
 import TavellerProfile from 'pages/TravellerProfile/TravellerProfile';
-import Dashboard from 'pages/dashboard';
+// import Dashboard from 'pages/dashboard';
 import Homepage from '../pages/HomePage/Homepage';
 import DoDisturbOnIcon from '@mui/icons-material/DoDisturbOn';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
@@ -90,6 +90,10 @@ const HomeSideBar = (props,onClose) => {
         component={<Link to="/" className="link"/>}>
           HomePage
         </MenuItem>
+
+        <MenuItem icon={<AdminPanelSettingsOutlinedIcon/>}
+        component={<Link to="Dashboard" className="link"/>}
+        > Dahsboard</MenuItem>
 
         {user && user.user_type.toLowerCase() === 'tourist'?
           <MenuItem icon={<HikingIcon/>}

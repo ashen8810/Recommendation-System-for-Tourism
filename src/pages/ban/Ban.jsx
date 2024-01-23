@@ -2,7 +2,7 @@ import { Box, Button, TextField, FormControl, InputLabel, Select, MenuItem} from
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Header from "../../components/Header";
+import Header from "../../components/DasboardHeader.jsx";
 
 const Ban = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
@@ -34,35 +34,28 @@ const Ban = () => {
               gap="30px"
               gridTemplateColumns="repeat(4, minmax(0, 1fr))"
               sx={{
-                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
+                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },    // To target all the direct children of this box component.
               }}
             >
               <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="First Name"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.firstName}
-                name="firstName"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Last Name"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.lastName}
-                name="lastName"
-                error={!!touched.lastName && !!errors.lastName}
-                helperText={touched.lastName && errors.lastName}
-                sx={{ gridColumn: "span 2" }}
-              />
+                  fullWidth
+                  variant="filled"
+                  type="text"
+                  label="Username"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.username}
+                  name="username"
+                  error={!!touched.username && !!errors.username}
+                  helperText={touched.username && errors.username}
+                  sx={{
+                    gridColumn: "span 4",
+                    '& .MuiFilledInput-root': {
+                      background: '#c2c2c2',
+                      color: 'black',
+                    },
+                  }}
+                />
               <TextField
                 fullWidth
                 variant="filled"
@@ -74,7 +67,13 @@ const Ban = () => {
                 name="email"
                 error={!!touched.email && !!errors.email}
                 helperText={touched.email && errors.email}
-                sx={{ gridColumn: "span 4" }}
+                sx={{
+                  gridColumn: "span 4",
+                  '& .MuiFilledInput-root': {
+                    background: '#c2c2c2',
+                    color: 'black',
+                  },
+                }}
               />
 
                
@@ -89,7 +88,13 @@ const Ban = () => {
                 name="duration"
                 error={!!touched.duration && !!errors.duration}
                 helperText={touched.duration && errors.duration}
-                sx={{ gridColumn: "span 4" }}
+                sx={{
+                  gridColumn: "span 4",
+                  '& .MuiFilledInput-root': {
+                    background: '#c2c2c2',
+                    color: 'black',
+                  },
+                }}
                 >
                 <MenuItem value="2 weeks">2 Weeks</MenuItem>
                 <MenuItem value="1 months">1 Month</MenuItem>
@@ -110,7 +115,13 @@ const Ban = () => {
                 name="reason"
                 error={!!touched.reason && !!errors.reason}
                 helperText={touched.reason && errors.reason}
-                sx={{ gridColumn: "span 4" }}
+                sx={{
+                  gridColumn: "span 4",
+                  '& .MuiFilledInput-root': {
+                    background: '#c2c2c2',
+                    color: 'black',
+                  },
+                }}
               />
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
@@ -127,15 +138,16 @@ const Ban = () => {
 
 
 const checkoutSchema = yup.object().shape({
-  firstName: yup.string().required("required"),
-  lastName: yup.string().required("required"),
+  
+  username: yup.string().required("required"),
   email: yup.string().email("invalid email").required("required"),
   duration: yup.string().required("required"),
   reason: yup.string().max(100, "Reason must be at most 100 characters").required("required")
 });
+
+
 const initialValues = {
-  firstName: "",
-  lastName: "",
+  username: "",
   email: "",
   contact: "",
   address: "",
@@ -143,5 +155,4 @@ const initialValues = {
   duration: "",
   reason: ""
 };
-
 export default Ban;
