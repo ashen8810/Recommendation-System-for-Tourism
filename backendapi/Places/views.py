@@ -121,3 +121,11 @@ class PlaceSearchView(ListAPIView):
     # pagination_class = pageNumberPagination
     filter_backends = SearchFilter, OrderingFilter
     search_fields = ("PlaceName", "Category")
+
+
+class UserImagesView(ListAPIView):
+    serializer_class = ImageSerializer
+
+    def get_queryset(self):
+        user_id = self.kwargs["user_id"]
+        return PlaceImages.objects.filter(placeID__userId=user_id)

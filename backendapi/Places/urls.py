@@ -1,5 +1,11 @@
 from django.urls import path
-from Places.views import PlaceList, CommentList, ImageList, PlaceSearchView
+from Places.views import (
+    PlaceList,
+    CommentList,
+    ImageList,
+    PlaceSearchView,
+    UserImagesView,
+)
 
 # from account.views import UserRegistrationView
 urlpatterns = [
@@ -7,4 +13,5 @@ urlpatterns = [
     path("comments/", CommentList.as_view(), name="comments"),
     path("images/", ImageList.as_view(), name="images"),
     path("place/search/", PlaceSearchView.as_view(), name="place_search"),
+    path("user-images/<str:user_id>/", UserImagesView.as_view(), name="user-images"),
 ]
