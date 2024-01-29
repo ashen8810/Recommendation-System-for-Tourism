@@ -205,6 +205,7 @@ const handleSubmit =async (e)=>{
               <img src={Google} alt="Logo" className="google-image" />
               Signup with Google
             </button>
+          
             <button className="facebook-button">
             <img src={Facebook} alt="Logo" className="facebook-image" />
               Signup with Facebook
@@ -212,12 +213,18 @@ const handleSubmit =async (e)=>{
           </div>
         </form>
 
+      
         <div className="bottom">
           Already have an account?
           <a className="log" href="/Login"> Log in</a>
         </div>
+
+        
       </div>
+
     </div>
+
+   
     </>
 
   );

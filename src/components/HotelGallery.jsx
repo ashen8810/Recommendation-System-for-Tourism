@@ -156,9 +156,37 @@ const images= [
     }
         
     ];
-    
+
+
+//#####################################################################################################3
+//As we haven't figured out the images table correctly i have used base64 image from the table. If you need the previous gallery just uncomment the data and comment out the useeffect hook
+
+// import { useState,useEffect } from 'react';
+// import axios from "axios";
     
 const Gallery = () => {
+
+
+    // const [images, setImages] = useState([]);
+    // let user = JSON.parse(localStorage.getItem('user')) 
+    // const userId=user.userId;
+
+    // useEffect(() => {
+   
+    //     const fetchImages = async () => {
+    //       try {
+    //         const response = await axios.get(`http://localhost:8000/api/places/user-images/${userId}/`);
+    
+    //         setImages(response.data.results);
+    //       } catch (error) {
+    //         console.error("Error fetching images:", error.message);
+    //       }
+    //     };
+    
+    //     fetchImages();
+    //   }, [userId]);
+
+
     return (
       <div className="gallery">
         {images.map((image, index) => (
@@ -166,7 +194,7 @@ const Gallery = () => {
             key={index}
             className="gallery__item"
             src={image.image}
-            
+            alt={`Image ${index}`}
           />
         ))}
       </div>

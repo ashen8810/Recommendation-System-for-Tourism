@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import {FaCamera,FaPlus} from 'react-icons/fa'
 import '../../assets/CSS/Gallery.css';
 import '../../components/MySchedules/MySchedules.css';
@@ -11,11 +11,17 @@ import content from '../../components/MySchedules/schedules';
 import ProfileImg from 'components/UpdateProfileImage/Profile';
 import Profile from 'components/UpdateProfileImage/Profile';
 import EditProfilePopup from 'components/EditProfilePopup';
+import axios from "axios";
 
 const TavellerProfile = () => {
+
+     let user = JSON.parse(localStorage.getItem('user')) 
+     const userId=user.userId;
   
     const[clicked,setIsClicked] = useState(false);
     const[showMore,setShowMore] = useState(true);
+    const [schedules, setSchedules] = useState([]);
+    
 
     const handleShowMore = () =>{
       setShowMore(!showMore);
@@ -27,6 +33,28 @@ const TavellerProfile = () => {
     const closePopup=()=>{
       setIsClicked(false);
     }
+
+
+    // useEffect(() => {
+      
+    //   const fetchSchedules = async () => {
+    //     try {
+    //       const response = await axios.get(`http://localhost:8000/api/schedules/user-schedules/${userId}/`);
+  
+    //       setSchedules(response.data.results);
+    //     } catch (error) {
+    //       console.error("Error fetching schedules:", error.message);
+    //     }
+    //   };
+  
+    //   fetchSchedules();
+    // }, [userId]);
+
+
+    
+    
+
+    
   return (
     <div className='main'>
         <div className='banner'>
@@ -35,7 +63,7 @@ const TavellerProfile = () => {
                
             </div>
             <div className='desc'>
-                <ProfileDetails/>
+                <ProfileDetails user={user}/>
                 
             </div>
             <div className='camera' onClick={() =>{
@@ -68,6 +96,8 @@ const TavellerProfile = () => {
           key = {content.key}
           name ={content.name}
           description = {content.Description}
+
+          // schedule={schedule}
         />
 
         )): null} 

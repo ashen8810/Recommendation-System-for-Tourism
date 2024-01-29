@@ -111,7 +111,7 @@ const HomeSideBar = (props,onClose) => {
         }
 
 
-        {/* <MenuItem icon={<HikingIcon/>}
+        <MenuItem icon={<HikingIcon/>}
         component={<Link to="Traveler Profile" className="link"/>}
         > Traveller Profile </MenuItem>
 
@@ -120,7 +120,7 @@ const HomeSideBar = (props,onClose) => {
         > Hotel Owner Profile</MenuItem>
         
 
-        <MenuItem icon={<AdminPanelSettingsOutlinedIcon/>}
+        {/* <MenuItem icon={<AdminPanelSettingsOutlinedIcon/>}
         component={<Link to="Dashboard" className="link"/>}
         > Dahsboard</MenuItem> */}
 
