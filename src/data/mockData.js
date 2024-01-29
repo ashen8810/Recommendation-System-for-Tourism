@@ -1,5 +1,147 @@
 import { tokens } from "../theme";
 
+export const cardsData = [
+  {
+    title: "Users",
+    amount: 12568,
+  },
+  {
+    title: "Schedules",
+    amount: 100000,
+  },
+  {
+    title: "Itenaries",
+    
+    amount: 1000,
+  },
+  {
+    title: "Hotels",
+    
+    amount: 20000,
+  },
+];
+
+
+export const NotificationData = [
+  {
+      id: 1,
+      description:"Anya used offensive language.actions needed."
+  },
+  {
+    id: 1,
+    description:"Anya used offensive language.actions needed."
+  },
+  {
+    id: 1,
+    description:"Anya used offensive language.actions needed."
+  },
+  {
+   id: 1,
+   description:"Anya used offensive language.actions needed."
+  },
+  
+];
+
+
+export const groupNumber = (number) => {
+  return parseFloat(number.toFixed(2)).toLocaleString("en", {
+    useGrouping: true,
+  });
+};
+
+
+export const userData = [
+  {
+    userName: 'John',
+    userId: '0001',
+    email: 'johnDoe@gmail.com',
+    country: 'Kentucky',
+    user_type:'traveller'
+  },
+
+  {
+    userName: 'John',
+    userId: '0001',
+    email: 'johnDoe@gmail.com',
+    country: 'Kentucky',
+    user_type:'traveller'
+  },
+
+  {
+    userName: 'John',
+    userId: '0001',
+    email: 'johnDoe@gmail.com',
+    country: 'Kentucky',
+    user_type:'traveller'
+  },
+
+  {
+    userName: 'John',
+    userId: '0001',
+    email: 'johnDoe@gmail.com',
+    country: 'Kentucky',
+    user_type:'traveller'
+  },
+
+  {
+    userName: 'John',
+    userId: '0001',
+    email: 'johnDoe@gmail.com',
+    country: 'Kentucky',
+    user_type:'traveller'
+  },
+
+  {
+    userName: 'John',
+    userId: '0001',
+    email: 'johnDoe@gmail.com',
+    country: 'Kentucky',
+    user_type:'traveller'
+  },
+
+  {
+    userName: 'John',
+    userId: '0001',
+    email: 'johnDoe@gmail.com',
+    country: 'Kentucky',
+    user_type:'traveller'
+  },
+
+  {
+    userName: 'John',
+    userId: '0001',
+    email: 'johnDoe@gmail.com',
+    country: 'Kentucky',
+    user_type:'traveller'
+  },
+
+  {
+    userName: 'John',
+    userId: '0001',
+    email: 'johnDoe@gmail.com',
+    country: 'Kentucky',
+    user_type:'traveller'
+  },
+
+  {
+    userName: 'John',
+    userId: '0001',
+    email: 'johnDoe@gmail.com',
+    country: 'Kentucky',
+    user_type:'traveller'
+  },
+
+  {
+    userName: 'John',
+    userId: '0001',
+    email: 'johnDoe@gmail.com',
+    country: 'Kentucky',
+    user_type:'traveller'
+  },
+
+]
+
+
 export const mockDataTeam = [
   {
     id: 1,

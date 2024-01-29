@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import Topbar from "./pages/global/Topbar";
 // import Sidebar from "./pages/global/Sidebar";
-import Dashboard from "./pages/dashboard/Dashboard";
+import Dashboard from "./pages/Board/dashboard/Dashboard";
 import Team from "./pages/team";
 import Contacts from "./pages/contacts";
 import Bar from "./pages/bar";
@@ -13,8 +13,8 @@ import Geography from "./pages/geography";
 import { CssBaseline, Switch, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./pages/calendar/calendar";
-import Delete from "./pages/delete/Delete";
-import Ban from "./pages/ban/Ban";
+import Delete from "./pages/Board/delete/Delete";
+import Ban from "./pages/Board/ban/Ban";
 import Advertisment from "./pages/advertisment";
 import "./App.css";
 import Preferences from "./pages/Preferences/Preferences";
@@ -55,9 +55,10 @@ import ContactUs from "./pages/ContactUs/ContactUs";
 import Emergency from "./pages/Emergency/Emergency";
 import FAQ from "./pages/FAQ/FAQ";
 import About from "./pages/About/About";
-import DashboardPage from './pages/AdminDashboard/Routes'
-import Create  from './pages/create/Create'
-import Layout from "components/Layout";
+import DashboardPage from './pages/Board/AdminDashboard/Routes'
+import Create  from './pages/Board/create/Create'
+import Layout from "./components/Dashboard/Layout/Layout";
+import User from "pages/Board/users/Users";
 
 function App() {
   return (
@@ -70,15 +71,17 @@ function App() {
         <Route path='/' element={<Homepage />} />
         <Route path='/otp/verify' element={<VerifyEmail/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='Dashboard' element={<DashboardPage/>} />
-        <Route element={<Layout/>}>  
-
-              {/* <Route path='/' element={<Dashboard/>}/> */}
-              <Route path='/Dashboard' element={<Dashboard/>}/>
-              <Route path='/Create' element ={<Create/>}/>
-              <Route path='/Ban' element ={<Ban/>}/>
-              <Route path='/Delete' element ={<Delete/>}/>
-        </Route>      
+        <Route path='/Dashboard' element={<DashboardPage/>} >
+         
+          <Route element={<Layout/>}>
+              <Route path='/Dashboard/' element={<Dashboard/>} />
+              <Route path='/Dashboard/Dashboard' element={<Dashboard/>} />
+              <Route path='/Dashboard/Users' element={<User/>} />
+              <Route path='/Dashboard/Create' element={<Create/>}/>
+              <Route path='/Dashboard/Ban' element={<Ban/>}/>
+              <Route path='/Dashboard/Delete' element={<Delete/>}/>
+          </Route>
+        </Route>  
              
         <Route path='Traveler Profile' element={<TavellerProfile />} />
         <Route path='Hotel Owner' element={<HotelOwnerProfile />} />
