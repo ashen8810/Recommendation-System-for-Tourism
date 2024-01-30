@@ -1,5 +1,5 @@
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, generics
 from rest_framework.views import APIView
 from account.serializers import (
     UserChangePasswordSerializer,
@@ -254,3 +254,28 @@ class LogoutApiView(GenericAPIView):
         return Response(
             {"message": "logout successful"}, status=status.HTTP_204_NO_CONTENT
         )
+
+
+class UserDeleteView(generics.DestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserProfileSerializer
+
+    lookup_url_kwarg = "email"
+
+    def get_object(self):
+        email = self.request.data.get("email")
+        return self.get_queryset().get(email=email)
+
+    def destroy(self, request, *args, **kwargs):
+        email = request.data.get("email", None)
+
+        if not email:
+            return Response(
+                {"error": "Email must be provided in the request body."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        instance = self.get_object()
+        self.perform_destroy(instance)
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
