@@ -25,13 +25,16 @@ class PlaceList(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def put(self, request, place_id):
+    def put(self, request, placeId):
         try:
-            place = Place.objects.get(PlaceId=place_id)
+            place = Place.objects.get(placeId=placeId)
+            print(place)
         except Place.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         serializer = PlaceSerializer(place, data=request.data)
+        print(serializer.is_valid())
+
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -63,7 +66,7 @@ class CommentDetail(APIView):
 
     def get(self, request, comment_id):
         try:
-            comment = PlaceComments.objects.get(CommentId=comment_id)
+            comment = PlaceComments.objects.get(commentId=comment_id)
         except PlaceComments.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -72,7 +75,7 @@ class CommentDetail(APIView):
 
     def put(self, request, comment_id):
         try:
-            comment = PlaceComments.objects.get(CommentId=comment_id)
+            comment = PlaceComments.objects.get(commentId=comment_id)
         except PlaceComments.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -100,7 +103,7 @@ class ImageList(APIView):
 class ImageDetail(APIView):
     def get(self, request, image_id):
         try:
-            image = PlaceImages.objects.get(ImageId=image_id)
+            image = PlaceImages.objects.get(imageId=image_id)
         except PlaceImages.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -109,7 +112,7 @@ class ImageDetail(APIView):
 
     def put(self, request, image_id):
         try:
-            image = PlaceImages.objects.get(ImageId=image_id)
+            image = PlaceImages.objects.get(imageId=image_id)
         except PlaceImages.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 

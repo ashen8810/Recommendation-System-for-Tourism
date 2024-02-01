@@ -2,7 +2,7 @@ from django.db import models
 from account.models import User
 
 class Schedule(models.Model):
-    scheduleId = models.CharField(max_length=10, primary_key=True)
+    scheduleId = models.AutoField( primary_key=True)
     partner = models.CharField(max_length=50)
     fromDate = models.DateTimeField()
     toDate = models.DateTimeField()
