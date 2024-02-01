@@ -2,8 +2,13 @@ from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Place, PlaceComments, PlaceImages
-from .serializer import PlaceSerializer, CommentSerializer, ImageSerializer
+from .models import Place, PlaceComments, PlaceImages, ReviewPlace
+from .serializer import (
+    PlaceSerializer,
+    CommentSerializer,
+    ImageSerializer,
+    PlaceDetailSerializer,
+)
 from rest_framework.filters import SearchFilter, OrderingFilter
 
 
@@ -20,13 +25,16 @@ class PlaceList(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def put(self, request, place_id):
+    def put(self, request, placeId):
         try:
-            place = Place.objects.get(PlaceId=place_id)
+            place = Place.objects.get(placeId=placeId)
+            print(place)
         except Place.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         serializer = PlaceSerializer(place, data=request.data)
+        print(serializer.is_valid())
+
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -58,7 +66,7 @@ class CommentDetail(APIView):
 
     def get(self, request, comment_id):
         try:
-            comment = PlaceComments.objects.get(CommentId=comment_id)
+            comment = PlaceComments.objects.get(commentId=comment_id)
         except PlaceComments.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -67,7 +75,7 @@ class CommentDetail(APIView):
 
     def put(self, request, comment_id):
         try:
-            comment = PlaceComments.objects.get(CommentId=comment_id)
+            comment = PlaceComments.objects.get(commentId=comment_id)
         except PlaceComments.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -95,7 +103,7 @@ class ImageList(APIView):
 class ImageDetail(APIView):
     def get(self, request, image_id):
         try:
-            image = PlaceImages.objects.get(ImageId=image_id)
+            image = PlaceImages.objects.get(imageId=image_id)
         except PlaceImages.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -104,7 +112,7 @@ class ImageDetail(APIView):
 
     def put(self, request, image_id):
         try:
-            image = PlaceImages.objects.get(ImageId=image_id)
+            image = PlaceImages.objects.get(imageId=image_id)
         except PlaceImages.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -121,3 +129,23 @@ class PlaceSearchView(ListAPIView):
     # pagination_class = pageNumberPagination
     filter_backends = SearchFilter, OrderingFilter
     search_fields = ("PlaceName", "Category")
+class UserImagesView(ListAPIView):
+    serializer_class = ImageSerializer
+
+    def get_queryset(self):
+        user_id = self.kwargs["user_id"]
+        return PlaceImages.objects.filter(placeID__userId=user_id)
+
+
+class PlaceDetailsView(ListAPIView):
+    serializer_class = PlaceDetailSerializer
+
+    def get_queryset(self):
+        places = Place.objects.all()
+
+        for place in places:
+            place.reviews = ReviewPlace.objects.filter(placeId=place)
+            place.comments = PlaceComments.objects.filter(placeId=place)
+            place.images = PlaceImages.objects.filter(placeID=place)
+
+        return places

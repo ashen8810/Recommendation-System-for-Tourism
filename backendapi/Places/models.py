@@ -44,7 +44,7 @@ from django.db import models
 from account.models import User, Admin
 
 class Place(models.Model):
-    placeId = models.CharField(max_length=8, primary_key=True)
+    placeId = models.AutoField( primary_key=True)
     userId = models.ForeignKey(User, on_delete=models.CASCADE)
     adminId = models.ForeignKey(Admin, on_delete=models.CASCADE)
     createdDate = models.DateTimeField(auto_now_add=True)
