@@ -1,5 +1,7 @@
 from django.db import models
 from account.models import User
+import random
+import string
 
 
 class Hotel(models.Model):
@@ -48,25 +50,24 @@ class HotelBeds(models.Model):
 
 
 class HotelComments(models.Model):
-    commentID = models.CharField(max_length=7, primary_key=True)
+    commentID = models.CharField(max_length=7, primary_key=True, unique=True)
     hotelID = models.ForeignKey(Hotel, on_delete=models.CASCADE)
     comment = models.CharField(max_length=255)
     isApproved = models.CharField(max_length=3)
 
-    # prefix = "ID"
-    # counter = 1
+    prefix = "ID"
+    counter = 1
 
-    # def generate_unique_id(self):
-    #     unique_id = f"{self.prefix}{self.counter}"
-    #     self.counter += 1
-    #     return unique_id
+    @classmethod
+    def generate_unique_id(cls):
+        random_digits = "".join(random.choices(string.digits, k=4))
+        return f"C{random_digits}"
 
-    # def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):
+        if not self.commentID:
+            self.commentID = self.generate_unique_id()
 
-    #     if not self.commentID:
-    #         self.commentID = self.generate_unique_id()
-
-    #     super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Comment ID: {self.commentID}, Hotel ID: {self.hotelID.hotelID}, Approved: {self.isApproved}"
