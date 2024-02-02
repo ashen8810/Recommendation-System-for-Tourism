@@ -148,7 +148,7 @@ class User(AbstractBaseUser):
     auth_provider = models.CharField(
         max_length=50, blank=False, null=False, default=AUTH_PROVIDERS.get("email")
     )
-    isVerified = models.BooleanField(default=False)
+    isVerified = models.CharField(max_length=8, db_column="isVerified", default="False")
 
     # last_login = "none"
 
