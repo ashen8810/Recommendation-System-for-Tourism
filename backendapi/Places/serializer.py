@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Place, PlaceComments, PlaceImages, ReviewPlace
+from .models import Place, PlaceComments, ReviewPlace
 
 
 # will edit later
@@ -15,12 +15,6 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ImageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PlaceImages
-        fields = "__all__"
-
-
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = ReviewPlace
@@ -30,7 +24,6 @@ class ReviewSerializer(serializers.ModelSerializer):
 class PlaceDetailSerializer(serializers.ModelSerializer):
     reviews = ReviewSerializer(many=True, read_only=True)
     comments = CommentSerializer(many=True, read_only=True)
-    images = ImageSerializer(many=True, read_only=True)
 
     class Meta:
         model = Place

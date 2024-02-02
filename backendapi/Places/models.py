@@ -58,6 +58,9 @@ class Place(models.Model):
     closingTime = models.TimeField()
     isUserUploaded = models.BooleanField()
     description = models.CharField(max_length=500)
+    imageID = models.CharField(max_length=7,auto_created=True,null=True)
+    image = models.TextField(max_length=20000)
+
 
     def __str__(self):
         return f"Place ID: {self.placeId}, Name: {self.placeName}, Category: {self.category}"
@@ -80,10 +83,4 @@ class PlaceComments(models.Model):
     def __str__(self):
         return f"Comment ID: {self.commentId}, Place ID: {self.placeId.placeId}, Approved: {self.isApproved}"
 
-class PlaceImages(models.Model):
-    imageID = models.CharField(max_length=7, primary_key=True)
-    placeID = models.ForeignKey(Place, on_delete=models.CASCADE)
-    image = models.TextField(max_length=20000)
 
-    def __str__(self):
-        return f"Image ID: {self.imageID}, Place ID: {self.placeID.placeId}"
