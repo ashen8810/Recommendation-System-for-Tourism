@@ -7,12 +7,18 @@ import { geosearch } from "esri-leaflet-geocoder";
 import "../../App.css";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import L from "leaflet";
 
-const defaultCenter = [80.0, 7.0];
-const defaultZoom = 5;
+const defaultCenter = [7.0, 80.0];
+const defaultZoom = 9;
 
 export default function Map(props) {
-  const markerPosition = [51.505, -0.09]; // Replace with the coordinates of the location you want to mark
+  const markerIcon = L.icon({
+    iconUrl: "loc.png", // Replace 'marker-icon.png' with your marker icon image file path
+    popupAnchor: [1, -34], // Set the popup anchor point
+  });
+
+  // const markerPosition = [51.505, -0.09]; // Replace with the coordinates of the location you want to mark
   // 51.505, -0.09props.xcoord,props.ycoord
   return (
     <div>
@@ -27,7 +33,10 @@ export default function Map(props) {
           url="https://{s}.tile.osm.org/{z}/{x}/{y}.png"
         />
 
-        <Marker position={markerPosition}></Marker>
+        <Marker
+          position={[props.xcoord, props.ycoord]}
+          icon={markerIcon}
+        ></Marker>
       </MapContainer>
     </div>
   );
