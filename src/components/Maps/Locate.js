@@ -45,6 +45,7 @@ function MapClickHandler({ setClickedPosition }) {
   const map = useMapEvents({
     click(e) {
       setClickedPosition(e.latlng); // Set clicked position coordinates
+      localStorage.setItem("coords", e.latlng);
     },
   });
 
