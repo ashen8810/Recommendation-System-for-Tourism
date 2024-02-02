@@ -53,6 +53,21 @@ class HotelComments(models.Model):
     comment = models.CharField(max_length=255)
     isApproved = models.CharField(max_length=3)
 
+    # prefix = "ID"
+    # counter = 1
+
+    # def generate_unique_id(self):
+    #     unique_id = f"{self.prefix}{self.counter}"
+    #     self.counter += 1
+    #     return unique_id
+
+    # def save(self, *args, **kwargs):
+
+    #     if not self.commentID:
+    #         self.commentID = self.generate_unique_id()
+
+    #     super().save(*args, **kwargs)
+
     def __str__(self):
         return f"Comment ID: {self.commentID}, Hotel ID: {self.hotelID.hotelID}, Approved: {self.isApproved}"
 

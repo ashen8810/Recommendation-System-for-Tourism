@@ -63,7 +63,6 @@ class AdminRegistrationView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        # Step 2: Create and save regular user with a foreign key reference to admin user
         user_data = request.data.copy()
         user_data["adminId"] = admin_user.adminId
         user_data["userName"] = admin_user.adminName
@@ -72,7 +71,6 @@ class AdminRegistrationView(APIView):
         if user_serializer.is_valid():
             user = user_serializer.save()
 
-            # Step 3: Generate token for the regular user
             token = get_tokens_for_user(user)
 
             return Response(
@@ -80,7 +78,6 @@ class AdminRegistrationView(APIView):
                 status=status.HTTP_201_CREATED,
             )
         else:
-            # Rollback admin user creation if regular user creation fails
             admin_user.delete()
 
             return Response(
@@ -278,4 +275,6 @@ class UserDeleteView(generics.DestroyAPIView):
         instance = self.get_object()
         self.perform_destroy(instance)
 
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(
+            {"msg": "User deleted successfully"}, status=status.HTTP_204_NO_CONTENT
+        )

@@ -11,6 +11,7 @@ urlpatterns = [
     path("api/dashboard/", include("dashboard.urls")),
     path("api/user/", include("social_account.urls")),
     path("api/schedules/", include("schedule.urls")),
+    path("api/hotel/", include("hotel.urls")),
 ]
 
 
