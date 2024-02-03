@@ -231,7 +231,18 @@ const UploadPlaces = () => {
                   onChange={(e) => setPlaceName(e.target.value)}
                 />
               </label>
-
+                
+              <label className="addPlaceFormLabel">
+                Description of the Place :<br></br>
+                <textarea
+                  type="text"
+                  className="placeNameInput"
+                  placeholder="Description of the Place ..."
+                  name="placeNameInput"
+                  onChange={(e) => setPlaceDescription(e.target.value)}
+                />
+              </label>
+              
               <label className="addPlaceFormLabel">
                 Website :<br></br>
                 <input
