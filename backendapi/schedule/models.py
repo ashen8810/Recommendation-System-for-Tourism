@@ -9,7 +9,8 @@ class Schedule(models.Model):
     toDate = models.DateTimeField()
     destination = models.CharField(max_length=500)
     description = models.CharField(max_length=255)
-
+    type = models.CharField(max_length=50)
+    userId = models.ForeignKey(User, on_delete=models.CASCADE)
     class Meta:
         app_label = "schedule"
 
@@ -17,19 +18,3 @@ class Schedule(models.Model):
         return f"Schedule ID: {self.scheduleId}, Partner: {self.partner}, Destination: {self.destination}"
 
 
-class UserSchedule(models.Model):
-    userId = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    scheduleId = models.ForeignKey(Schedule, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return (
-            f"User ID: {self.userId.userId}, Schedule ID: {self.scheduleId.scheduleId}"
-        )
-
-
-class TripType(models.Model):
-    scheduleId = models.ForeignKey(Schedule, on_delete=models.CASCADE)
-    type = models.CharField(max_length=50, primary_key=True)
-
-    def __str__(self):
-        return f"Schedule ID: {self.scheduleId.scheduleId}, Type: {self.type}"

@@ -8,7 +8,7 @@ from datetime import datetime
 from rest_framework.generics import ListAPIView
 
 # from rest_framework import permissions
-from .models import UserSchedule, Schedule
+from .models import  Schedule
 from .serializers import ScheduleSerializer
 
 
@@ -18,7 +18,7 @@ class UserScheduleListView(ListAPIView):
 
     def get_queryset(self):
         user_id = self.kwargs["user_id"]
-        user_schedules = UserSchedule.objects.filter(userId_id=user_id).select_related(
+        user_schedules = Schedule.objects.filter(userId_id=user_id).select_related(
             "scheduleId"
         )
         schedules = [user_schedule.scheduleId for user_schedule in user_schedules]
@@ -58,4 +58,5 @@ class SchedulerCreate(APIView):
             data.append({"day": "Day " + str(i + 1), "plans": tr, "hotel": ho})
 
         out = {"itinerary": data}
+        
         return Response(out, status=status.HTTP_200_OK)

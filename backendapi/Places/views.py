@@ -12,13 +12,14 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 
 
 class PlaceList(APIView):
-    def get(self, request):
+    def get():
         places = Place.objects.all()
         serializer = PlaceSerializer(places, many=True)
         return Response(serializer.data)
 
     def post(self, request):
         serializer = PlaceSerializer(data=request.data)
+        print(request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -102,6 +103,6 @@ class PlaceDetailsView(ListAPIView):
         for place in places:
             place.reviews = ReviewPlace.objects.filter(placeId=place)
             place.comments = PlaceComments.objects.filter(placeId=place)
-        print(places)
 
         return places
+    

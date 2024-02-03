@@ -56,6 +56,7 @@ class Place(models.Model):
     website = models.CharField(max_length=150)
     openingTime = models.TimeField()
     closingTime = models.TimeField()
+    ratings = models.IntegerField(default=0)
     isUserUploaded = models.BooleanField()
     description = models.CharField(max_length=500)
     imageID = models.CharField(max_length=7,auto_created=True,null=True)
