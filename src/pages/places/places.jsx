@@ -197,7 +197,7 @@ const Places = () => {
                 <div className="placeCard_content">
                   <h3 className="placeName">{data.placeName}</h3>
                   <div className="placeRating">
-                    {[...Array(data.rating)].map((rating, index) => (
+                    {[...Array(data.ratings)].map((rating, index) => (
                       <FaStar id={index + 1} key={index} />
                     ))}
                   </div>
