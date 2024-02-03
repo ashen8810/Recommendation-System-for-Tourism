@@ -186,12 +186,10 @@ const UploadPlaces = () => {
       placeLocationX1: localStorage.getItem("coords"),
       placeCategory1: placeCategory,
     };
-    alert(postData.placeCategory1);
     axios
       .post("http://127.0.0.1:8000/api/places/places/", postData)
       .then((response) => {
         // Handle successful response
-        console.log("Response:", postData);
         console.log("Response:", response.data);
       })
       .catch((error) => {
