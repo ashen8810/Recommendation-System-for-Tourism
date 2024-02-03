@@ -1,13 +1,11 @@
 import React, { Component } from "react";
+// import { useEffect, useState } from "react";
+import axios from "axios";
+import {Navigate,useNavigate } from "react-router-dom";
+
 import "./styles.css";
-import {
-  Stepper,
-  Step,
-  StepLabel,
-  Button,
-  Typography,
-  TextField,
-} from "@mui/material";
+import { Stepper, Step, StepLabel } from "@mui/material";
+
 
 const styles = {
   container: {
@@ -105,18 +103,20 @@ class MultiStepForm extends Component {
         min: 0,
         max: 0,
       },
+      redirectToSchedule :false,
     };
   }
 
   validateStep = () => {
     const { formData, step } = this.state;
+    
     const errors = {};
 
     if (step === 0) {
-      if (formData.dest == "") {
+      if (formData.dest === "") {
         errors.dest = "dest is required";
       }
-      if (formData.people == 0) {
+      if (formData.people === 0) {
         errors.people = "Number of people is required";
       }
     } else if (step === 1) {
@@ -134,7 +134,7 @@ class MultiStepForm extends Component {
         errors.trip = "Description is required";
       }
     } else if (step === 3) {
-      if (formData.min == "0$") {
+      if (formData.min === "0$") {
         errors.min = "value is required";
       }
       if (formData.max < 1) {
@@ -174,15 +174,44 @@ class MultiStepForm extends Component {
   };
 
   submitForm = () => {
-    // You can add a final validation step here if needed
-
-    // Handle form submission here, e.g., send data to the server
+  
     console.log("Form submitted:", this.state.formData);
+    axios
+      .post(
+        "http://127.0.0.1:8000/api/schedule/createSchedule/",
+        this.state.formData
+      )
+      .then((response) => {
+        // Handle success
+        console.log("API response:", JSON.stringify(response.data.itinerary));
+
+        localStorage.setItem(
+          "schedule",
+          JSON.stringify(response.data.itinerary)
+
+          
+        );
+       
+        // Potentially update state or notify the user about successful form submission
+        
+      })
+      .catch((error) => {
+        // Handle error
+        console.error("Error submitting form:", error);
+        // Potentially update state or notify the user about the error
+      });
+
+      this.setState({redirectToSchedule:true})
+      
   };
 
   render() {
     const { step, formData, errors } = this.state;
-
+    if(this.state.redirectToSchedule){
+      return <Navigate to= "/Schedules"/>
+      
+    }
+   
     return (
       <div style={{ padding: "20px" }}>
         <Stepper activeStep={step} alternativeLabel>
@@ -212,6 +241,9 @@ class MultiStepForm extends Component {
                 <option value="Polonnaruwa">Polonnaruwa</option>
                 <option value="Galle">Galle</option>
                 <option value="Matara">Matara</option>
+                <option value="Colombo">Colombo</option>
+                <option value="Negombo">Negombo</option>
+
                 <option value="Divulapitiya">Divulapitiya</option>
               </select>
               {errors && <div style={styles.errorStyles}>{errors.dest}</div>}
@@ -315,13 +347,14 @@ class MultiStepForm extends Component {
               </button>
             )}
             {step === 3 && (
-              <button onClick={this.submitForm} style={styles.button}>
+              <button onClick={this.submitForm } style={styles.button}>
                 Submit
               </button>
             )}
           </div>
         </div>
       </div>
+      
     );
   }
 }
