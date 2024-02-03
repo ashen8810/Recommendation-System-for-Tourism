@@ -1,8 +1,14 @@
 from rest_framework import serializers
-from .models import HotelComments
+from .models import HotelComments, Hotel
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    class meta:
+    hotelID = serializers.CharField(source="hotelID.hotelID")
+
+    class Meta:
         model = HotelComments
-        fields = ["commnet", "hotelID"]
+        fields = ["comment", "hotelID"]
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        return [(key, value) for key, value in representation.items()]

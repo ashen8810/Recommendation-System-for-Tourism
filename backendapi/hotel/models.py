@@ -51,7 +51,7 @@ class HotelBeds(models.Model):
 
 class HotelComments(models.Model):
     commentID = models.CharField(max_length=7, primary_key=True, unique=True)
-    hotelID = models.ForeignKey(Hotel, on_delete=models.CASCADE)
+    hotelID = models.ForeignKey(Hotel, on_delete=models.CASCADE, max_length=8)
     comment = models.CharField(max_length=255)
     isApproved = models.CharField(max_length=3)
 

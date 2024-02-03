@@ -8,10 +8,14 @@ from .serializers import CommentSerializer
 
 class SaveHotelCommentView(APIView):
     def post(self, request, *args, **kwargs):
-        serializer = CommentSerializer(request.data)
-        if serializer.is_valid:
-            comment = request.data.get("comment", "")
-            hotel_id = request.data.get("hotelId", "")
+        serializer = CommentSerializer(data=request.data)
+
+        if serializer.is_valid():
+            comment = serializer.validated_data.get("comment", "")
+            hotel_id = serializer.validated_data.get("hotelID", None)
+            # print(serializer.validated_data)
+            # comment = request.data.get("comment", "")
+            # hotel_id = request.data.get("hotelID", "")
 
             contains_profanity = profanity.contains_profanity(comment)
 
@@ -24,7 +28,7 @@ class SaveHotelCommentView(APIView):
                 )
             else:
                 hotel_comment = HotelComments.objects.create(
-                    hotelID_id=hotel_id,
+                    hotelID_id=hotel_id["hotelID"],
                     comment=comment,
                     isApproved="yes",
                 )
