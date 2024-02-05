@@ -4,7 +4,7 @@ from schedule.views import SchedulerCreate
 
 urlpatterns = [
     path(
-        "user-schedules/<str:user_id>/",
+        "user-schedules/",
         UserScheduleListView.as_view(),
         name="user-schedule-list",
     ),

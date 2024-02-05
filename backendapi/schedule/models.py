@@ -10,6 +10,8 @@ class Schedule(models.Model):
     destination = models.CharField(max_length=500)
     description = models.CharField(max_length=255)
     type = models.CharField(max_length=50)
+    att = models.CharField(max_length=500,null=True)
+    hotels = models.CharField(max_length=500,null=True)
     userId = models.ForeignKey(User, on_delete=models.CASCADE)
     class Meta:
         app_label = "schedule"
