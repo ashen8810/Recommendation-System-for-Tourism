@@ -278,3 +278,10 @@ class UserDeleteView(generics.DestroyAPIView):
         return Response(
             {"msg": "User deleted successfully"}, status=status.HTTP_204_NO_CONTENT
         )
+
+
+class UserCountView(APIView):
+    def get(self, request, *args, **kwargs):
+        total_users = User.objects.count()
+        data = {"total_users": total_users}
+        return Response(data, status=200)

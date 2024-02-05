@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import HotelComments
+from .models import HotelComments, Hotel
 from profanity import profanity
 from .serializers import CommentSerializer
 from .utils import Util
@@ -44,3 +44,10 @@ class SaveHotelCommentView(APIView):
                 )
         else:
             return Response(serializer.errors, status=400)
+
+
+class HotelCountView(APIView):
+    def get(self, request, *args, **kwargs):
+        total_hotels = Hotel.objects.count()
+        data = {"total_hotels": total_hotels}
+        return Response(data, status=200)
