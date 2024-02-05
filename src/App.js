@@ -66,6 +66,8 @@ import DashboardPage from "./pages/Board/AdminDashboard/Routes";
 import Create from "./pages/Board/create/Create";
 import Layout from "./components/Dashboard/Layout/Layout";
 import User from "pages/Board/users/Users";
+import TravelItinerary from "pages/Schedules/SchedulesPart";
+import ScheduleSize from "./pages/Schedules/Schedule";
 
 function App() {
   return (

@@ -178,7 +178,7 @@ const UploadPlaces = () => {
   };
 
   const handleClick = () => {
-    inputRef.current.click();
+    // inputRef.current.click();
     let postData = {
       placeName1: placeName,
       placeImage1: placeImage,
@@ -229,7 +229,7 @@ const UploadPlaces = () => {
                   onChange={(e) => setPlaceName(e.target.value)}
                 />
               </label>
-                
+
               <label className="addPlaceFormLabel">
                 Description of the Place :<br></br>
                 <textarea
@@ -240,7 +240,7 @@ const UploadPlaces = () => {
                   onChange={(e) => setPlaceDescription(e.target.value)}
                 />
               </label>
-              
+
               <label className="addPlaceFormLabel">
                 Website :<br></br>
                 <input

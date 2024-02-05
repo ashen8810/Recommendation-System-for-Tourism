@@ -9,8 +9,9 @@ import Header from "../../components/Header/Header";
 import Button from "@mui/material/Button";
 import TravelItinerary from "./SchedulesPart";
 import Map from "../../components/Maps/Leaflet";
+import { Schedule } from "@mui/icons-material";
 
-const app = () => {
+const ScheduleSize = () => {
   return (
     <>
       <div
@@ -42,7 +43,7 @@ const app = () => {
   );
 };
 
-export default app;
+export default ScheduleSize;
 
 // import React from "react";
 // import ZoomSlider from "../components/ZoomSlider/ZoomSlider";

@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 // import { useEffect, useState } from "react";
 import axios from "axios";
-import {Navigate,useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import "./styles.css";
 import { Stepper, Step, StepLabel } from "@mui/material";
-
 
 const styles = {
   container: {
@@ -103,13 +102,13 @@ class MultiStepForm extends Component {
         min: 0,
         max: 0,
       },
-      redirectToSchedule :false,
+      redirectToSchedule: false,
     };
   }
 
   validateStep = () => {
     const { formData, step } = this.state;
-    
+
     const errors = {};
 
     if (step === 0) {
@@ -174,26 +173,15 @@ class MultiStepForm extends Component {
   };
 
   submitForm = () => {
-  
     console.log("Form submitted:", this.state.formData);
     axios
       .post(
-        "http://127.0.0.1:8000/api/schedule/createSchedule/",
+        "http://127.0.0.1:8000/api/schedules/createSchedule/",
         this.state.formData
       )
       .then((response) => {
         // Handle success
         console.log("API response:", JSON.stringify(response.data.itinerary));
-
-        localStorage.setItem(
-          "schedule",
-          JSON.stringify(response.data.itinerary)
-
-          
-        );
-       
-        // Potentially update state or notify the user about successful form submission
-        
       })
       .catch((error) => {
         // Handle error
@@ -201,17 +189,15 @@ class MultiStepForm extends Component {
         // Potentially update state or notify the user about the error
       });
 
-      this.setState({redirectToSchedule:true})
-      
+    this.setState({ redirectToSchedule: true });
   };
 
   render() {
     const { step, formData, errors } = this.state;
-    if(this.state.redirectToSchedule){
-      return <Navigate to= "/Schedules"/>
-      
+    if (this.state.redirectToSchedule) {
+      return <Navigate to="/Schedules" />;
     }
-   
+
     return (
       <div style={{ padding: "20px" }}>
         <Stepper activeStep={step} alternativeLabel>
@@ -347,14 +333,13 @@ class MultiStepForm extends Component {
               </button>
             )}
             {step === 3 && (
-              <button onClick={this.submitForm } style={styles.button}>
+              <button onClick={this.submitForm} style={styles.button}>
                 Submit
               </button>
             )}
           </div>
         </div>
       </div>
-      
     );
   }
 }

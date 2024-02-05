@@ -1,53 +1,61 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./Schedule.css";
-class TravelItinerary extends React.Component {
-  render() {
-    const day1Plans = [
-      "Visit Museum",
-      "Explore Local Market",
-      "Lunch at a local restaurant",
-      "Sightseeing tour",
-    ];
 
-    const day2Plans = [
-      "Hiking in the mountains",
-      "Picnic by the lake",
-      "Dinner at a fancy restaurant",
-      "Stargazing",
-    ];
+const TravelItinerary = () => {
+  const [itineraryData, setItineraryData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    const hotels = ["Day 1: Hotel A", "Day 2: Hotel B"];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userId = 1; // Assuming the user ID is 1
+        const url = `http://127.0.0.1:8000/api/schedules/user-schedules/?user_id=${userId}`;
+        const response = await axios.get(url);
+        setItineraryData(response.data);
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+        setLoading(false);
+      }
+    };
 
-    return (
-      <div className="travel-itinerary">
-        <h2 className="itinerary-heading">Travel Itinerary</h2>
-        <div className="day">
-          <h3 className="day-heading">Day 1</h3>
+    fetchData();
+  }, []); // Empty dependency array, so it runs only once when the component mounts
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+  const days = itineraryData.map((day) => ({
+    day: day.day,
+    plans: day.plans,
+    hotel: day.hotel.length > 0 ? day.hotel[0] : null,
+  }));
+
+  return (
+    <div className="travel-itinerary">
+      <h2 className="itinerary-heading">Travel Itinerary</h2>
+      {days.map((day, index) => (
+        <div className="day" key={index}>
+          <h3 className="day-heading">{day.day}</h3>
           <ul className="plans-list">
-            {day1Plans.map((plan, index) => (
-              <li key={index} className="plan-item">
+            {day.plans.map((plan, planIndex) => (
+              <li key={planIndex} className="plan-item">
                 {plan}
               </li>
             ))}
           </ul>
-          <h4 className="hotel-heading">Hotel for Day 1</h4>
-          <p className="hotel-info">{hotels[0]}</p>
+          <h4 className="hotel-heading">Hotel for {day.day}</h4>
+          {day.hotel ? (
+            <p className="hotel-info">{day.hotel}</p>
+          ) : (
+            <p className="hotel-info">No hotel booked for {day.day}</p>
+          )}
         </div>
-        <div className="day">
-          <h3 className="day-heading">Day 2</h3>
-          <ul className="plans-list">
-            {day2Plans.map((plan, index) => (
-              <li key={index} className="plan-item">
-                {plan}
-              </li>
-            ))}
-          </ul>
-          <h4 className="hotel-heading">Hotel for Day 2</h4>
-          <p className="hotel-info">{hotels[1]}</p>
-        </div>
-      </div>
-    );
-  }
-}
+      ))}
+    </div>
+  );
+};
 
 export default TravelItinerary;
