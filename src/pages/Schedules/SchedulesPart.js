@@ -22,7 +22,7 @@ const TravelItinerary = () => {
     };
 
     fetchData();
-  }, []); // Empty dependency array, so it runs only once when the component mounts
+  }, []);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;

@@ -201,7 +201,6 @@ const Places = () => {
                       <FaStar id={index + 1} key={index} />
                     ))}
                   </div>
-                  {/* Rest of your JSX */}
                 </div>
               </div>
             );
