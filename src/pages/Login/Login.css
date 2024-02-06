@@ -104,9 +104,14 @@ button {
 }
 
 .bottom {
-    margin-top: 50px;
+    margin-top: 15px;
     text-align: center;
     font-size: small;
+}
+
+.fogot-password{
+    margin-bottom: 10px;
+    font-size: medium;
 }
 
 .reg{

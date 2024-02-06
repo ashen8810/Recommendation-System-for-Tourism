@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './Register.css';
 import Google from '../Login/google-logo.png';
-import Facebook from '../Login/google-logo.png';
+import Facebook from '../Login/facebook-logo.png';
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios"
@@ -118,13 +118,7 @@ const handleSubmit =async (e)=>{
        onClose()
     }
   }
- 
-
- 
-
 }
-
-
 
   return (
     <>
@@ -213,18 +207,15 @@ const handleSubmit =async (e)=>{
           </div>
         </form>
 
-      
         <div className="bottom">
           Already have an account?
           <a className="log" href="/Login"> Log in</a>
         </div>
 
-        
       </div>
 
     </div>
 
-   
     </>
 
   );

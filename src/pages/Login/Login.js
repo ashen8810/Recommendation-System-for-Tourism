@@ -164,6 +164,11 @@ export default function Login({ onClose }) {
           </form>
 
           <div className="bottom">
+
+            <div className="fogot-password">
+              <a href="/fogotpassword">Forgot your password?</a>
+            </div>
+
             Still not registered?
             <a className="reg" href="/register">
               {" "}
