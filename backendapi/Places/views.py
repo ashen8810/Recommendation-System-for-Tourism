@@ -110,7 +110,7 @@ class PlaceDetailsView(ListAPIView):
 class PlaceCountView(APIView):
     def get(self, request, *args, **kwargs):
         total_places = Place.objects.count()
-        data = {"total_users": total_places}
+        data = {"title": "Itenaries", "amount": total_places}
         return Response(data, status=200)
 
 

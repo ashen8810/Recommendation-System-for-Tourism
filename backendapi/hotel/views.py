@@ -49,5 +49,5 @@ class SaveHotelCommentView(APIView):
 class HotelCountView(APIView):
     def get(self, request, *args, **kwargs):
         total_hotels = Hotel.objects.count()
-        data = {"total_hotels": total_hotels}
+        data = {"title": "Hotels", "amount": total_hotels}
         return Response(data, status=200)

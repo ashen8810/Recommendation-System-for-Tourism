@@ -74,7 +74,7 @@ class AdminRegistrationView(APIView):
             token = get_tokens_for_user(user)
 
             return Response(
-                {"token": token, "msg": "Registration Successful"},
+                {"token": token, "msg": "Admin Registration Successful"},
                 status=status.HTTP_201_CREATED,
             )
         else:
@@ -283,7 +283,7 @@ class UserDeleteView(generics.DestroyAPIView):
 class UserCountView(APIView):
     def get(self, request, *args, **kwargs):
         total_users = User.objects.count()
-        data = {"total_users": total_users}
+        data = {"title": "Users", "amount": total_users}
         return Response(data, status=200)
 
 

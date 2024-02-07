@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import UserScheduleListView
-from schedule.views import SchedulerCreate
+from schedule.views import SchedulerCreate, ScheduleCountView
 
 urlpatterns = [
     path(
@@ -9,4 +9,5 @@ urlpatterns = [
         name="user-schedule-list",
     ),
     path("createSchedule/", SchedulerCreate.as_view(), name="createSchedule"),
+    path("schedule-count/", ScheduleCountView.as_view(), name="schedule-count"),
 ]

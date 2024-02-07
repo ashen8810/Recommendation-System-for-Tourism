@@ -8,7 +8,7 @@ from datetime import datetime
 from rest_framework.generics import ListAPIView
 
 # from rest_framework import permissions
-from .models import  Schedule
+from .models import Schedule
 from .serializers import ScheduleSerializer
 
 
@@ -17,15 +17,15 @@ class UserScheduleListView(ListAPIView):
         user_id = request.GET.get("user_id")
         print(user_id)
         user_schedules = Schedule.objects.filter(userId=user_id)
-        serializer = ScheduleSerializer(user_schedules, many=True) 
-        serializer.data[0]["att"] = serializer.data[0]["att"].split('\n')[1:]
-        serializer.data[0]["hotels"] = serializer.data[0]["hotels"].split('\n')[1:]
+        serializer = ScheduleSerializer(user_schedules, many=True)
+        serializer.data[0]["att"] = serializer.data[0]["att"].split("\n")[1:]
+        serializer.data[0]["hotels"] = serializer.data[0]["hotels"].split("\n")[1:]
         hotel = serializer.data[0]["hotels"]
-        att =serializer.data[0]["att"]
+        att = serializer.data[0]["att"]
 
         data1 = []
         index = 0
-        start = datetime.strptime( serializer.data[0]["fromDate"], "%Y-%m-%dT%H:%M:%SZ")
+        start = datetime.strptime(serializer.data[0]["fromDate"], "%Y-%m-%dT%H:%M:%SZ")
         end = datetime.strptime(serializer.data[0]["toDate"], "%Y-%m-%dT%H:%M:%SZ")
         days = end - start
         days = days.days
@@ -42,7 +42,6 @@ class UserScheduleListView(ListAPIView):
             print(ho)
             index = index + int(len(att) / days)
             data1.append({"day": "Day " + str(i + 1), "plans": tr, "hotel": ho})
-
 
         return Response(data1)
 
@@ -81,25 +80,31 @@ class SchedulerCreate(APIView):
         out = {"itinerary": data1}
         print(data)
         togo = {
-
-            "partner":data["people"] ,
+            "partner": data["people"],
             "fromDate": start_date,
-            "toDate":  end_date,
-            "destination":data["dest"] ,
+            "toDate": end_date,
+            "destination": data["dest"],
             "description": "Description of schedule 1",
             "type": data["trip"],
             "att": str(att),
             "hotels": str(hotel),
-            "userId":1
+            "userId": 1,
         }
-        serializer = ScheduleSerializer( data = togo)
+        serializer = ScheduleSerializer(data=togo)
         print(serializer.is_valid())
 
         if serializer.is_valid():
             serializer.save()
-                
+
             print("Data saved successfully")
         else:
             print("Validation failed. Errors:", serializer.errors)
-        
+
         return Response(out, status=status.HTTP_200_OK)
+
+
+class ScheduleCountView(APIView):
+    def get(self, request, *args, **kwargs):
+        total_schedules = Schedule.objects.count()
+        data = {"title": "Schedules", "amount": total_schedules}
+        return Response(data, status=200)
