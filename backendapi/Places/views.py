@@ -112,3 +112,12 @@ class PlaceCountView(APIView):
         total_places = Place.objects.count()
         data = {"total_users": total_places}
         return Response(data, status=200)
+
+
+class UserImagesListView(ListAPIView):
+
+    def get(self, request, userId):
+
+        places = Place.objects.filter(userId=userId)
+        images = [place.image for place in places if place.image]
+        return Response({"images": images}, status=status.HTTP_200_OK)
