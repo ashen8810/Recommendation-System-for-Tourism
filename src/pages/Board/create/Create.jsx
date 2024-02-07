@@ -2,16 +2,24 @@ import { Box, Button, TextField } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
+import axios from "axios";
+import { toast } from "react-toastify";
 
 
 const Form = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
-
-  const handleFormSubmit = (values) => {
-    console.log(values);
+  const handleFormSubmit = async (values) => {
+    try {
+      console.log(values)
+      const response = await axios.post('http://localhost:8000/api/user/register-admin/', values);
+      console.log(response.data);
+      if(response.status===201){
+        toast.success(response.data.msg)
+      }
+    } catch (error) {
+      console.error('Error creating admin user:', error.message);
+    }
   };
-
   return (
     <Box m="20px" color="white"  sx={{
       background: "rgba(0, 0, 0, 0.59)",
@@ -56,10 +64,10 @@ const Form = () => {
                 label="Username"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.username}
-                name="username"
-                error={!!touched.username && !!errors.username}
-                helperText={touched.username && errors.username}
+                value={values.adminName}
+                name="adminName"
+                error={!!touched.adminName && !!errors.adminName}
+                helperText={touched.adminName && errors.adminName}
                 sx={{
                   gridColumn: "span 4",
                   '& .MuiFilledInput-root': {
@@ -130,10 +138,10 @@ const Form = () => {
                 label="Confirm Password"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.confirmPassword}
-                name="confirmPassword"
-                error={!!touched.confirmPassword && !!errors.confirmPassword}
-                helperText={touched.confirmPassword && errors.confirmPassword}
+                value={values.password2}
+                name="password2"
+                error={!!touched.password2 && !!errors.password2}
+                helperText={touched.password2 && errors.password2}
                 sx={{
                   gridColumn: "span 4",
                   '& .MuiFilledInput-root': {
@@ -179,7 +187,7 @@ const Form = () => {
                   '&:hover': {
                     backgroundColor: '#ff5d5d', 
                   },
-                }}
+                }} 
               
               >
                 Create New User
@@ -193,10 +201,10 @@ const Form = () => {
 };
 
 const checkoutSchema = yup.object().shape({
-  username: yup.string().required("Username is required"),
+  adminName: yup.string().required("Username is required"),
   email: yup.string().email("Invalid email").required("Email is required"),
   password: yup.string().required("Password is required"),
-  confirmPassword: yup
+  password2: yup
     .string()
     .oneOf([yup.ref("password"), null], "Passwords must match")
     .required("Confirm Password is required"),
@@ -204,10 +212,10 @@ const checkoutSchema = yup.object().shape({
 });
 
 const initialValues = {
-  username: "",
+  adminName: "",
   email: "",
   password: "",
-  confirmPassword: "",
+  password2: "",
   country: "",
 };
 

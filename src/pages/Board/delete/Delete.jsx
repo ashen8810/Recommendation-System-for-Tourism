@@ -2,13 +2,25 @@ import { Box, Button, TextField } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
+import axios from "axios";
 
 const Delete = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
-  const handleFormSubmit = (values) => {
-    console.log(values);
+  const handleFormSubmit = async (values) => {
+    
+    try {
+      console.log(values)
+      const response = await axios.delete('http://localhost:8000/api/user/delete/', {data:values}
+      );
+      if (response.status === 204) {
+        
+        console.log('User deleted successfully');
+      }
+    } catch (error) {
+      console.error('Error deleting user:', error.message);
+     
+    }
   };
 
   return (
@@ -111,7 +123,6 @@ const checkoutSchema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
 });
 const initialValues = {
-  username: "",
   email: "",
 };
 

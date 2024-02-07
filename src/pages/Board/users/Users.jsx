@@ -1,13 +1,29 @@
-import React, { useMemo } from 'react'
+import React, { useMemo,useState,useEffect } from 'react'
 import css from '../../../assets/CSS/Dashboard/Users.module.css'
 import {
     MaterialReactTable,
   } from 'material-react-table';
-import { userData } from '../../../data/mockData';
+// import { userData } from '../../../data/mockData';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import axios from 'axios';
 
 
 const User = () => {
+
+        const [userData, setUserData] = useState([]);
+
+        useEffect(() => {
+            const fetchUserData = async () => {
+            try {
+                const response = await axios.get('http://localhost:8000/api/user/users');
+                setUserData(response.data);
+            } catch (error) {
+                console.error('Error fetching user data:', error.message);
+            }
+            };
+
+            fetchUserData();
+        }, []);
 
     const columns = useMemo(()=>[
         {

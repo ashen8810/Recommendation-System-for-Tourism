@@ -27,12 +27,14 @@ import NotificationCardGallery from '../NotificationCardGallery/NotificationCard
 
 
 const Layout = () => {
+    let user = JSON.parse(localStorage.getItem('user')) 
+    // const userId=user.userId;
     const {pathName}= useLocation()
     const [visible,setVisible] = useState(false)
   return (
     <div className={css.container}>
         <Sidebar/>
-        {pathName == "/" && <Navigate to="/dashboard"/>}
+        {pathName === "/" && <Navigate to="/dashboard"/>}
         <div className={css.dashboard}>
             <div className={css.topBaseGradients}>
                 <div className='gradient-red'> </div>
@@ -49,10 +51,10 @@ const Layout = () => {
                 </div>
 
                 <div className={css.profile}>
-                    <img src="#" alt='profile image'/>
+                    {/* <img src="#" alt='profile image'/> */}
                     <div className={css.details}>
-                        <span>John Doe</span>
-                        <span>JohnDoe@gmail.com</span>
+                        <span>{user.userName}</span>
+                        <span>{user.email}</span>
                     </div>
                     <div className={css.notification}>
                         <MdOutlineNotificationsNone size={30} onClick={()=>{
