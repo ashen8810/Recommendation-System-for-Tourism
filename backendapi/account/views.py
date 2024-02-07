@@ -285,3 +285,12 @@ class UserCountView(APIView):
         total_users = User.objects.count()
         data = {"total_users": total_users}
         return Response(data, status=200)
+
+
+class UserListView(APIView):
+    def get(self, request):
+
+        users = User.objects.all()
+        serializer = UserProfileSerializer(users, many=True)
+
+        return Response(serializer.data, status=200)
