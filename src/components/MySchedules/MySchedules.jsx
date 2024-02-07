@@ -9,7 +9,7 @@ const MySchedules = (props) => {
 
     return(
     <div className="container">    
-    {/* <div key={props.schedule.scheduleId} className='schedules'>
+    <div key={props.schedule.scheduleId} className='schedules'>
         <div className='schedule-content'>
             <div className='tick-Nicon'>
                 <span className="material-symbols-outlined">
@@ -21,9 +21,9 @@ const MySchedules = (props) => {
                 <p className='schdule-description'>{props.schedule.description}</p>
             </div>
         </div>
-    </div> */}
+    </div>
 
-     <div key={props.id} className='schedules'>
+     {/* <div key={props.id} className='schedules'>
         <div className='schedule-content'>
             <div className='tick-Nicon'>
                 <span className="material-symbols-outlined">
@@ -35,7 +35,7 @@ const MySchedules = (props) => {
                 <p className='schdule-description'>{props.description}</p>
             </div>
         </div>
-    </div>
+    </div> */}
     </div>
     )
         

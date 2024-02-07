@@ -23,6 +23,10 @@ const TavellerProfile = () => {
     const [schedules, setSchedules] = useState([]);
     
 
+    const requestBody={
+          user_id: userId
+    }
+
     const handleShowMore = () =>{
       setShowMore(!showMore);
     }
@@ -35,20 +39,20 @@ const TavellerProfile = () => {
     }
 
 
-    // useEffect(() => {
+    useEffect(() => {
       
-    //   const fetchSchedules = async () => {
-    //     try {
-    //       const response = await axios.get(`http://localhost:8000/api/schedules/user-schedules/${userId}/`);
+      const fetchSchedules = async () => {
+        try {
+          const response = await axios.get('http://localhost:8000/api/schedules/user-schedules/',requestBody);
   
-    //       setSchedules(response.data.results);
-    //     } catch (error) {
-    //       console.error("Error fetching schedules:", error.message);
-    //     }
-    //   };
+          setSchedules(response.data.results);
+        } catch (error) {
+          console.error("Error fetching schedules:", error.message);
+        }
+      };
   
-    //   fetchSchedules();
-    // }, [userId]);
+      fetchSchedules();
+    }, [userId]);
 
 
     
@@ -93,11 +97,11 @@ const TavellerProfile = () => {
 
         {showMore? content.map(content => (
         <MySchedules
-          key = {content.key}
-          name ={content.name}
-          description = {content.Description}
+          // key = {content.key}
+          // name ={content.name}
+          // description = {content.Description}
 
-          // schedule={schedule}
+           schedule={schedules}
         />
 
         )): null} 
