@@ -4,6 +4,8 @@ from Places.views import (
     CommentList,
     PlaceSearchView,
     PlaceDetailsView,
+    PlaceCountView,
+    UserImagesListView,
 )
 
 # from account.views import UserRegistrationView
@@ -12,4 +14,6 @@ urlpatterns = [
     path("comments/", CommentList.as_view(), name="comments"),
     path("place/search/", PlaceSearchView.as_view(), name="place_search"),
     path("place-details/", PlaceDetailsView.as_view(), name="place-details"),
+    path("place-count/", PlaceCountView.as_view(), name="place-count"),
+    path("user-images/<str:userId>/", UserImagesListView.as_view(), name="user-images"),
 ]
