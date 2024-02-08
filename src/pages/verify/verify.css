@@ -3,6 +3,9 @@
     justify-content: center;
     align-items: center;
     margin: 10rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    border-radius: 0.7rem;
     /* height: 100vh; */
 }
 
@@ -23,9 +26,12 @@
     border-radius: 1.5rem;
     background-color: rgb(23, 107, 135);
     color: white;
+    transition: transform 0.3s ease-in-out;
 }
 .lbtn:hover,
 .vbtn:hover{
     background-color:  #3a96f8;
+    transform: scale(1.1) translate(5px);
+    
 }
 

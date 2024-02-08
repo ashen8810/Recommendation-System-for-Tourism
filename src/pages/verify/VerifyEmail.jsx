@@ -38,7 +38,7 @@ const VerifyEmail = () => {
         <div className='form-container'>
             <form action="" style={{width:"30%"}}  onSubmit={handleOtpSubmit}>
                <div className='form-group'>
-                 <label htmlFor="">Enter your Otp code</label>
+                 <label htmlFor=""><h2>Enter your Otp code</h2></label>
                  <input type="text"
                   className='email-form'  
                   name="otp"
