@@ -14,6 +14,7 @@ from django.urls import reverse
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 from rest_framework.exceptions import AuthenticationFailed
 
+
 # from account.utils import Util
 
 #!has to implement the rate limiting functionality for improved security.(To protect the site from brute force atttacks)
@@ -252,3 +253,8 @@ class LogoutUserSerializer(serializers.Serializer):
             token.blacklist()
         except TokenError:
             return self.fail("bad_token")
+
+
+class BanUserSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    duration = serializers.IntegerField()

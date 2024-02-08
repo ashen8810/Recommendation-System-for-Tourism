@@ -14,6 +14,7 @@ from account.views import (
     UserDeleteView,
     UserCountView,
     UserListView,
+    BanUserView,
 )
 
 from rest_framework_simplejwt.views import TokenRefreshView
@@ -48,4 +49,5 @@ urlpatterns = [
     path("delete/", UserDeleteView.as_view(), name="user-delete"),
     path("user-count/", UserCountView.as_view(), name="user-count"),
     path("users/", UserListView.as_view(), name="users"),
+    path("ban/", BanUserView.as_view(), name="ban"),
 ]

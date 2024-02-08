@@ -10,6 +10,7 @@ from account.serializers import (
     AdminRegistrationSerializer,
     SetNewPasswordSerializer,
     LogoutUserSerializer,
+    BanUserSerializer,
 )
 from django.contrib.auth import authenticate
 from account.renderers import UserRenderer
@@ -21,6 +22,8 @@ from .models import User, OneTimePassword
 from rest_framework.generics import GenericAPIView
 from django.utils.http import urlsafe_base64_decode
 from .utils import Util
+from datetime import datetime, timedelta
+from django.utils import timezone
 
 
 # Generate Token Manually
@@ -139,7 +142,24 @@ class UserLoginView(APIView):
         password = serializer.data.get("password")
         user = authenticate(email=email, password=password)
         user_data = UserProfileSerializer(user).data
-        if user is not None:
+        if (
+            user is not None
+            and user.isBanned == "True"
+            and user.banExpirationDate is not None
+            and user.banExpirationDate > timezone.now()
+        ):
+
+            return Response(
+                {
+                    "errors": {
+                        "non_field_errors": [
+                            f"Your account has been banned until {user.banExpirationDate}."
+                        ]
+                    }
+                },
+                status=status.HTTP_403_FORBIDDEN,
+            )
+        elif user is not None:
             token = get_tokens_for_user(user)
             return Response(
                 {"user": user_data, "token": token, "msg": "Login Success"},
@@ -294,3 +314,32 @@ class UserListView(APIView):
         serializer = UserProfileSerializer(users, many=True)
 
         return Response(serializer.data, status=200)
+
+
+class BanUserView(APIView):
+    def post(self, request, format=None):
+        serializer = BanUserSerializer(data=request.data)
+        if serializer.is_valid():
+            email = serializer.validated_data.get("email")
+            duration = serializer.validated_data.get("duration")
+
+            try:
+                user = User.objects.get(email=email)
+            except User.DoesNotExist:
+                return Response(
+                    {"message": "User not found."}, status=status.HTTP_404_NOT_FOUND
+                )
+
+            ban_duration = timedelta(days=int(duration))
+            ban_end_date = timezone.now() + ban_duration
+
+            user.isBanned = True
+            user.banExpirationDate = ban_end_date
+            user.save()
+
+            return Response(
+                {"message": f"{user.userName} has been banned until {ban_end_date}."},
+                status=status.HTTP_200_OK,
+            )
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

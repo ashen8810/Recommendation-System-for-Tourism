@@ -149,6 +149,9 @@ class User(AbstractBaseUser):
         max_length=50, blank=False, null=False, default=AUTH_PROVIDERS.get("email")
     )
     isVerified = models.CharField(max_length=8, db_column="isVerified", default=0)
+    banExpirationDate = models.DateTimeField(
+        null=True, blank=True, db_column="expirationDate"
+    )
 
     # last_login = "none"
 
