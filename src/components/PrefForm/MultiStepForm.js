@@ -2,7 +2,6 @@ import React, { Component } from "react";
 // import { useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
-
 import "./styles.css";
 import { Stepper, Step, StepLabel } from "@mui/material";
 
@@ -172,6 +171,10 @@ class MultiStepForm extends Component {
     }));
   };
 
+  state = {
+    redirectToSchedule: false,
+  };
+
   submitForm = () => {
     console.log("Form submitted:", this.state.formData);
     axios
@@ -181,6 +184,7 @@ class MultiStepForm extends Component {
       )
       .then((response) => {
         // Handle success
+        this.setState({ redirectToSchedule: true });
         console.log("API response:", JSON.stringify(response.data.itinerary));
       })
       .catch((error) => {
@@ -195,9 +199,8 @@ class MultiStepForm extends Component {
   render() {
     const { step, formData, errors } = this.state;
     if (this.state.redirectToSchedule) {
-      return <Navigate to="/Schedules" />;
+      return <Navigate to="/schedule" replace={true} />;
     }
-
     return (
       <div style={{ padding: "20px" }}>
         <Stepper activeStep={step} alternativeLabel>

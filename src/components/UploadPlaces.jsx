@@ -166,8 +166,8 @@ const UploadPlaces = () => {
   const [placeName, setPlaceName] = useState("");
   const [placeImage, setPlaceImage] = useState("");
   const [placeDescription, setPlaceDescription] = useState("");
-  const [placeOpenTime, setPlaceOpenTime] = useState("");
-  const [placeCloseTime, setPlaceCloseTime] = useState("");
+  const [placeOpenTime, setOpenTime] = useState("");
+  const [placeCloseTime, setCloseTime] = useState("");
   const [placeContact, setPlaceContact] = useState("");
   const [placeLocation, setPlaceLocation] = useState("");
   const [placeWebsite, setPlaceWebsite] = useState("");
@@ -178,13 +178,29 @@ const UploadPlaces = () => {
   };
 
   const handleClick = () => {
-    // inputRef.current.click();
+    var coordinates = localStorage.getItem("coords");
+    var regex = /[-]?[\d]*[.][\d]+/g;
+    var matches = coordinates.match(regex);
+
+    var latitude = parseFloat(matches[0]);
+    var longitude = parseFloat(matches[1]);
+    // userId = models.ForeignKey(User, on_delete=models.CASCADE)
+    // adminId = models.ForeignKey(Admin, on_delete=models.CASCADE)
+    // createdDate = models.DateTimeField(auto_now_add=True)
+    // ratings = models.IntegerField(default=0)
+    // imageID = models.CharField(max_length=7,auto_created=True,null=True)
     let postData = {
-      placeName1: placeName,
-      placeImage1: placeImage,
-      placeDescription1: placeDescription,
-      placeLocationX1: localStorage.getItem("coords"),
-      placeCategory1: placeCategory,
+      placeName: placeName,
+      image: placeImage,
+      description: placeDescription,
+      coordinateX: latitude,
+      coordinateY: longitude,
+      category: placeCategory,
+      contactNumber: placeContact,
+      website: placeWebsite,
+      isUserUploaded: "TRUE",
+      openingTime: "08:00:00",
+      closingTime: "08:00:00",
     };
     axios
       .post("http://127.0.0.1:8000/api/places/places/", postData)
@@ -208,15 +224,18 @@ const UploadPlaces = () => {
             </span>
           </div>
           <div className="adplaceForm">
-            <form action="/Places">
+            <form>
               <input
                 className={`${
                   isSelected ? "ChooseFile" : "NofileChosen"
-                } mt-2 w-full file:hidden border border-placeholderText py-2 pl-2 cursor-pointer focus:border-transparent focus:ring-main block font-small bg-white bg-clip-padding`}
+                }mt-2  w-full file:hidden   border border-placeholderText py-2 pl-2 cursor-pointer focus:border-transparent  focus:ring-main
+                block
+                font-small
+                bg-white bg-clip-padding`}
                 type="file"
                 ref={inputRef}
                 name="placeImage"
-                onChange={(e) => setPlaceImage(e.target.files[0])}
+                onChange={(e) => e.target.files[0]}
               />
 
               <label className="addPlaceFormLabel">
@@ -275,7 +294,12 @@ const UploadPlaces = () => {
 
               <label className="SelectLocation">
                 Open Time :<br></br>
-                <input type="time" className="OpenTime" name="OpenTime"></input>
+                <input
+                  type="time"
+                  className="OpenTime"
+                  name="OpenTime"
+                  onChange={(e) => setOpenTime(e.target.value)}
+                ></input>
               </label>
 
               <label className="SelectLocation">
@@ -284,6 +308,7 @@ const UploadPlaces = () => {
                   type="time"
                   className="OpenTime"
                   name="CloseTime"
+                  onChange={(e) => setCloseTime(e.target.value)}
                 ></input>
               </label>
 
