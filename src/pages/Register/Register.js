@@ -113,8 +113,6 @@ export default function Register({ onClose }) {
     setFormdata({...formdata, [e.target.name]:e.target.value})
 }
 
-
-
 const handleSubmit =async (e)=>{
   e.preventDefault()
   if(!email|| !userName || !password || !password2 || !country)
@@ -225,7 +223,7 @@ const handleSubmit =async (e)=>{
           <button className="createAccount-button" type="submit" >Create Account</button>
           <p className="or">or</p>
           <div>
-            <button className="google-button">
+            <button className="google-button" >
               <img src={Google} alt="Logo" className="google-image" />
               Signup with Google
             </button>
