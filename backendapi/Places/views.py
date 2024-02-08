@@ -9,8 +9,7 @@ from .serializer import (
     PlaceDetailSerializer,
 )
 from rest_framework.filters import SearchFilter, OrderingFilter
-
-
+from .utils import upload_photo
 class PlaceList(APIView):
     def get():
         places = Place.objects.all()
@@ -18,8 +17,15 @@ class PlaceList(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = PlaceSerializer(data=request.data)
-        print(request.data)
+        # link = upload_photo(request.FILES["image"].read())
+        print(request.FILES)
+        link ="https://drive.google.com/file/d/14ItzFOR-I5on9kSJmPvBnB6Nb-gFbAss/view?usp=drive_link"
+        data1 = request.data
+        data1['image'] = str(link)
+        data1["userId"] = 212
+        data1["adminId"] = 12
+        # print(data1)
+        serializer = PlaceSerializer(data=data1)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
