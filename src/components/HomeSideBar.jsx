@@ -91,16 +91,16 @@ const HomeSideBar = (props,onClose) => {
           HomePage
         </MenuItem>
 
-        <MenuItem icon={<AdminPanelSettingsOutlinedIcon/>}
+        {/* <MenuItem icon={<AdminPanelSettingsOutlinedIcon/>}
         component={<Link to="Dashboard" className="link"/>}
-        > Dahsboard</MenuItem>
+        > Dahsboard</MenuItem> */}
 
-        {user && user.user_type.toLowerCase() === 'tourist'?
+        {user && user.user_type.toLowerCase() === 'traveler'?
           <MenuItem icon={<HikingIcon/>}
           component={<Link to="Traveler Profile" className="link"/>}
           > My Profile </MenuItem>  
           :
-          user && user.user_type.toLowerCase() === 'hotel owner'?
+          user && user.user_type.toLowerCase() === 'hotelOwner'?
           <MenuItem icon={<BusinessCenterIcon/>}
           component={<Link to="Hotel Owner" className="link"/>}
         > My Profile</MenuItem>
@@ -111,14 +111,14 @@ const HomeSideBar = (props,onClose) => {
         }
 
 
-        <MenuItem icon={<HikingIcon/>}
+        {/* <MenuItem icon={<HikingIcon/>}
         component={<Link to="Traveler Profile" className="link"/>}
         > Traveller Profile </MenuItem>
 
         <MenuItem icon={<BusinessCenterIcon/>}
         component={<Link to="Hotel Owner" className="link"/>} 
         > Hotel Owner Profile</MenuItem>
-        
+         */}
 
         {/* <MenuItem icon={<AdminPanelSettingsOutlinedIcon/>}
         component={<Link to="Dashboard" className="link"/>}

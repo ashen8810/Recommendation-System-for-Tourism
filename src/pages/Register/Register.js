@@ -18,6 +18,7 @@ export default function Register({ onClose }) {
   const [passwordError, setPasswordError] = useState("");
   const [userNameError, setuserNameError] = useState("");
   const [countryError, setCountryError] = useState("");
+  const [userTypeError,setUserTypeError]=useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const [showOverlay, setShowOverlay] = useState(false);
   const [error, setError]=useState('')
@@ -35,12 +36,14 @@ export default function Register({ onClose }) {
  const [formdata, setFormdata]=useState({
         email:"",
         userName:"",
+        user_type:"",
         password:"",
         password2:"",
         country:""
     })
   
-  const {email,userName,password,password2,country}=formdata  
+  const {email,userName,user_type,password,password2,country}=formdata  
+
 
 
   const validateEmail = () => {
@@ -58,6 +61,14 @@ export default function Register({ onClose }) {
       setuserNameError("UserName is required.");
     } else {
       setuserNameError("");
+    }
+  };
+
+  const validateUserType = () => {
+    if (!user_type) {
+      setUserTypeError("User type is required.");
+    } else {
+      setUserTypeError("");
     }
   };
 
@@ -169,6 +180,23 @@ const handleSubmit =async (e)=>{
             <option value="USA">USA</option>
           </select>
           {countryError && <p className="error">{countryError}</p>}
+
+          <label htmlFor="user_type">Select User Type</label>
+            <select
+              id="user_type"
+              className="user_type"
+              name="user_type"
+              value={user_type}
+              onChange={handleOnchange}
+              onBlur={validateUserType}
+            >
+              
+              <option value="traveler">Traveler</option>
+              <option value="hotelOwner">Hotel Owner</option>
+            </select>
+            {userTypeError && <p className="error">{userTypeError}</p>}
+
+
 
           <label htmlFor="password">Password</label>
           <input
