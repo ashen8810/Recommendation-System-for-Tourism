@@ -15,7 +15,7 @@ class UserManager(BaseUserManager):
         password2=None,
         isBanned=False,
         country="",
-        user_type="hotel owner",
+        user_type="admin",
     ):
         """
         Creates and saves a User with the given parameters.
@@ -144,7 +144,7 @@ class User(AbstractBaseUser):
 
     isBanned = models.CharField(max_length=255, db_column="isBanned", default="false")
     country = models.CharField(max_length=15, db_column="country")
-    user_type = models.CharField(max_length=15, db_column="type", default="traveler")
+    user_type = models.CharField(max_length=15, db_column="type", default="admin")
     auth_provider = models.CharField(
         max_length=50, blank=False, null=False, default=AUTH_PROVIDERS.get("email")
     )
