@@ -11,6 +11,7 @@ from account.serializers import (
     SetNewPasswordSerializer,
     LogoutUserSerializer,
     BanUserSerializer,
+    UserListSerializer,
 )
 from django.contrib.auth import authenticate
 from account.renderers import UserRenderer
@@ -310,7 +311,7 @@ class UserListView(APIView):
     def get(self, request):
 
         users = User.objects.all()
-        serializer = UserProfileSerializer(users, many=True)
+        serializer = UserListSerializer(users, many=True)
 
         return Response(serializer.data, status=200)
 

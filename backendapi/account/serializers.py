@@ -104,6 +104,20 @@ class UserProfileSerializer(serializers.ModelSerializer):
         fields = ["userId", "email", "userName", "country", "user_type"]
 
 
+class UserListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            "userId",
+            "email",
+            "userName",
+            "country",
+            "user_type",
+            "isBanned",
+            "banExpirationDate",
+        ]
+
+
 class UserChangePasswordSerializer(serializers.Serializer):
     password = serializers.CharField(
         max_length=255, style={"input_type": "password"}, write_only=True
