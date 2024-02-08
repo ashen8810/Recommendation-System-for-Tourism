@@ -53,14 +53,19 @@ const HomeSideBar = (props,onClose) => {
   let user = JSON.parse(localStorage.getItem('user')) 
   let refresh=localStorage.getItem('refresh') ? JSON.parse(localStorage.getItem('refresh')) : ""
   const handleLogout = async ()=>{
+
+    try{
     const res = await AxiosInstance.post('logout/', {'refresh_token':refresh})
-    if (res.status === 204) {
+    if (res.status === 200) {
          localStorage.removeItem('access')
          localStorage.removeItem('refresh')
          localStorage.removeItem('user')
          navigate('/')
          toast.warn("logout successful")
     }
+  }catch(error){
+    console.error('error occured during loging out',error)
+  }
   }
  
   return (
