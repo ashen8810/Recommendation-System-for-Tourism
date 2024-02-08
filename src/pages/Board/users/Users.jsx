@@ -16,6 +16,7 @@ const User = () => {
             const fetchUserData = async () => {
             try {
                 const response = await axios.get('http://localhost:8000/api/user/users');
+                console.log(response.data)
                 setUserData(response.data);
             } catch (error) {
                 console.error('Error fetching user data:', error.message);
@@ -46,6 +47,15 @@ const User = () => {
             accessorKey: "user_type",
             header: "userType",
         },
+        {
+            accessorKey: "isBanned",
+            header: "isBanned",
+        },
+        // {
+        //     accessorKey: "banExpirationDate",
+        //     header: "ban Exp.Date",
+        // },
+
     ],[])
 
     const theme = useMemo(

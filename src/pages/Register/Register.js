@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import './Register.css';
 import Google from '../Login/google-logo.png';
 import Facebook from '../Login/facebook-logo.png';
@@ -112,6 +112,8 @@ export default function Register({ onClose }) {
   const handleOnchange = (e)=>{
     setFormdata({...formdata, [e.target.name]:e.target.value})
 }
+
+
 
 const handleSubmit =async (e)=>{
   e.preventDefault()
