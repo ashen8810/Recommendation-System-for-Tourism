@@ -89,7 +89,7 @@ export default function Login({ onClose }) {
       }catch(error){
         console.error("An error occurred:", error);
 
-        // Access the error message from the response (if available)
+        
         if (error.response) {
           console.error("Response error:", error.response.data);
           const errorResponse = error.response.data;

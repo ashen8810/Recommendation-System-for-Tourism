@@ -2,14 +2,28 @@ import { Box, Button, TextField, FormControl, InputLabel, Select, MenuItem} from
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 
 const Ban = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
-  const handleFormSubmit = (values) => {
-    console.log(values);
-  };
+  const handleFormSubmit = async (values, actions) => {
+
+    try {
+        const response = await axios.post('http://localhost:8000/api/user/ban/', values); 
+        console.log(response)
+        if (response.status === 200) {
+        
+          toast.warn(response.data.message)
+      }
+        
+    } catch (error) {
+        console.error('Error banning user:', error);
+        
+    } 
+};
 
   return (
     <Box m="20px" sx={{
@@ -117,9 +131,9 @@ const Ban = () => {
                   },
                 }}
                 >
-                <MenuItem value="2 weeks">2 Weeks</MenuItem>
-                <MenuItem value="1 months">1 Month</MenuItem>
-                <MenuItem value="3 months">3 Months</MenuItem>
+                <MenuItem value="14">2 Weeks</MenuItem>
+                <MenuItem value="30">1 Month</MenuItem>
+                <MenuItem value="90">3 Months</MenuItem>
                 
                 </TextField>
 
@@ -181,9 +195,6 @@ const checkoutSchema = yup.object().shape({
 const initialValues = {
   username: "",
   email: "",
-  contact: "",
-  address: "",
-  country: "",
   duration: "",
   reason: ""
 };

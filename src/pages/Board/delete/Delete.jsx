@@ -3,6 +3,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Delete = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
@@ -15,7 +16,7 @@ const Delete = () => {
       );
       if (response.status === 204) {
         
-        console.log('User deleted successfully');
+          toast.success("user deleted successfully.")
       }
     } catch (error) {
       console.error('Error deleting user:', error.message);
@@ -74,7 +75,7 @@ const Delete = () => {
                   gridColumn: "span 4",
                   '& .MuiFilledInput-root': {
                     background: ' rgba(255,255,255,0.496)',
-                    color: 'black',
+                    color: 'white',
                   },
                 }}
               />
@@ -93,7 +94,7 @@ const Delete = () => {
                   gridColumn: "span 4",
                   '& .MuiFilledInput-root': {
                     background: ' rgba(255,255,255,0.496)',
-                    color: 'black',
+                    color: 'white',
                   },
                 }}
               />
