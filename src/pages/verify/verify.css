@@ -1,6 +1,31 @@
 .form-container{
+    display: flex;
     justify-content: center;
     align-items: center;
     margin: 10rem;
+    /* height: 100vh; */
+}
+
+.button-container{
+    display: flex;
+    gap: 7.5rem;
+}
+
+.email-form{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.lbtn,.vbtn{
+    border: none;
+    border-radius: 1.5rem;
+    background-color: rgb(23, 107, 135);
+    color: white;
+}
+.lbtn:hover,
+.vbtn:hover{
+    background-color:  #3a96f8;
 }
 
