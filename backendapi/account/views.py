@@ -128,7 +128,8 @@ class VerifyUserEmailView(GenericAPIView):
             )
         except OneTimePassword.DoesNotExist as identifier:
             return Response(
-                {"message": "passcode not provided"}, status=status.HTTP_400_BAD_REQUEST
+                {"message": "passcode not provided or Invalid passcode"},
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
 
@@ -268,9 +269,7 @@ class LogoutApiView(GenericAPIView):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(
-            {"message": "logout successful"}, status=status.HTTP_204_NO_CONTENT
-        )
+        return Response({"message": "logout successful"}, status=status.HTTP_200_OK)
 
 
 class UserDeleteView(generics.DestroyAPIView):
