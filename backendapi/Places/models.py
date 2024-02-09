@@ -42,9 +42,11 @@
 
 from django.db import models
 from account.models import User, Admin
+import random, string
+
 
 class Place(models.Model):
-    placeId = models.AutoField( primary_key=True)
+    placeId = models.AutoField(primary_key=True)
     userId = models.ForeignKey(User, on_delete=models.CASCADE)
     adminId = models.ForeignKey(Admin, on_delete=models.CASCADE)
     createdDate = models.DateTimeField(auto_now_add=True)
@@ -59,12 +61,12 @@ class Place(models.Model):
     ratings = models.IntegerField(default=0)
     isUserUploaded = models.BooleanField()
     description = models.CharField(max_length=500)
-    imageID = models.CharField(max_length=7,auto_created=True,null=True)
+    imageID = models.CharField(max_length=7, auto_created=True, null=True)
     image = models.TextField(max_length=20000)
-
 
     def __str__(self):
         return f"Place ID: {self.placeId}, Name: {self.placeName}, Category: {self.category}"
+
 
 class ReviewPlace(models.Model):
     userId = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -75,13 +77,23 @@ class ReviewPlace(models.Model):
     def __str__(self):
         return f"User ID: {self.userId.userId}, Place ID: {self.placeId.placeId}, Rating: {self.rating}"
 
+
 class PlaceComments(models.Model):
     commentId = models.CharField(max_length=8, primary_key=True)
     placeId = models.ForeignKey(Place, on_delete=models.CASCADE)
     comment = models.CharField(max_length=500)
     isApproved = models.CharField(max_length=8)
 
+    @classmethod
+    def generate_unique_id(cls):
+        random_digits = "".join(random.choices(string.digits, k=4))
+        return f"C{random_digits}"
+
+    def save(self, *args, **kwargs):
+        if not self.commentId:
+            self.commentId = self.generate_unique_id()
+
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return f"Comment ID: {self.commentId}, Place ID: {self.placeId.placeId}, Approved: {self.isApproved}"
-
-

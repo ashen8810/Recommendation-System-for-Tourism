@@ -28,3 +28,15 @@ class PlaceDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Place
         fields = "__all__"
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    placeId = serializers.CharField()
+
+    class Meta:
+        model = PlaceComments
+        fields = ["comment", "placeId"]
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        return [(key, value) for key, value in representation.items()]
