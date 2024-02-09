@@ -98,5 +98,5 @@ def requirementbasedatt(city,features):
     reqbased['similarity']=cos
     reqbased=reqbased.sort_values(by=['similarity',"Distance"],ascending=False)
     reqbased.drop_duplicates(subset='Name',keep='first',inplace=True)
-    r = reqbased[['Name']].head(10)
+    r = reqbased[['Name','Latitude','Longitude']]
     return r
