@@ -7,22 +7,20 @@ import Title from "../UI/Title/Title";
 import Subtitle from "../UI/Subtitle/Subtitle";
 import { Button } from "@mui/material";
 import { ClassNames } from "@emotion/react";
-import Schedule from '../../pages/Schedules/Schedule';
+import Schedule from "../../pages/Schedules/Schedule";
 import { Link, useNavigate } from "react-router-dom";
 import { ColorModeContext } from "theme";
-import '../../assets/CSS/planYourTripButton.css';
-import img1 from './image1.jpg';
-import img2 from './image2.jpg';
-import img3 from './image3.jpg';
-import img4 from './image4.jpg';
-
+import "../../assets/CSS/planYourTripButton.css";
+import img1 from "./image1.jpg";
+import img2 from "./image2.jpg";
+import img3 from "./image3.jpg";
+import img4 from "./image4.jpg";
 
 // Images
 const im1 = img1;
 const im2 = img2;
 const im3 = img3;
 const im4 = img4;
-
 
 export default function BasicSlider() {
   const navigate = useNavigate();
@@ -45,7 +43,6 @@ export default function BasicSlider() {
             ),
           onAfterSliding: (nextSlide) =>
             console.debug("onAfterSliding(nextSlide): ", nextSlide),
-
         }}
       >
         <Overlay>
@@ -54,7 +51,10 @@ export default function BasicSlider() {
             <Subtitle>Sri Lanka</Subtitle>
             <button
               className="plantrip"
-              onClick={() => navigate('Schedules')}>Plan your trip</button>
+              onClick={() => navigate("/CreateSchedules")}
+            >
+              Plan your trip
+            </button>
           </Wrapper>
         </Overlay>
 
@@ -82,7 +82,6 @@ export default function BasicSlider() {
             backgroundImageSrc: im4,
           }}
         />
-
       </HeroSlider>
     </>
   );

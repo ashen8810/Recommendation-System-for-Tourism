@@ -93,7 +93,9 @@ function App() {
         <Route path="Hotel Owner" element={<HotelOwnerProfile />} />
         <Route path="Hotels" element={<Hotels />} />
         <Route path="Places" element={<Places />} />
-        <Route path="schedule" element={<Preferences />} />
+        <Route path="/CreateSchedules" element={<Preferences />} />
+        <Route path="/Schedules" element={<ScheduleSize />} />
+
         <Route path="*" element={<PageNotFound />} />
         <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/Emergency" element={<Emergency />} />

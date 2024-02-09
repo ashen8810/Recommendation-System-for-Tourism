@@ -199,7 +199,7 @@ class MultiStepForm extends Component {
   render() {
     const { step, formData, errors } = this.state;
     if (this.state.redirectToSchedule) {
-      return;
+      return <Navigate to="/Schedules" replace={true} />;
     }
     return (
       <div style={{ padding: "20px" }}>
