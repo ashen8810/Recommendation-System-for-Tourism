@@ -171,9 +171,9 @@ class MultiStepForm extends Component {
     }));
   };
 
-  state = {
-    redirectToSchedule: false,
-  };
+  // state = {
+  //   redirectToSchedule: false,
+  // };
 
   submitForm = () => {
     console.log("Form submitted:", this.state.formData);
@@ -199,7 +199,7 @@ class MultiStepForm extends Component {
   render() {
     const { step, formData, errors } = this.state;
     if (this.state.redirectToSchedule) {
-      return <Navigate to="/schedule" replace={true} />;
+      return;
     }
     return (
       <div style={{ padding: "20px" }}>

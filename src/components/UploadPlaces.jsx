@@ -233,9 +233,9 @@ const UploadPlaces = () => {
                 font-small
                 bg-white bg-clip-padding`}
                 type="file"
+                name="image"
                 ref={inputRef}
-                name="placeImage"
-                onChange={(e) => e.target.files[0]}
+                onChange={(e) => setPlaceImage(e.target.files[0])}
               />
 
               <label className="addPlaceFormLabel">
@@ -245,7 +245,9 @@ const UploadPlaces = () => {
                   className="placeNameInput"
                   placeholder="Name of the Place ..."
                   name="placeNameInput"
-                  onChange={(e) => setPlaceName(e.target.value)}
+                  onChange={(e) => {
+                    setPlaceImage(e.target.files[0]);
+                  }}
                 />
               </label>
 
