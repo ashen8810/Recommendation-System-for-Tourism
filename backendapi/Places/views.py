@@ -11,13 +11,9 @@ from .serializer import (
 )
 from rest_framework.filters import SearchFilter, OrderingFilter
 from profanity import profanity
-<<<<<<< Updated upstream
-from .utilss import upload_photo
-=======
 from hotel.utils import Util
 from .utilss import upload_photo
 
->>>>>>> Stashed changes
 
 class PlaceList(APIView):
     def get():
