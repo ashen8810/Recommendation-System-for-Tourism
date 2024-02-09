@@ -68,7 +68,7 @@ class HotelDetailsView(ListAPIView):
 class HotelCountView(APIView):
     def get(self, request, *args, **kwargs):
         total_hotels = Hotel.objects.count()
-        data = {"title": "Itenaries", "amount": total_hotels}
+        data = {"title": "Hotels", "amount": total_hotels}
         return Response(data, status=200)
 
 
