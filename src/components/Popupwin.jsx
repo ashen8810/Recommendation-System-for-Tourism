@@ -41,13 +41,15 @@ const Popupwin = (props) => {
     setIsOpen(false);
     {
       props.onClose();
+    }
   
-}
+    }; 
 
 const handleSubmit= async()=>{
   let user = JSON.parse(localStorage.getItem('user')) 
   const comment = document.querySelector('.getPopupReview').value;
   const placeId = props.id
+  console.log(placeId)
   
   try {
     
@@ -56,13 +58,13 @@ const handleSubmit= async()=>{
     toast.success(response.data.message)
   } catch (error) {
     // Handle error
-    // console.error('Error saving comment:', error);
+    console.error('Error saving comment:', error);
     toast.error(error.response.data.warning)
     
   }
 
-    }
-  };
+}
+  
 
   return isOpen ? (
     <div
@@ -81,6 +83,7 @@ const handleSubmit= async()=>{
         <h5>Description</h5>
         <div className='description'>
             {props.description}
+            {props.id}
          
         </div>
       </div>
