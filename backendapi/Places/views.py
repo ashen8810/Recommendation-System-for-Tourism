@@ -10,8 +10,7 @@ from .serializer import (
 )
 from rest_framework.filters import SearchFilter, OrderingFilter
 from profanity import profanity
-from hotel.utils import Util
-
+from .utilss import upload_photo
 
 class PlaceList(APIView):
     def get():
