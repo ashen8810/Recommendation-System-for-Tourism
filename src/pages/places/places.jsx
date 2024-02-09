@@ -207,7 +207,7 @@ const Places = () => {
           })}
         {openPopup !== null && (
           <Popupwin
-            id={data[openPopup].id}
+            id={data[openPopup].placeId}
             name={data[openPopup].placeName} // Make sure to access the correct data from 'images' array
             src={data[openPopup].image}
             description={data[openPopup].description} // Similarly, check the structure for correct access
