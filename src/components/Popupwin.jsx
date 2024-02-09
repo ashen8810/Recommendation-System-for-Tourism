@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import StarRating from "./StarRating";
 import axios from 'axios';
 import Leaflet2 from "components/Maps/Leaflet2";
@@ -8,6 +8,9 @@ const Popupwin = (props) => {
   const [isOpen, setIsOpen] = useState(true);
   const [dragStart, setDragStart] = useState(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [comments,setCommnent] = useState([])
+  const[sucess,setSuccess]=useState(0)
+  const Id = props.id
 
   const handleMouseDown = (e) => {
     setDragStart({
@@ -45,17 +48,55 @@ const Popupwin = (props) => {
   
     }; 
 
+
+    useEffect(() => {
+      const fetchCommnetData = async () => {
+        
+
+      try {
+          const currentUrl = window.location.href;
+          let apiUrl = '';
+          console.log(currentUrl)
+          if (currentUrl.includes('Places')) {
+            apiUrl = 'http://localhost:8000/api/places/get-comment';
+            const response = await axios.get('http://localhost:8000/api/places/get-comment',{     
+              params: {
+              "placeId": Id
+          }
+          })
+          setCommnent(response.data);
+          } else if (currentUrl.includes('hotel')) {
+            apiUrl = 'http://localhost:8000/api/hotel/get-comment';
+            const response = await axios.get('http://localhost:8000/api/hotel/get-comment',{     
+              params: {
+              "hotelId": Id
+          }
+          })
+          setCommnent(response.data);
+          }
+         
+           
+      } catch (error) {
+          console.error('Error fetching user data:', error.message);
+      }
+      };
+
+      fetchCommnetData();
+  }, [sucess,Id]);
+
+
 const handleSubmit= async()=>{
   let user = JSON.parse(localStorage.getItem('user')) 
   const comment = document.querySelector('.getPopupReview').value;
-  const placeId = props.id
-  console.log(placeId)
+ 
+ 
   
   try {
     
-    const response = await axios.post('http://127.0.0.1:8000/api/places/save-comment/', {"comment": comment ,"placeId":placeId,"userID":user.userId});
+    const response = await axios.post('http://127.0.0.1:8000/api/places/save-comment/', {"comment": comment ,"placeId":Id,"userID":user.userId});
     console.log(response.data.message); 
-    toast.success(response.data.message)
+    toast.success(response.data.message);
+    setSuccess(sucess+1)
   } catch (error) {
     // Handle error
     console.error('Error saving comment:', error);
@@ -64,7 +105,8 @@ const handleSubmit= async()=>{
   }
 
 }
-  
+
+
 
   return isOpen ? (
     <div
@@ -102,8 +144,20 @@ const handleSubmit= async()=>{
                    <textarea  for='getReview' className='getPopupReview' type='text' placeholder='your comments here ...' ></textarea> 
                    <button type='submit' onClick={handleSubmit} className='cbtn' style={{margin:"10px",backgroundColor:"rgb(23, 107, 135)",color:"white", cursor:"pointer"}}>Post</button>
             </div>
-  
+
+            
           </div>
+          <div className="comment-container">
+                
+                {comments.map((comment) => (
+                    <div key={comment.commentId}>
+                      <p>{comment.comment}</p>
+                    </div>
+                  ))
+                }
+                {/* {console.log(comments)} */}
+            </div>
+  
           <div className='starRating'>
            <StarRating/>
           </div>
