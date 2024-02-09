@@ -60,6 +60,31 @@ const ScheduleSize = () => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
+
+  function sendMail() {
+    return axios
+      .post("http://127.0.0.1:8000/api/schedules/sendMail/", {})
+      .then((response) => {
+        console.log("Response:", response.data);
+        alert("Email sent successfully");
+        return response.data;
+      })
+      .catch((error) => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          console.error("Response data:", error.response.data);
+          console.error("Response status:", error.response.status);
+          console.error("Response headers:", error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.error("No response received:", error.request);
+        } else {
+          // Something happened in setting up the request that triggered an error
+          console.error("Error:", error.message);
+        }
+        throw error;
+      });
+  }
   return (
     <>
       <div
@@ -83,7 +108,7 @@ const ScheduleSize = () => {
         </Box>
       </div>
       <div className="h-50 d-flex align-items-center justify-content-center">
-        <Button variant="contained" color="success">
+        <Button variant="contained" color="success" onClick={sendMail}>
           Mail My Schedule
         </Button>
       </div>
