@@ -3,6 +3,7 @@ import StarRating from "./StarRating";
 import axios from 'axios';
 import Leaflet2 from "components/Maps/Leaflet2";
 import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 
 const Popupwin = (props) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -10,6 +11,7 @@ const Popupwin = (props) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [comments,setCommnent] = useState([])
   const[sucess,setSuccess]=useState(0)
+  const navigate=useNavigate()
   const Id = props.id
 
   const handleMouseDown = (e) => {
@@ -86,23 +88,31 @@ const Popupwin = (props) => {
 
 
 const handleSubmit= async()=>{
+
   let user = JSON.parse(localStorage.getItem('user')) 
   const comment = document.querySelector('.getPopupReview').value;
  
- 
-  
-  try {
-    
-    const response = await axios.post('http://127.0.0.1:8000/api/places/save-comment/', {"comment": comment ,"placeId":Id,"userID":user.userId});
-    console.log(response.data.message); 
-    toast.success(response.data.message);
-    setSuccess(sucess+1)
-  } catch (error) {
-    // Handle error
-    console.error('Error saving comment:', error);
-    toast.error(error.response.data.warning)
-    
+  if(!user){
+    navigate('/login')
+    toast.error("you should be logged in first.")
   }
+  else{
+    try {
+    
+      const response = await axios.post('http://127.0.0.1:8000/api/places/save-comment/', {"comment": comment ,"placeId":Id,"userID":user.userId});
+      console.log(response.data.message); 
+      toast.success(response.data.message);
+      setSuccess(sucess+1)
+    } catch (error) {
+      // Handle error
+      console.error('Error saving comment:', error);
+      toast.error(error.response.data.warning)
+      
+    }
+
+  }
+  
+
 
 }
 
