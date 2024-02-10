@@ -1,15 +1,5 @@
-// import { useEffect, useState, useRef } from "react";
-// import "../components/AddPlaceOpt/addPlaceOpt.css";
-// import { useNavigate } from "react-router-dom";
-// import Map from "./Maps/Leaflet";
-// import axios from "axios";
-// import MapWithCoordinates from "./Maps/Locate";
-// const UploadPlaces = () => {
-//   const navigate = useNavigate();
-//   const inputRef = useRef(null);
-//   const [isOpen, setIsOpen] = useState(true);
-//   const [isSelected, setSelected] = useState(false);
 
+<<<<<<< HEAD
 //   const [placeName, setPlaceName] = useState("");
 //   const [placeImage, setPlaceImage] = useState("");
 //   const [placeDescription, setPlaceDescription] = useState("");
@@ -335,13 +325,19 @@
 
 // export default UploadPlaces;
 
+=======
+>>>>>>> d780a12e05407af62c3303c0136a29135706c46c
 import React, { useEffect, useState, useRef } from "react";
 import "../components/AddPlaceOpt/addPlaceOpt.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import MapWithCoordinates from "./Maps/Locate";
 
+<<<<<<< HEAD
 const UploadPlaces = ({ entityType }) => {
+=======
+const UploadPlaces = ({entityType}) => {
+>>>>>>> d780a12e05407af62c3303c0136a29135706c46c
   const navigate = useNavigate();
   const inputRef = useRef(null);
   const [isOpen, setIsOpen] = useState(true);
@@ -356,6 +352,7 @@ const UploadPlaces = ({ entityType }) => {
   const [placeLocation, setPlaceLocation] = useState("");
   const [placeWebsite, setPlaceWebsite] = useState("");
   const [placeCategory, setPlaceCategory] = useState("");
+  
 
   const handleClose = () => {
     setIsOpen(false);
@@ -368,6 +365,7 @@ const UploadPlaces = ({ entityType }) => {
 
     var latitude = parseFloat(matches[0]);
     var longitude = parseFloat(matches[1]);
+<<<<<<< HEAD
     // userId = models.ForeignKey(User, on_delete=models.CASCADE)
     // adminId = models.ForeignKey(Admin, on_delete=models.CASCADE)
     // createdDate = models.DateTimeField(auto_now_add=True)
@@ -389,6 +387,11 @@ const UploadPlaces = ({ entityType }) => {
 
     let formData = new FormData();
     formData.append("placeName", placeName);
+=======
+    
+    let formData = new FormData();
+    formData.append([entityType === 'hotels' ? 'hotelName' : 'placeName'], placeName);
+>>>>>>> d780a12e05407af62c3303c0136a29135706c46c
     formData.append("description", placeDescription);
     formData.append("coordinateX", latitude);
     formData.append("coordinateY", longitude);
@@ -400,6 +403,7 @@ const UploadPlaces = ({ entityType }) => {
     formData.append("closingTime", "08:00:00");
     formData.append("image", placeImage);
 
+<<<<<<< HEAD
     axios
       .post("http://127.0.0.1:8000/api/places/places/", formData)
       .then((response) => {
@@ -408,7 +412,40 @@ const UploadPlaces = ({ entityType }) => {
       .catch((error) => {
         console.error("Error:", error);
       });
+=======
+    if(entityType === "places"){
+      axios
+        .post("http://127.0.0.1:8000/api/places/places/", formData)
+        .then((response) => {
+          // Handle successful response
+          console.log("Places Response:", response.data);
+        })
+        .catch((error) => {
+          // Handle error
+          console.error("Error:", error);
+        });
+    }else if(entityType === "hotels"){
+      axios
+        .post("http://127.0.0.1:8000/api/hotels/hotels/", formData,{
+          headers:{
+            'Content-type': 'multipart/form-data'
+          }
+        })
+        .then((response) => {
+          // Handle successful response
+          
+          console.log(" hotels Response: ", response.data);
+        })
+        .catch((error) => {
+          // Handle error
+          console.error("Error:", error);
+        });
+    }
+
+>>>>>>> d780a12e05407af62c3303c0136a29135706c46c
   };
+
+
 
   return (
     <>
@@ -445,6 +482,7 @@ const UploadPlaces = ({ entityType }) => {
                     setPlaceName(e.target.value);
                   }}
                 />
+                
               </label>
 
               <label className="addPlaceFormLabel">
@@ -456,6 +494,7 @@ const UploadPlaces = ({ entityType }) => {
                   name="placeNameInput"
                   onChange={(e) => setPlaceDescription(e.target.value)}
                 />
+                
               </label>
 
               <label className="addPlaceFormLabel">
@@ -467,6 +506,8 @@ const UploadPlaces = ({ entityType }) => {
                   name="placeWebsite"
                   onChange={(e) => setPlaceWebsite(e.target.value)}
                 />
+                
+      
               </label>
 
               <label className="addPlaceFormLabel">
@@ -483,6 +524,7 @@ const UploadPlaces = ({ entityType }) => {
                   <option value="Cultural">Cultural</option>
                   <option value="Adventure">Adventure</option>
                 </select>
+                
               </label>
 
               <label className="SelectLocation">
@@ -498,6 +540,7 @@ const UploadPlaces = ({ entityType }) => {
                   name="OpenTime"
                   onChange={(e) => setOpenTime(e.target.value)}
                 ></input>
+                
               </label>
 
               <label className="SelectLocation">
@@ -508,6 +551,7 @@ const UploadPlaces = ({ entityType }) => {
                   name="CloseTime"
                   onChange={(e) => setCloseTime(e.target.value)}
                 ></input>
+                
               </label>
 
               <label className="SelectLocation">
@@ -519,9 +563,17 @@ const UploadPlaces = ({ entityType }) => {
                   name="ContactNumber"
                   onChange={(e) => setPlaceContact(e.target.value)}
                 ></input>
-              </label>
+               
+                
 
+<<<<<<< HEAD
               <button type="submit" className="uploadbtn">
+=======
+              </label>
+              
+
+              <button type="submit"  className="uploadbtn">
+>>>>>>> d780a12e05407af62c3303c0136a29135706c46c
                 Upload
               </button>
             </form>

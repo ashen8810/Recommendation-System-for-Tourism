@@ -105,7 +105,7 @@ const HomeSideBar = (props,onClose) => {
           component={<Link to="Traveler Profile" className="link"/>}
           > My Profile </MenuItem>  
           :
-          user && user.user_type.toLowerCase() === 'hotelOwner'?
+          user && user.user_type.toLowerCase() === 'hotelowner'?
           <MenuItem icon={<BusinessCenterIcon/>}
           component={<Link to="Hotel Owner" className="link"/>}
         > My Profile</MenuItem>

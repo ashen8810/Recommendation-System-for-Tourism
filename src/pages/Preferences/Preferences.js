@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import PopupForm from "../../components/PrefForm/PopUpForm";
+import { Navigate } from "react-router-dom";
 
 class FinalForm extends Component {
+  
   constructor(props) {
     super(props);
 
@@ -10,6 +12,9 @@ class FinalForm extends Component {
     };
   }
 
+  toSchedule = () => {
+    return <Navigate to="/Schedules" />;
+  };
   openPopup = () => {
     this.setState({ isPopupOpen: true });
   };
@@ -20,7 +25,9 @@ class FinalForm extends Component {
   toSchedule = () => {};
   render() {
     return (
+      
       <>
+      
         <div className="container">
           <button onClick={this.openPopup}>Create New Schedule</button>
           {this.state.isPopupOpen && <PopupForm onClose={this.closePopup} />}

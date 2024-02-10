@@ -3,6 +3,8 @@ import StarRating from "./StarRating";
 import axios from 'axios';
 import Leaflet2 from "components/Maps/Leaflet2";
 import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
+import "../assets/CSS/Hotels.css";
 
 const Popupwin = (props) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -10,6 +12,7 @@ const Popupwin = (props) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [comments,setCommnent] = useState([])
   const[sucess,setSuccess]=useState(0)
+  const navigate=useNavigate()
   const Id = props.id
 
   const handleMouseDown = (e) => {
@@ -86,23 +89,31 @@ const Popupwin = (props) => {
 
 
 const handleSubmit= async()=>{
+
   let user = JSON.parse(localStorage.getItem('user')) 
   const comment = document.querySelector('.getPopupReview').value;
  
- 
-  
-  try {
-    
-    const response = await axios.post('http://127.0.0.1:8000/api/places/save-comment/', {"comment": comment ,"placeId":Id,"userID":user.userId});
-    console.log(response.data.message); 
-    toast.success(response.data.message);
-    setSuccess(sucess+1)
-  } catch (error) {
-    // Handle error
-    console.error('Error saving comment:', error);
-    toast.error(error.response.data.warning)
-    
+  if(!user){
+    navigate('/login')
+    toast.error("you should be logged in first.")
   }
+  else{
+    try {
+    
+      const response = await axios.post('http://127.0.0.1:8000/api/places/save-comment/', {"comment": comment ,"placeId":Id,"userID":user.userId});
+      console.log(response.data.message); 
+      toast.success(response.data.message);
+      setSuccess(sucess+1)
+    } catch (error) {
+      // Handle error
+      console.error('Error saving comment:', error);
+      toast.error(error.response.data.warning)
+      
+    }
+
+  }
+  
+
 
 }
 
@@ -111,15 +122,18 @@ const handleSubmit= async()=>{
   return isOpen ? (
     <div
       className="PopupWin"
-      style={{ top: `${position.y}px`, left: `${position.x}px` }}
+      style={{ top: `${position.y}px`, left: `${position.x}px` , 
+      }}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
     >
-      <div onClick={handleClose} className="handleClose">
+    <div style={{ position: 'relative' }}>
+      <div onClick={handleClose} className="handleClose" style={{ position: 'absolute'}}>
         <span class="material-symbols-outlined">cancel</span>
       </div>
-      <div className="imageContent">
+    </div>
+      <div className="imageContent" >
         <h3>{props.name}</h3>
         <br></br>
         <h5>Description</h5>
@@ -131,7 +145,7 @@ const handleSubmit= async()=>{
       </div>
 
       <div className="photo">
-        <img id={props.id} src={props.src} alt="bg" />
+        <img id={props.id} src={props.src} alt="bg" height= "300px" width="650px"/>
        
       </div>
       
