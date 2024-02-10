@@ -5,7 +5,7 @@
 // import AddPlaceOpt from "components/AddPlaceOpt/AddPlaceOpt";
 // import axios from "axios";
 
-// const noImages = 7;
+// const noImages = 4;
 
 // const Places = () => {
 //   const [next, setNext] = useState(noImages);
@@ -18,13 +18,11 @@
 //   useEffect(() => {
 //     const fetchData = async () => {
 //       try {
-//         const [placesResponse, otherDataResponse] = await axios.all([
-//           axios.get("http://127.0.0.1:8000/api/places/images/"),
-//           axios.get("http://127.0.0.1:8000/api/places/places/"),
+//         const [otherDataResponse] = await axios.all([
+//           axios.get("http://127.0.0.1:8000/api/places/place-details/"),
 //         ]);
 
-//         setImages(placesResponse.data);
-//         setData(otherDataResponse.data);
+//         setData(otherDataResponse.data.results);
 //         console.log(otherDataResponse.data);
 //       } catch (error) {
 //         setError(error);
@@ -45,7 +43,9 @@
 //   }
 
 //   const handleMoreImage = () => {
-//     setNext(next + noImages);
+//     console.log("Current next:", next);
+//     console.log("Data length:", data.length);
+//     setNext((prevNext) => prevNext + noImages);
 //   };
 
 //   const openImagePopup = (imageIndex) => {
@@ -60,8 +60,8 @@
 //     <>
 //       <AddPlaceOpt />
 //       <div className="placeList">
-//         {images &&
-//           images.slice(0, next).map((image, index) => {
+//         {data &&
+//           data.slice(0, next).map((data, index) => {
 //             return (
 //               <div
 //                 key={index}
@@ -69,7 +69,7 @@
 //                 onClick={() => openImagePopup(index)}
 //               >
 //                 <img
-//                   src={image.image}
+//                   src={data.image}
 //                   alt="Place"
 //                   className="placeImage"
 //                   loading="lazy"
@@ -77,27 +77,26 @@
 //                 <div className="placeCard_content">
 //                   <h3 className="placeName">{data.placeName}</h3>
 //                   <div className="placeRating">
-//                     {[...Array(data.rating)].map((rating, index) => (
+//                     {[...Array(data.ratings)].map((rating, index) => (
 //                       <FaStar id={index + 1} key={index} />
 //                     ))}
 //                   </div>
-//                   {/* Rest of your JSX */}
 //                 </div>
 //               </div>
 //             );
 //           })}
 //         {openPopup !== null && (
 //           <Popupwin
-//             id={images[openPopup].id}
+//             id={data[openPopup].placeId}
 //             name={data[openPopup].placeName} // Make sure to access the correct data from 'images' array
-//             src={images[openPopup].image}
+//             src={data[openPopup].image}
 //             description={data[openPopup].description} // Similarly, check the structure for correct access
-//             x={data[openPopup].x}
-//             y={data[openPopup].y}
+//             x={data[openPopup].coordinateX}
+//             y={data[openPopup].coordinateY}
 //             onClose={closeImagePopup}
 //           />
 //         )}
-//         {next < images.length && (
+//         {next < data.length && (
 //           <div className="placeCard view">
 //             <img
 //               src="https://st2.depositphotos.com/1006362/5945/i/950/depositphotos_59454467-stock-photo-sri-lanka.jpg"
@@ -127,25 +126,22 @@ import "../../assets/CSS/Hotels.css";
 import AddPlaceOpt from "components/AddPlaceOpt/AddPlaceOpt";
 import axios from "axios";
 
-const noImages = 4;
-
 const Places = () => {
-  const [next, setNext] = useState(noImages);
+  const noImages = 6;
+  const [next, setNext] = useState(null);
   const [openPopup, setOpenPopup] = useState(null);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [images, setImages] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [otherDataResponse] = await axios.all([
-          axios.get("http://127.0.0.1:8000/api/places/place-details/"),
-        ]);
-
-        setData(otherDataResponse.data.results);
-        console.log(otherDataResponse.data.results[0]);
+        const response = await axios.get(
+          "http://127.0.0.1:8000/api/places/place-details/"
+        );
+        setData(response.data.results);
+        setNext(response.data.next); // Set the 'next' URL for pagination
       } catch (error) {
         setError(error);
       } finally {
@@ -156,16 +152,18 @@ const Places = () => {
     fetchData();
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+  const fetchMoreData = async () => {
+    try {
+      const response = await axios.get(next); // Use the 'next' URL for pagination
+      setData((prevData) => [...prevData, ...response.data.results]); // Concatenate the new data with the existing data
+      setNext(response.data.next); // Update the 'next' URL for pagination
+    } catch (error) {
+      setError(error);
+    }
+  };
 
   const handleMoreImage = () => {
-    setNext(next + noImages);
+    fetchMoreData();
   };
 
   const openImagePopup = (imageIndex) => {
@@ -176,12 +174,20 @@ const Places = () => {
     setOpenPopup(null);
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <>
-      <AddPlaceOpt />
+      <AddPlaceOpt entityType="places" />
       <div className="placeList">
         {data &&
-          data.slice(0, next).map((data, index) => {
+          data.map((place, index) => {
             return (
               <div
                 key={index}
@@ -189,16 +195,16 @@ const Places = () => {
                 onClick={() => openImagePopup(index)}
               >
                 <img
-                  src={data.image}
+                  src={place.image}
                   alt="Place"
                   className="placeImage"
                   loading="lazy"
                 />
                 <div className="placeCard_content">
-                  <h3 className="placeName">{data.placeName}</h3>
+                  <h3 className="placeName">{place.placeName}</h3>
                   <div className="placeRating">
-                    {[...Array(data.ratings)].map((rating, index) => (
-                      <FaStar id={index + 1} key={index} />
+                    {[...Array(place.ratings)].map((_, i) => (
+                      <FaStar key={i} />
                     ))}
                   </div>
                 </div>
@@ -208,27 +214,24 @@ const Places = () => {
         {openPopup !== null && (
           <Popupwin
             id={data[openPopup].placeId}
-            name={data[openPopup].placeName} // Make sure to access the correct data from 'images' array
+            name={data[openPopup].placeName}
             src={data[openPopup].image}
-            description={data[openPopup].description} // Similarly, check the structure for correct access
+            description={data[openPopup].description}
             x={data[openPopup].coordinateX}
             y={data[openPopup].coordinateY}
             onClose={closeImagePopup}
           />
         )}
-        {next < data.length && (
+        {next && (
           <div className="placeCard view">
             <img
               src="https://st2.depositphotos.com/1006362/5945/i/950/depositphotos_59454467-stock-photo-sri-lanka.jpg"
               className="placeImage"
               alt="placecollage"
-            ></img>
+            />
             <div className="viewMoreContent">
-              <FaArrowCircleRight
-                className="arrow"
-                onClick={handleMoreImage}
-              ></FaArrowCircleRight>
-              <br></br>
+              <FaArrowCircleRight className="arrow" onClick={handleMoreImage} />
+              <br />
               <div className="viewMoreText">View More</div>
             </div>
           </div>
