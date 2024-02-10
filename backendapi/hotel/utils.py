@@ -20,3 +20,4 @@ class Util:
                 to=[admin_email],
             )
             email_message.send()
+            print("email sent...")

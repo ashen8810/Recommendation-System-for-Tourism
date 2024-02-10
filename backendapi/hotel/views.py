@@ -17,6 +17,7 @@ from .serializer import (
     HotelCommentSerializer,
     HotelDetailSerializer,
     CommentSerializer,
+    GetCommentSerializer,
 )
 from .utils import Util
 from profanity import profanity
@@ -169,3 +170,18 @@ class SaveHotelCommentView(APIView):
                 )
         else:
             return Response(serializer.errors, status=400)
+
+
+class GetHotelComments(ListAPIView):
+    serializer_class = GetCommentSerializer
+
+    def get_queryset(self):
+        hotel_id = self.request.query_params.get("hotelID")
+        print(hotel_id)
+        queryset = HotelComments.objects.filter(hotelID=hotel_id)
+        return queryset
+
+    def get(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
