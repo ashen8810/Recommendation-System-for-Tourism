@@ -15,6 +15,7 @@ import img1 from "./image1.jpg";
 import img2 from "./image2.jpg";
 import img3 from "./image3.jpg";
 import img4 from "./image4.jpg";
+import { toast } from 'react-toastify';
 
 // Images
 const im1 = img1;
@@ -24,6 +25,16 @@ const im4 = img4;
 
 export default function BasicSlider() {
   const navigate = useNavigate();
+  const handleSubmit=()=>{
+    let user = JSON.parse(localStorage.getItem('user')) 
+    if(!user){
+      navigate('/login')
+      toast.error("you should be logged in first.")
+    }
+    else{
+      navigate("/CreateSchedules")
+    }
+  }
   return (
     <>
       <HeroSlider
@@ -51,8 +62,9 @@ export default function BasicSlider() {
             <Subtitle>Sri Lanka</Subtitle>
             <button
               className="plantrip"
-              onClick={() => navigate("/CreateSchedules")}
+              onClick={handleSubmit}
             >
+              
               Plan your trip
             </button>
           </Wrapper>

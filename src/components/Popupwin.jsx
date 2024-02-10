@@ -139,7 +139,7 @@ const handleSubmit= async()=>{
         <h5>Description</h5>
         <div className='description'>
             {props.description}
-            {props.id}
+            {/* {props.id} */}
          
         </div>
       </div>
@@ -161,10 +161,10 @@ const handleSubmit= async()=>{
 
             
           </div>
-          <div className="comment-container">
+          <div className="comment-container" style={{display:"flex", flexDirection:"column" ,gap:"1rem", marginTop:"10px"}}>
                 
                 {comments.map((comment) => (
-                    <div key={comment.commentId}>
+                    <div key={comment.commentId} style={{boxShadow:"box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)"}}>
                       <p>{comment.comment}</p>
                     </div>
                   ))

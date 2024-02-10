@@ -115,7 +115,7 @@ export default function Register({ onClose }) {
 
 const handleSubmit =async (e)=>{
   e.preventDefault()
-  if(!email|| !userName || !password || !password2 || !country)
+  if(!email|| !userName || !password || !password2 || !country || !user_type)
   {
     setError("all fields are required.")
   }
@@ -190,7 +190,7 @@ const handleSubmit =async (e)=>{
               onChange={handleOnchange}
               onBlur={validateUserType}
             >
-              
+              <option value=" ">None</option>
               <option value="traveler">Traveler</option>
               <option value="hotelOwner">Hotel Owner</option>
             </select>
