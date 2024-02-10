@@ -31,11 +31,8 @@ AxiosInstance.interceptors.request.use(async req =>{
         req.headers.Authorization = localStorage.getItem('access') ? `Bearer ${accessToken}` : ""
         const user = jwtDecode(accessToken)
         const isExpired=dayjs.unix(user.exp).diff(dayjs()) < 1
-        if(!isExpired) 
-        {
-          return req
-        }else{
-          const res =await axios.post(`${baseURL}token/refresh/`, {
+        if(!isExpired) return req
+        const res =await axios.post(`${baseURL}token/refresh/`, {
             refresh:refreshToken
             })
           if(res.status === 200)
@@ -44,7 +41,10 @@ AxiosInstance.interceptors.request.use(async req =>{
             req.headers.Authorization = `Bearer ${res.data.access}`
             return req
           }
-          else{
+        }else{
+
+          req.headers.Authorization = localStorage.getItem('access') ? `Bearer ${JSON.parse(localStorage.getItem('access'))}` : " "
+          return req 
 
             // const res = await axios.post(`${baseURL}/logout/`, {'refresh_token':refreshToken})
             // if (res.status === 204) {
@@ -56,10 +56,7 @@ AxiosInstance.interceptors.request.use(async req =>{
             // }
           }  
 
-        }
         
-        
-     }
     //  else{
     //    req.headers.Authorization = localStorage.getItem('token') ? `Bearer ${JSON.parse(localStorage.getItem('token'))}` : " "
     //    return req 

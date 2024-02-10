@@ -68,6 +68,8 @@ import Layout from "./components/Dashboard/Layout/Layout";
 import User from "pages/Board/users/Users";
 import TravelItinerary from "pages/Schedules/SchedulesPart";
 import ScheduleSize from "./pages/Schedules/Schedule";
+import PasswordResetRequest from "pages/passwordReset/PasswordResetRequest";
+import ResetPassword from "pages/passwordReset/ResetPassword";
 
 function App() {
   return (
@@ -101,6 +103,8 @@ function App() {
         <Route path="/Emergency" element={<Emergency />} />
         <Route path="/FAQ" element={<FAQ />} />
         <Route path="/About" element={<About />} />
+        <Route path="/forget-password" element={<PasswordResetRequest/>} />
+        <Route path="/reset-password-confirm/:uid/:token" element={<ResetPassword/>} />
       </Routes>
 
       <Footer />
