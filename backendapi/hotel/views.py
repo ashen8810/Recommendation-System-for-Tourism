@@ -20,7 +20,6 @@ class HotelList(APIView):
 
     def post(self, request):
         serializer = HotelSerializer(data=request.data)
-        print(request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -29,7 +28,6 @@ class HotelList(APIView):
     def put(self, request, placeId):
         try:
             place = Hotel.objects.get(placeId=placeId)
-            print(place)
         except Hotel.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 

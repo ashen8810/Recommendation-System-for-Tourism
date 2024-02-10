@@ -19,23 +19,49 @@ class PlaceList(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        if request.method == "POST":
-            link = upload_photo(request.FILES["image"].read())
-            data1 = request.data
-            data1["image"] = str(link)
-            data1["userId"] = 212
-            data1["adminId"] = 12
-            print(data1)
-            serializer = PlaceSerializer(data=data1)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            if request.method == "POST":
+                # Check if "image" exists in request.FILES
+                if "image" not in request.FILES:
+                    return Response({"error": "No image file provided"}, status=status.HTTP_400_BAD_REQUEST)
+                
+                # Read and upload the image
+                image_content = request.FILES["image"].read()
+                link = upload_photo(image_content)
+                
+                # Modify request data
+                data1 = request.data
+                print(link)
 
+                data1["image"] = str(link)
+                data1["userId"] = "124"
+                data1["adminId"] = "456"
+                data1["imageId"] = "235"
+                # data1["openingTime"] = "05:33:00"
+                # data1["closingTime"] = "22:00:00"
+                # data1["coordinateX"] = 7.59595
+                # data1["coordinateY"] = 80.43534
+                print(data1["coordinateX"])
+                # data1["coordinateX"] = round(float(data1["coordinateX"],5))
+                # data1["coordinateY"] = round(float(data1["coordinateY"],5))
+                # print(type(data1["coordinateX"]))
+
+                
+                # Serialize data
+                serializer = PlaceSerializer(data=data1)
+                # print(serializer)
+                # Validate and save serializer
+                print(serializer.is_valid())
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response(serializer.data, status=status.HTTP_201_CREATED)
+                else:
+                    return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     def put(self, request, placeId):
         try:
             place = Place.objects.get(placeId=placeId)
-            print(place)
         except Place.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -49,10 +75,6 @@ class PlaceList(APIView):
 
 
 class CommentList(APIView):
-    """
-    List all comments or create a new comment.
-    """
-
     def get(self, request):
         comments = PlaceComments.objects.all()
         serializer = CommentSerializer(comments, many=True)
@@ -105,11 +127,8 @@ class PlaceDetailsView(ListAPIView):
     serializer_class = PlaceDetailSerializer
 
     def get_queryset(self):
-        places = Place.objects.all()
+        places = Place.objects.get_queryset().order_by('placeId')
 
-        for place in places:
-            place.reviews = ReviewPlace.objects.filter(placeId=place)
-            place.comments = PlaceComments.objects.filter(placeId=place)
 
         return places
 

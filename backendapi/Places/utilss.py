@@ -17,7 +17,6 @@ def authenticate():
 
 
 def upload_photo(data):
-    print(data)
     creds = authenticate()
     service = build("drive", "v3", credentials=creds)
     file = {"name": "image", "parents": [PARENT_FOLDER_ID]}
@@ -28,6 +27,6 @@ def upload_photo(data):
         .execute()
     )
     url = file.get("webViewLink")
-    prefix = "https://drive.google.com/uc?export=view&id="
+    prefix = "https://lh3.googleusercontent.com/d/"
     url = prefix + url.split("/")[-2]
     return url
