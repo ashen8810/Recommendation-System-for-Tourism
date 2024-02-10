@@ -29,7 +29,7 @@ class UserManager(BaseUserManager):
             isBanned=isBanned,
             country=country,
             user_type=user_type,
-            userId=self.model().generate_user_id(),
+            # userId=self.model().generate_user_id(),
         )
 
         user.set_password(
@@ -121,13 +121,13 @@ AUTH_PROVIDERS = {"email": "email", "google": "google", "facebook": "facebook"}
 
 #  Custom User Model
 class User(AbstractBaseUser):
-    userId = models.CharField(
+    userId = models.AutoField(
         primary_key=True,
         editable=False,
         blank=False,
         null=False,
         db_column="userId",
-        max_length=255,
+        # max_length=255,
     )
     adminId = models.ForeignKey(
         Admin, on_delete=models.CASCADE, null=True, blank=True, db_column="adminId"
