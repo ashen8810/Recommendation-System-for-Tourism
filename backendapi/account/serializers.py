@@ -165,7 +165,7 @@ class SendPasswordResetEmailSerializer(serializers.Serializer):
             relative_link = reverse(
                 "reset-password-confirm", kwargs={"uidb64": uidb64, "token": token}
             )
-            abslink = f"http://{current_site}{relative_link}"
+            abslink = f"http://localhost:3000/reset-password-confirm/{uidb64}/{token}"
             print(abslink)
 
             # Send EMail
