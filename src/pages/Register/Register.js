@@ -132,7 +132,7 @@ const handleSubmit =async (e)=>{
 }
 
   return (
-    <>
+    <div className="body">
     {showOverlay && <div className="overlay" onClick={handleCloseClick}></div>}
     <div className={`register-popup ${showOverlay ? "visible" : ""}`}>
       <div className="register-content">
@@ -244,7 +244,7 @@ const handleSubmit =async (e)=>{
 
     </div>
 
-    </>
+    </div>
 
   );
 }
