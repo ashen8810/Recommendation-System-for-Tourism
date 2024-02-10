@@ -3,14 +3,24 @@ from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView
 from rest_framework import status
 from rest_framework.response import Response
-from. models import Hotel, HotelBeds, HotelBudget, HotelComments,HotelOwnerHotels,ReviewHotel
+from .models import (
+    Hotel,
+    HotelBeds,
+    HotelBudget,
+    HotelComments,
+    HotelOwnerHotels,
+    ReviewHotel,
+)
 from rest_framework.filters import SearchFilter, OrderingFilter
-from . serializer import (
+from .serializer import (
     HotelSerializer,
     HotelCommentSerializer,
-    HotelDetailSerializer
-    
+    HotelDetailSerializer,
+    CommentSerializer,
 )
+from .utils import Util
+from profanity import profanity
+
 
 class HotelList(APIView):
     def get():
@@ -49,14 +59,14 @@ class HotelDetailsView(ListAPIView):
         for hotel in hotels:
             hotel.reviews = ReviewHotel.objects.filter(hotelID=hotel)
             hotel.comments = HotelComments.objects.filter(hotelID=hotel)
-       
 
         return hotels
+
 
 class HotelCountView(APIView):
     def get(self, request, *args, **kwargs):
         total_hotels = Hotel.objects.count()
-        data = {"title": "Itenaries", "amount": total_hotels}
+        data = {"title": "Hotels", "amount": total_hotels}
         return Response(data, status=200)
 
 
@@ -67,7 +77,8 @@ class UserImagesListView(ListAPIView):
         hotels = Hotel.objects.filter(userId=userId)
         images = [hotel.image for hotel in hotels if hotel.image]
         return Response({"images": images}, status=status.HTTP_200_OK)
-    
+
+
 class CommentList(APIView):
     """
     List all comments or create a new comment.
@@ -84,8 +95,6 @@ class CommentList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
 
 
 class CommentDetail(APIView):
@@ -121,3 +130,42 @@ class HotelSearchView(ListAPIView):
     # pagination_class = pageNumberPagination
     filter_backends = SearchFilter, OrderingFilter
     search_fields = ("hotelName", "category")
+
+
+class SaveHotelCommentView(APIView):
+    def post(self, request, *args, **kwargs):
+        serializer = CommentSerializer(data=request.data)
+
+        if serializer.is_valid():
+            comment = serializer.validated_data.get("comment", "")
+            hotel_id = serializer.validated_data.get("hotelID", None)
+            user_id = request.data.get("userID")
+            # print(serializer.validated_data)
+            # comment = request.data.get("comment", "")
+            # hotel_id = request.data.get("hotelID", "")
+
+            contains_profanity = profanity.contains_profanity(comment)
+
+            if contains_profanity:
+                Util.send_code_to_admin(user_id)
+                return Response(
+                    {
+                        "warning": "Your comment contains profanity. Please review before submitting."
+                    },
+                    status=400,
+                )
+            else:
+                hotel_comment = HotelComments.objects.create(
+                    hotelID_id=hotel_id,
+                    comment=comment,
+                    isApproved="yes",
+                )
+
+                return Response(
+                    {
+                        "message": "Comment saved successfully",
+                    },
+                    status=200,
+                )
+        else:
+            return Response(serializer.errors, status=400)

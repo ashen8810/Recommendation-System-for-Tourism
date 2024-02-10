@@ -1,9 +1,10 @@
 from django.db import models
-from account.models import User,Admin
+from account.models import User, Admin
+import random, string
 
 
 class Hotel(models.Model):
-    hotelId = models.AutoField( primary_key=True)
+    hotelId = models.AutoField(primary_key=True)
     userId = models.ForeignKey(User, on_delete=models.CASCADE)
     adminId = models.ForeignKey(Admin, on_delete=models.CASCADE)
     createdDate = models.DateTimeField(auto_now_add=True)
@@ -18,12 +19,12 @@ class Hotel(models.Model):
     ratings = models.IntegerField(default=0)
     isUserUploaded = models.BooleanField()
     description = models.CharField(max_length=500)
-    imageID = models.CharField(max_length=7,auto_created=True,null=True)
+    imageID = models.CharField(max_length=7, auto_created=True, null=True)
     image = models.TextField(max_length=20000)
-
 
     def __str__(self):
         return f"Place ID: {self.placeId}, Name: {self.placeName}, Category: {self.category}"
+
 
 class HotelOwnerHotels(models.Model):
     userID = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
@@ -54,6 +55,16 @@ class HotelComments(models.Model):
     hotelID = models.ForeignKey(Hotel, on_delete=models.CASCADE)
     comment = models.CharField(max_length=255)
     isApproved = models.CharField(max_length=3)
+
+    def generate_unique_id(cls):
+        random_digits = "".join(random.choices(string.digits, k=4))
+        return f"C{random_digits}"
+
+    def save(self, *args, **kwargs):
+        if not self.commentID:
+            self.commentID = self.generate_unique_id()
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Comment ID: {self.commentID}, Hotel ID: {self.hotelID.hotelID}, Approved: {self.isApproved}"

@@ -1,5 +1,5 @@
 from django.urls import path
-from hotel.views import(
+from hotel.views import (
     HotelList,
     HotelCountView,
     Hotel,
@@ -7,7 +7,8 @@ from hotel.views import(
     HotelSearchView,
     CommentList,
     UserImagesListView,
-    HotelDetailsView
+    HotelDetailsView,
+    SaveHotelCommentView,
 )
 
 urlpatterns = [
@@ -17,5 +18,5 @@ urlpatterns = [
     path("hotel-details/", HotelDetailsView.as_view(), name="hotel-details"),
     path("hotel-count/", HotelCountView.as_view(), name="place-count"),
     path("user-images/<str:userId>/", UserImagesListView.as_view(), name="user-images"),
+    path("save-comment/", SaveHotelCommentView.as_view(), name="save-comment"),
 ]
-

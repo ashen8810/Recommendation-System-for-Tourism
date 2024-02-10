@@ -7,10 +7,13 @@ from .serializer import (
     PlaceSerializer,
     CommentSerializer,
     PlaceDetailSerializer,
+    GetCommentSerializer,
 )
 from rest_framework.filters import SearchFilter, OrderingFilter
 from profanity import profanity
+from hotel.utils import Util
 from .utilss import upload_photo
+
 
 class PlaceList(APIView):
     def get():
@@ -186,6 +189,21 @@ class SavePlaceCommentView(APIView):
                 )
         else:
             return Response(serializer.errors, status=400)
+
+
+class GetPlaceComments(ListAPIView):
+    serializer_class = GetCommentSerializer
+
+    def get_queryset(self):
+        place_id = self.request.query_params.get("placeId")
+        print(place_id)
+        queryset = PlaceComments.objects.filter(placeId=place_id)
+        return queryset
+
+    def get(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
 
 # from rest_framework.views import APIView
