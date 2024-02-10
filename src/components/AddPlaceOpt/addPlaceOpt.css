@@ -50,6 +50,7 @@
     right: 20%;
     overflow: scroll;
     transform: translate(0, -50%);
+    
       
 }
 
@@ -136,6 +137,23 @@
   margin-top: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.placeInput::-webkit-scrollbar {
+  width: 15px; /* Adjust this value as needed */
+}
+
+/* Optionally, you can style the scrollbar track and thumb */
+.placeInput::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.placeInput::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.placeInput::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .addPlaceFormLabel {

@@ -4,6 +4,7 @@ import axios from 'axios';
 import Leaflet2 from "components/Maps/Leaflet2";
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
+import "../assets/CSS/Hotels.css";
 
 const Popupwin = (props) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -121,15 +122,18 @@ const handleSubmit= async()=>{
   return isOpen ? (
     <div
       className="PopupWin"
-      style={{ top: `${position.y}px`, left: `${position.x}px` }}
+      style={{ top: `${position.y}px`, left: `${position.x}px` , 
+      }}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
     >
-      <div onClick={handleClose} className="handleClose">
+    <div style={{ position: 'relative' }}>
+      <div onClick={handleClose} className="handleClose" style={{ position: 'absolute'}}>
         <span class="material-symbols-outlined">cancel</span>
       </div>
-      <div className="imageContent">
+    </div>
+      <div className="imageContent" >
         <h3>{props.name}</h3>
         <br></br>
         <h5>Description</h5>
@@ -141,7 +145,7 @@ const handleSubmit= async()=>{
       </div>
 
       <div className="photo">
-        <img id={props.id} src={props.src} alt="bg" />
+        <img id={props.id} src={props.src} alt="bg" height= "300px" width="650px"/>
        
       </div>
       

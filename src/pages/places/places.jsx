@@ -178,7 +178,7 @@ const Places = () => {
 
   return (
     <>
-      <AddPlaceOpt entityType = "places" />
+      <AddPlaceOpt entityType ="places"/>
       <div className="placeList">
         {data &&
           data.slice(0, next).map((data, index) => {
