@@ -16,7 +16,7 @@
 
 .stories{
   flex: 15;
-  margin-left: 20px;
+  margin-left: 29px;
 }
 
 .secondAdd{
@@ -25,7 +25,8 @@
   margin-top: 20%;
   padding-right: 10px;
   display: flex;
-  justify-content: flex-end; 
+  /* justify-content: flex-end;  */
+  justify-content: center; 
   position: relative
 }
 
