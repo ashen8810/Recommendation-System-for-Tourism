@@ -68,11 +68,11 @@ const Popupwin = (props) => {
           }
           })
           setCommnent(response.data);
-          } else if (currentUrl.includes('hotel')) {
+          } else if (currentUrl.includes('Hotels')) {
             apiUrl = 'http://localhost:8000/api/hotel/get-comment';
             const response = await axios.get('http://localhost:8000/api/hotel/get-comment',{     
               params: {
-              "hotelId": Id
+              "hotelID": Id
           }
           })
           setCommnent(response.data);
@@ -99,11 +99,22 @@ const handleSubmit= async()=>{
   }
   else{
     try {
+
+      const currentUrl = window.location.href;
+      if (currentUrl.includes('Places')){
+        const response = await axios.post('http://127.0.0.1:8000/api/places/save-comment/', {"comment": comment ,"placeId":Id,"userID":user.userId});
+        console.log(response.data.message); 
+        toast.success(response.data.message);
+        setSuccess(sucess+1)
+      }
+      else if(currentUrl.includes('Hotels')){
+        const response = await axios.post('http://127.0.0.1:8000/api/hotel/save-comment/', {"comment": comment ,"hotelID":Id,"userID":user.userId});
+        console.log(response.data.message); 
+        toast.success(response.data.message);
+        setSuccess(sucess+1)
+      }
     
-      const response = await axios.post('http://127.0.0.1:8000/api/places/save-comment/', {"comment": comment ,"placeId":Id,"userID":user.userId});
-      console.log(response.data.message); 
-      toast.success(response.data.message);
-      setSuccess(sucess+1)
+      
     } catch (error) {
       // Handle error
       console.error('Error saving comment:', error);

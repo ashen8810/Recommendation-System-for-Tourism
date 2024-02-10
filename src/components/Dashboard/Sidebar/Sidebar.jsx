@@ -4,8 +4,9 @@ import { NavLink } from 'react-router-dom'
 import { MdOutlineDashboard ,MdOutlineEmail, MdLogout  } from "react-icons/md";
 import { PiUsersThree } from "react-icons/pi";
 import { RiUserForbidLine,RiUserAddLine,RiUserUnfollowLine } from "react-icons/ri";
-
+import { useNavigate } from "react-router-dom";
 const Sidebar = () => {
+       const navigate = useNavigate()
   return (
      <div className={css.container}>
         <span>
@@ -37,7 +38,7 @@ const Sidebar = () => {
                     <RiUserUnfollowLine size={30} />
              </NavLink>
 
-             <NavLink to="Logout" className={css.item} title={"Logout"}>
+             <NavLink to="/" className={css.item} title={"Logout"} >
                     <MdLogout size={30} />
              </NavLink>
 

@@ -175,9 +175,17 @@ const Gallery = () => {
    
          const fetchImages = async () => {
            try {
-             const response = await axios.get(`http://localhost:8000/api/places/user-images/${userId}/`);
+            const currentUrl = window.location.href;
+            if (currentUrl.includes('Traveler')) {
+              const response = await axios.get(`http://localhost:8000/api/places/user-images/${userId}/`);
     
-             setImages(response.data.images);
+              setImages(response.data.images);
+            }else if(currentUrl.includes('Hotel')){
+              const response = await axios.get(`http://localhost:8000/api/hotel/user-images/${userId}/`);
+    
+              setImages(response.data.images);
+            }
+             
            } catch (error) {
              console.error("Error fetching images:", error.message);
            }
