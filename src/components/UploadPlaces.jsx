@@ -157,7 +157,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import MapWithCoordinates from "./Maps/Locate";
 
-const UploadPlaces = () => {
+const UploadPlaces = ({ entityType }) => {
   const navigate = useNavigate();
   const inputRef = useRef(null);
   const [isOpen, setIsOpen] = useState(true);
@@ -172,6 +172,7 @@ const UploadPlaces = () => {
   const [placeLocation, setPlaceLocation] = useState("");
   const [placeWebsite, setPlaceWebsite] = useState("");
   const [placeCategory, setPlaceCategory] = useState("");
+  
 
   const handleClose = () => {
     setIsOpen(false);
@@ -189,30 +190,64 @@ const UploadPlaces = () => {
     // createdDate = models.DateTimeField(auto_now_add=True)
     // ratings = models.IntegerField(default=0)
     // imageID = models.CharField(max_length=7,auto_created=True,null=True)
-    let postData = {
-      placeName: placeName,
-      image: placeImage,
-      description: placeDescription,
-      coordinateX: latitude,
-      coordinateY: longitude,
-      category: placeCategory,
-      contactNumber: placeContact,
-      website: placeWebsite,
-      isUserUploaded: "TRUE",
-      openingTime: "08:00:00",
-      closingTime: "08:00:00",
-    };
-    axios
-      .post("http://127.0.0.1:8000/api/places/places/", postData)
-      .then((response) => {
-        // Handle successful response
-        console.log("Response:", response.data);
-      })
-      .catch((error) => {
-        // Handle error
-        console.error("Error:", error);
-      });
+    // let postData = {
+    //   [entityType === 'hotels' ? 'hotelName' : 'placeName']: placeName,
+    //   image: placeImage,
+    //   description: placeDescription,
+    //   coordinateX: latitude,
+    //   coordinateY: longitude,
+    //   category: placeCategory,
+    //   contactNumber: placeContact,
+    //   website: placeWebsite,
+    //   isUserUploaded: "TRUE",
+    //   openingTime: "08:00:00",
+    //   closingTime: "08:00:00",
+    // };
+    
+    let formData = new FormData();
+    formData.append([entityType === 'hotels' ? 'hotelName' : 'placeName'], placeName);
+    formData.append("description", placeDescription);
+    formData.append("coordinateX", latitude);
+    formData.append("coordinateY", longitude);
+    formData.append("category", placeCategory);
+    formData.append("contactNumber", placeContact);
+    formData.append("website", placeWebsite);
+    formData.append("isUserUploaded", "TRUE");
+    formData.append("openingTime", "08:00:00");
+    formData.append("closingTime", "08:00:00");
+    formData.append("image", placeImage);
+
+    if(entityType === "places"){
+      axios
+        .post("http://127.0.0.1:8000/api/places/places/", formData)
+        .then((response) => {
+          // Handle successful response
+          console.log("Places Response:", response.data);
+        })
+        .catch((error) => {
+          // Handle error
+          console.error("Error:", error);
+        });
+    }else if(entityType === "hotels"){
+      axios
+        .post("http://127.0.0.1:8000/api/hotels/hotels/", formData,{
+          headers:{
+            'Content-type': 'multipart/form-data'
+          }
+        })
+        .then((response) => {
+          // Handle successful response
+          console.log(" hotels Response: ", response.data);
+        })
+        .catch((error) => {
+          // Handle error
+          console.error("Error:", error);
+        });
+    }
+
   };
+
+
 
   return (
     <>
@@ -224,7 +259,7 @@ const UploadPlaces = () => {
             </span>
           </div>
           <div className="adplaceForm">
-            <form>
+            <form onSubmit={handleClick}>
               <input
                 className={`${
                   isSelected ? "ChooseFile" : "NofileChosen"
@@ -246,9 +281,10 @@ const UploadPlaces = () => {
                   placeholder="Name of the Place ..."
                   name="placeNameInput"
                   onChange={(e) => {
-                    setPlaceImage(e.target.files[0]);
+                    setPlaceName(e.target.value);
                   }}
                 />
+                
               </label>
 
               <label className="addPlaceFormLabel">
@@ -260,6 +296,7 @@ const UploadPlaces = () => {
                   name="placeNameInput"
                   onChange={(e) => setPlaceDescription(e.target.value)}
                 />
+                
               </label>
 
               <label className="addPlaceFormLabel">
@@ -267,10 +304,12 @@ const UploadPlaces = () => {
                 <input
                   type="text"
                   className="placeNameInput"
-                  placeholder="Website of the Place ..."
+                  placeholder="Website of the Place ...(optional)"
                   name="placeWebsite"
                   onChange={(e) => setPlaceWebsite(e.target.value)}
                 />
+                
+      
               </label>
 
               <label className="addPlaceFormLabel">
@@ -287,6 +326,7 @@ const UploadPlaces = () => {
                   <option value="Cultural">Cultural</option>
                   <option value="Adventure">Adventure</option>
                 </select>
+                
               </label>
 
               <label className="SelectLocation">
@@ -302,6 +342,7 @@ const UploadPlaces = () => {
                   name="OpenTime"
                   onChange={(e) => setOpenTime(e.target.value)}
                 ></input>
+                
               </label>
 
               <label className="SelectLocation">
@@ -312,6 +353,7 @@ const UploadPlaces = () => {
                   name="CloseTime"
                   onChange={(e) => setCloseTime(e.target.value)}
                 ></input>
+                
               </label>
 
               <label className="SelectLocation">
@@ -323,9 +365,13 @@ const UploadPlaces = () => {
                   name="ContactNumber"
                   onChange={(e) => setPlaceContact(e.target.value)}
                 ></input>
-              </label>
+               
+                
 
-              <button type="submit" onClick={handleClick} className="uploadbtn">
+              </label>
+              
+
+              <button type="submit"  className="uploadbtn">
                 Upload
               </button>
             </form>
