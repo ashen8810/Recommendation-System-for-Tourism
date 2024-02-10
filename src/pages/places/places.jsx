@@ -184,11 +184,7 @@ const Places = () => {
 
   return (
     <>
-<<<<<<< HEAD
       <AddPlaceOpt entityType="places" />
-=======
-      <AddPlaceOpt entityType ="places"/>
->>>>>>> d780a12e05407af62c3303c0136a29135706c46c
       <div className="placeList">
         {data &&
           data.map((place, index) => {
