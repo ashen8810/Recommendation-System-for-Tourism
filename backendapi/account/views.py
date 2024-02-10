@@ -116,8 +116,12 @@ class VerifyUserEmailView(GenericAPIView):
             passcode = request.data.get("otp")
             user_pass_obj = OneTimePassword.objects.get(otp=passcode)
             user = user_pass_obj.user
+            # print(passcode)
+            # print(user.isVerified)
+            # print(user.userName)
             if not user.isVerified:
-                user.isVerified = True
+                # print(user.isVerified)
+                user.isVerified = 1
                 user.save()
                 return Response(
                     {"message": "account email verified successfully"},
