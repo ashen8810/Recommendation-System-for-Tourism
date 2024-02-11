@@ -26,46 +26,35 @@ class PlaceList(APIView):
 
     def post(self, request):
         try:
-            if request.method == "POST":
+            # if request.method == "POST":
                 # Check if "image" exists in request.FILES
-                if "image" not in request.FILES:
-                    return Response(
-                        {"error": "No image file provided"},
-                        status=status.HTTP_400_BAD_REQUEST,
-                    )
+                # if "image" not in request.FILES:
+                #     return Response(
+                #         {"error": "No image file provided"},
+                #         status=status.HTTP_400_BAD_REQUEST,
+                #     )
 
                 # Read and upload the image
-                image_content = request.FILES["image"].read()
-                link = upload_photo(image_content)
+            image_content = request.FILES["image"].read()
+            link = upload_photo(image_content)
 
-                # Modify request data
-                data1 = request.data
-                print(link)
+            # Modify request data
+            # print(link)
+            data1 = request.data
+            data1["image"] = str(link)
+            
+            serializer = PlaceSerializer(data = data1)
+            # Validate and save serializer
+            print(serializer.is_valid(raise_exception=True))
+            print(serializer.errors)
 
-                data1["image"] = str(link)
-                data1["userId"] = "124"
-                data1["adminId"] = "456"
-                data1["imageId"] = "235"
-                # data1["openingTime"] = "05:33:00"
-                # data1["closingTime"] = "22:00:00"
-                # data1["coordinateX"] = 7.59595
-                # data1["coordinateY"] = 80.43534
-                print(data1["coordinateX"])
-                # data1["coordinateX"] = round(float(data1["coordinateX"],5))
-                # data1["coordinateY"] = round(float(data1["coordinateY"],5))
-                # print(type(data1["coordinateX"]))
-
-                # Serialize data
-                serializer = PlaceSerializer(data=data1)
-                # print(serializer)
-                # Validate and save serializer
-                print(serializer.is_valid())
-                if serializer.is_valid():
-                    serializer.save()
-                    return Response(serializer.data, status=status.HTTP_201_CREATED)
-                else:
-                    return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            else:
+                return Response(serializer.errors)
         except Exception as e:
+            print(e)
             return Response(
                 {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )

@@ -48,7 +48,7 @@ import random, string
 class Place(models.Model):
     placeId = models.AutoField(primary_key=True)
     userId = models.ForeignKey(User, on_delete=models.CASCADE)
-    adminId = models.ForeignKey(Admin, on_delete=models.CASCADE)
+    # adminId = models.ForeignKey(Admin, on_delete=models.CASCADE)
     createdDate = models.DateTimeField(auto_now_add=True)
     contactNumber = models.CharField(max_length=15)
     placeName = models.CharField(max_length=50)

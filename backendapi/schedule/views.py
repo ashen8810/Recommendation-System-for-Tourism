@@ -153,10 +153,13 @@ class MailSchedule(APIView):
     def post(self, request):
         from .mail import sendMail
 
-        user_id = 1
+        user_id = request.POST["userId"]
         print(user_id)
+        email = request.POST.get('email')
+        print(email)
         user_schedules = Schedule.objects.filter(userId=user_id).order_by("-scheduleId")
         serializer = ScheduleSerializer(user_schedules, many=True)
+        print( serializer.data[0]["att"])
         serializer.data[0]["att"] = serializer.data[0]["att"].split("\n")[1:]
         serializer.data[0]["hotels"] = serializer.data[0]["hotels"].split("\n")[1:]
         hotel = serializer.data[0]["hotels"]
@@ -205,7 +208,7 @@ class MailSchedule(APIView):
 
         try:
 
-            sendMail(data=data1, ADDRESS="ashen8810@gmail.com")
+            sendMail(data=data1, ADDRESS=email)
         except:
             return Response("Something went wrong", status=status.HTTP_400_BAD_REQUEST)
 
