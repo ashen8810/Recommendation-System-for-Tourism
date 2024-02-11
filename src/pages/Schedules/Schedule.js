@@ -22,6 +22,7 @@ const ScheduleSize = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   let user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
 
   useEffect(() => {
     const fetchData = async () => {

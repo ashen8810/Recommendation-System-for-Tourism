@@ -20,35 +20,35 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [placesData, hotelsData] = await axios.all([
-          axios.get("http://127.0.0.1:8000/api/places/place-details/"),
-          // axios.get("http://127.0.0.1:8000/api/places/hotel-details/"), // add hotels api here
-        ]);
-        setPlaceData(placesData.data.results);
-        // setHotelData(hotelsData.data.results);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const [placesData, hotelsData] = await axios.all([
+  //         axios.get("http://127.0.0.1:8000/api/places/place-details/"),
+  //         // axios.get("http://127.0.0.1:8000/api/places/hotel-details/"), // add hotels api here
+  //       ]);
+  //       setPlaceData(placesData.data.results);
+  //       // setHotelData(hotelsData.data.results);
+  //     } catch (error) {
+  //       setError(error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-  const handleMoreImage = () => {
-    setNext(next + noImages);
-  };
+  // if (error) {
+  //   return <div>Error: {error.message}</div>;
+  // }
+  // const handleMoreImage = () => {
+  //   setNext(next + noImages);
+  // };
   return (
     <div>
       <ZoomSlider />

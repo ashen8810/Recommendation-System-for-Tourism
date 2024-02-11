@@ -16,16 +16,17 @@
 
 .stories{
   flex: 15;
-  margin-left: 20px;
+  margin-left: 29px;
 }
 
 .secondAdd{
-  flex: 5;
+  flex: 4 1;
   margin-right: 0px;
   margin-top: 20%;
   padding-right: 10px;
   display: flex;
-  justify-content: flex-end; 
+  /* justify-content: flex-end;  */
+  justify-content: center; 
   position: relative
 }
 
@@ -41,3 +42,4 @@
   font-weight: bold;
   color: #0c4a61;
 }
+

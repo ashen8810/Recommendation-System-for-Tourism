@@ -131,3 +131,18 @@ button {
     margin-right: 5px;
     padding: 0px;
   }
+
+
+  .register-content {
+    scrollbar-color: gray; 
+    scrollbar-width: thin;
+  }
+  
+  .register-content::-webkit-scrollbar-thumb {
+    background-color: gray;
+  }
+  
+  .register-content::-webkit-scrollbar-track {
+    background-color: #ddd;
+  }
+  

@@ -915,7 +915,6 @@ const UploadPlaces = () => {
     };
     const apiUrl = getApiEndpoint();
     console.log(apiUrl);
-    alert(location.pathname.includes("/Places"));
 
     axios
       .post(apiUrl, formData)

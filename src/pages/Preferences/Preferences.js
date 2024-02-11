@@ -66,11 +66,12 @@ class FinalForm extends Component {
   render() {
     return (
       <>
+        <br></br>
+        <br></br> <br></br> <br></br>
         <div className="container">
           <button onClick={this.openPopup}>Create New Schedule</button>
           {this.state.isPopupOpen && <PopupForm onClose={this.closePopup} />}
         </div>
-
         <div className="container">
           <button onClick={this.toSchedule}>My Schedules</button>
         </div>
