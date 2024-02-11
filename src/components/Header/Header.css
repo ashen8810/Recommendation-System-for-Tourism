@@ -7,7 +7,7 @@
     padding: 3px 20px; 
     color: white;
     z-index: 9999;
-    position: fixed;
+    /* position: fixed; */
     width: 100%;
   }
   

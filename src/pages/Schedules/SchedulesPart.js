@@ -10,8 +10,9 @@ const TravelItinerary = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userId = 1; // Assuming the user ID is 1
-        const url = `http://127.0.0.1:8000/api/schedules/user-schedules/?user_id=${userId}`;
+        let user = JSON.parse(localStorage.getItem("user"));
+
+        const url = `http://127.0.0.1:8000/api/schedules/user-schedules/?user_id=${user.userId}`;
         const response = await axios.get(url);
         setItineraryData(response.data);
         setLoading(false);

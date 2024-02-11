@@ -100,6 +100,7 @@ class MultiStepForm extends Component {
         trip: "",
         min: 0,
         max: 0,
+        userId: JSON.parse(localStorage.getItem("user")).userId,
       },
       redirectToSchedule: false,
     };
