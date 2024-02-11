@@ -20,7 +20,7 @@
 }
 
 .secondAdd{
-  flex: 5;
+  flex: 4 1;
   margin-right: 0px;
   margin-top: 20%;
   padding-right: 10px;
@@ -42,3 +42,4 @@
   font-weight: bold;
   color: #0c4a61;
 }
+
