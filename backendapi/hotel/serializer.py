@@ -64,11 +64,3 @@ class CommentSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         representation = super().to_representation(instance)
         return [(key, value) for key, value in representation.items()]
-
-
-class GetCommentSerializer(serializers.ModelSerializer):
-    # placeId = serializers.CharField()
-
-    class Meta:
-        model =  HotelComments
-        fields = ["commentId", "comment"]

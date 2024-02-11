@@ -2,14 +2,11 @@ from django.urls import path
 from hotel.views import (
     HotelList,
     HotelCountView,
-    Hotel,
-    CommentDetail,
     HotelSearchView,
     CommentList,
     UserImagesListView,
     HotelDetailsView,
     SaveHotelCommentView,
-    GetHotelComments,
 )
 
 urlpatterns = [
@@ -20,5 +17,4 @@ urlpatterns = [
     path("hotel-count/", HotelCountView.as_view(), name="place-count"),
     path("user-images/<str:userId>/", UserImagesListView.as_view(), name="user-images"),
     path("save-comment/", SaveHotelCommentView.as_view(), name="save-comment"),
-    path("get-comment/", GetHotelComments.as_view(), name="get-comment"),
 ]

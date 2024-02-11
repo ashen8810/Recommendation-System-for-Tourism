@@ -5,10 +5,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from .models import (
     Hotel,
-    HotelBeds,
-    HotelBudget,
     HotelComments,
-    HotelOwnerHotels,
     ReviewHotel,
 )
 from rest_framework.filters import SearchFilter, OrderingFilter
@@ -17,13 +14,10 @@ from .serializer import (
     HotelCommentSerializer,
     HotelDetailSerializer,
     CommentSerializer,
-    GetCommentSerializer,
 )
 from .utils import Util
 from profanity import profanity
-from account.models import User
-from django.utils import timezone
-from account.models import Notification
+from .utils import upload_photo
 
 
 class HotelList(APIView):
@@ -33,19 +27,54 @@ class HotelList(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = HotelSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            if request.method == "POST":
+                # Check if "image" exists in request.FILES
+                if "image" not in request.FILES:
+                    return Response({"error": "No image file provided"}, status=status.HTTP_400_BAD_REQUEST)
+                
+                # Read and upload the image
+                image_content = request.FILES["image"].read()
+                link = upload_photo(image_content)
+                
+                # Modify request data
+                data1 = request.data
+                print(link)
+
+                data1["image"] = str(link)
+                data1["userId"] = "124"
+                data1["adminId"] = "456"
+                data1["imageId"] = "235"
+                # data1["openingTime"] = "05:33:00"
+                # data1["closingTime"] = "22:00:00"
+                # data1["coordinateX"] = 7.59595
+                # data1["coordinateY"] = 80.43534
+                print(data1["coordinateX"])
+                # data1["coordinateX"] = round(float(data1["coordinateX"],5))
+                # data1["coordinateY"] = round(float(data1["coordinateY"],5))
+                # print(type(data1["coordinateX"]))
+
+                
+                # Serialize data
+                serializer = HotelSerializer(data=data1)
+                # print(serializer)
+                # Validate and save serializer
+                print(serializer.is_valid())
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response(serializer.data, status=status.HTTP_201_CREATED)
+                else:
+                    return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def put(self, request, placeId):
         try:
-            place = Hotel.objects.get(placeId=placeId)
+            hotel = Hotel.objects.get(placeId=placeId)
         except Hotel.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
-        serializer = HotelSerializer(place, data=request.data)
+        serializer = HotelSerializer(hotel, data=request.data)
         print(serializer.is_valid())
 
         if serializer.is_valid():
@@ -152,9 +181,6 @@ class SaveHotelCommentView(APIView):
 
             if contains_profanity:
                 Util.send_code_to_admin(user_id)
-                user = User.objects.get(userId=user_id)
-                content = f"{user.userName} has used offensive language necessary actions needed.\n email{user.email}"
-                Notification.objects.create(content=content, dateTime=timezone.now())
                 return Response(
                     {
                         "warning": "Your comment contains profanity. Please review before submitting."
@@ -176,18 +202,3 @@ class SaveHotelCommentView(APIView):
                 )
         else:
             return Response(serializer.errors, status=400)
-
-
-class GetHotelComments(ListAPIView):
-    serializer_class = GetCommentSerializer
-
-    def get_queryset(self):
-        hotel_id = self.request.query_params.get("hotelID")
-        print(hotel_id)
-        queryset = HotelComments.objects.filter(hotelID=hotel_id)
-        return queryset
-
-    def get(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
