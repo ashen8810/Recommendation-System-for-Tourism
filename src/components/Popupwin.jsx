@@ -68,11 +68,11 @@ const Popupwin = (props) => {
           }
           })
           setCommnent(response.data);
-          } else if (currentUrl.includes('hotel')) {
+          } else if (currentUrl.includes('Hotels')) {
             apiUrl = 'http://localhost:8000/api/hotel/get-comment';
             const response = await axios.get('http://localhost:8000/api/hotel/get-comment',{     
               params: {
-              "hotelId": Id
+              "hotelID": Id
           }
           })
           setCommnent(response.data);
@@ -99,11 +99,22 @@ const handleSubmit= async()=>{
   }
   else{
     try {
+
+      const currentUrl = window.location.href;
+      if (currentUrl.includes('Places')){
+        const response = await axios.post('http://127.0.0.1:8000/api/places/save-comment/', {"comment": comment ,"placeId":Id,"userID":user.userId});
+        console.log(response.data.message); 
+        toast.success(response.data.message);
+        setSuccess(sucess+1)
+      }
+      else if(currentUrl.includes('Hotels')){
+        const response = await axios.post('http://127.0.0.1:8000/api/hotel/save-comment/', {"comment": comment ,"hotelID":Id,"userID":user.userId});
+        console.log(response.data.message); 
+        toast.success(response.data.message);
+        setSuccess(sucess+1)
+      }
     
-      const response = await axios.post('http://127.0.0.1:8000/api/places/save-comment/', {"comment": comment ,"placeId":Id,"userID":user.userId});
-      console.log(response.data.message); 
-      toast.success(response.data.message);
-      setSuccess(sucess+1)
+      
     } catch (error) {
       // Handle error
       console.error('Error saving comment:', error);
@@ -139,7 +150,7 @@ const handleSubmit= async()=>{
         <h5>Description</h5>
         <div className='description'>
             {props.description}
-            {props.id}
+            {/* {props.id} */}
          
         </div>
       </div>
@@ -161,22 +172,25 @@ const handleSubmit= async()=>{
 
             
           </div>
-          <div className="comment-container">
+          <div className="comment-container" style={{display:"flex", flexDirection:"column" ,gap:"1rem", marginTop:"10px"}}>
                 
                 {comments.map((comment) => (
-                    <div key={comment.commentId}>
-                      <p>{comment.comment}</p>
+                    <div key={comment.commentId} style={{boxShadow:"box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)", display:"flex", flexDirection:"column"}}>
+                      <p>Annonymous</p>
+                      <p style={{marginTop:"0.2rem"}}>{comment.comment}</p>
                     </div>
                   ))
                 }
                 {/* {console.log(comments)} */}
-            </div>
+          </div>
+
   
           <div className='starRating'>
            <StarRating/>
           </div>
       </div>
 
+      
       <div className="mapSection">
         <Leaflet2 xcoord={props.x} ycoord={props.y} />
       </div>

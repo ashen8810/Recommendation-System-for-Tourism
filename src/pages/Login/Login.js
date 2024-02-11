@@ -4,7 +4,7 @@ import Google from "./google-logo.png";
 import Facebook from "./facebook-logo.png";
 import { toast } from "react-toastify";
 import AxiosInstance from "../../utils/AxiosInstance.js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 // import app from "./pages/Homepage";
 //import Register from "../../../../pages/Register/Register";
@@ -160,7 +160,7 @@ export default function Login({ onClose }) {
 
           <div className="bottom">
             <div className="fogot-password">
-              <a href="/fogotpassword">Forgot your password?</a>
+              <Link to={"/forget-password"}>Forgot your password?</Link>
             </div>
             Still not registered?
             <a className="reg" href="/register">

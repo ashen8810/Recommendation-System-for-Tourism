@@ -71,6 +71,7 @@ const Layout = () => {
 
         { visible &&(
                 <div className={css.notificationOverlay} onClick={()=>{setVisible(false)}}>
+                        
                         <NotificationCardGallery/>
                 </div>
                     

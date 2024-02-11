@@ -10,7 +10,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function Register({ onClose }) {
   const [fullName, setFullName] = useState("");
+  // const [email, setEmail] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
+  // const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -109,7 +111,14 @@ export default function Register({ onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email || !userName || !password || !password2 || !country) {
+    if (
+      !email ||
+      !userName ||
+      !password ||
+      !password2 ||
+      !country ||
+      !user_type
+    ) {
       setError("all fields are required.");
     } else {
       const response = await axios.post(
@@ -189,6 +198,7 @@ export default function Register({ onClose }) {
               onChange={handleOnchange}
               onBlur={validateUserType}
             >
+              <option value=" ">None</option>
               <option value="traveler">Traveler</option>
               <option value="hotelOwner">Hotel Owner</option>
             </select>
