@@ -161,10 +161,12 @@ class SavePlaceCommentView(APIView):
             # hotel_id = request.data.get("hotelID", "")
 
             contains_profanity = profanity.contains_profanity(comment)
+            print(contains_profanity)
 
             if contains_profanity:
                 Util.send_code_to_admin(user_id)
                 user = User.objects.get(userId=user_id)
+                print(user)
                 content = f"{user.userName} has used offensive language necessary actions needed.\n email{user.email}"
                 Notification.objects.create(content=content, dateTime=timezone.now())
 
