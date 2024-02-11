@@ -10,6 +10,7 @@ const Card = (props) => {
 
         <div className={css.cardAmount}>
           <span>
+            {console.log("hello")}
             <CountUp end={props.card.amount} start={props.card.amount-50}  duration={6}  suffix='+'/>
           </span>
         </div>

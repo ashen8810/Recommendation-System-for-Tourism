@@ -14,7 +14,7 @@ const DashCardGallery = () => {
         const [view1Data, view2Data, view3Data, view4Data] = await Promise.all([
           axios.get('http://localhost:8000/api/user/user-count/'),
           axios.get('http://localhost:8000/api/places/place-count/'),
-          axios.get('http://localhost:8000/api/hotel/hotel-count/'),
+          axios.get('http://localhost:8000/api/hotels/hotel-count/'),
           axios.get('http://localhost:8000/api/schedules/schedule-count/')
         ]);
 
@@ -24,6 +24,7 @@ const DashCardGallery = () => {
           { title: view2Data.data.title, amount: view2Data.data.amount },
           { title: view3Data.data.title, amount: view3Data.data.amount },
           { title: view4Data.data.title, amount: view4Data.data.amount }
+          
         ]);
       } catch (error) {
         console.error('Error fetching data:', error.message);
@@ -39,6 +40,7 @@ const DashCardGallery = () => {
       {
             cardData.map((card, index)=> (
               <DashCard card={card}/>
+              
             ))
       }
     </div>

@@ -181,7 +181,7 @@ const Gallery = () => {
     
               setImages(response.data.images);
             }else if(currentUrl.includes('Hotel')){
-              const response = await axios.get(`http://localhost:8000/api/hotel/user-images/${userId}/`);
+              const response = await axios.get(`http://localhost:8000/api/hotels/user-images/${userId}/`);
     
               setImages(response.data.images);
             }

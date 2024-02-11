@@ -917,7 +917,6 @@ const UploadPlaces = () => {
     };
     const apiUrl = getApiEndpoint();
     console.log(apiUrl);
-    alert(location.pathname.includes("/Hotels"));
 
     axios
       .post(apiUrl, formData)

@@ -68,9 +68,9 @@ const Popupwin = (props) => {
           );
           setCommnent(response.data);
         } else if (currentUrl.includes("Hotels")) {
-          apiUrl = "http://localhost:8000/api/hotel/get-comment";
+          apiUrl = "http://localhost:8000/api/hotels/get-comment";
           const response = await axios.get(
-            "http://localhost:8000/api/hotel/get-comment",
+            "http://localhost:8000/api/hotels/get-comment",
             {
               params: {
                 hotelID: Id,
@@ -107,7 +107,7 @@ const Popupwin = (props) => {
           setSuccess(sucess + 1);
         } else if (currentUrl.includes("Hotels")) {
           const response = await axios.post(
-            "http://127.0.0.1:8000/api/hotel/save-comment/",
+            "http://127.0.0.1:8000/api/hotels/save-comment/",
             { comment: comment, hotelID: Id, userID: user.userId }
           );
           console.log(response.data.message);
