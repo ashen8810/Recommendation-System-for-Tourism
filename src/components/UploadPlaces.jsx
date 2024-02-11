@@ -341,7 +341,6 @@ const UploadPlaces = () => {
   const [placeOpenTime, setOpenTime] = useState("");
   const [placeCloseTime, setCloseTime] = useState("");
   const [placeContact, setPlaceContact] = useState("");
-  const [placeLocation, setPlaceLocation] = useState("");
   const [placeWebsite, setPlaceWebsite] = useState("");
   const [placeCategory, setPlaceCategory] = useState("");
 
@@ -377,16 +376,19 @@ const UploadPlaces = () => {
 
     let formData = new FormData();
     formData.append("placeName", placeName);
+    let user = JSON.parse(localStorage.getItem("user"));
 
     formData.append("description", placeDescription);
+    formData.append("userId", user.userId);
+
     formData.append("coordinateX", latitude);
     formData.append("coordinateY", longitude);
     formData.append("category", placeCategory);
     formData.append("contactNumber", placeContact);
     formData.append("website", placeWebsite);
     formData.append("isUserUploaded", "TRUE");
-    formData.append("openingTime", "08:00:00");
-    formData.append("closingTime", "08:00:00");
+    formData.append("openingTime", placeOpenTime);
+    formData.append("closingTime", placeCloseTime);
     formData.append("image", placeImage);
 
     axios

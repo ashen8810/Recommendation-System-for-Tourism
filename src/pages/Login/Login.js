@@ -2,34 +2,31 @@ import React, { useState } from "react";
 import "./Login.css";
 import Google from "./google-logo.png";
 import Facebook from "./facebook-logo.png";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import AxiosInstance from "../../utils/AxiosInstance.js";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 // import app from "./pages/Homepage";
 //import Register from "../../../../pages/Register/Register";
 
 export default function Login({ onClose }) {
-
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [showOverlay, setShowOverlay] = useState(false);
-  const [error,setError] = useState("")
-  const [logindata, setLogindata]=useState({
-    email:"",
-    password:""
-   })
+  const [error, setError] = useState("");
+  const [logindata, setLogindata] = useState({
+    email: "",
+    password: "",
+  });
 
-   const {email,password} = logindata
+  const { email, password } = logindata;
 
-  
-  const handleOnchange=(e)=>{
-    setLogindata({...logindata, [e.target.name]:e.target.value})
-  }
-
+  const handleOnchange = (e) => {
+    setLogindata({ ...logindata, [e.target.name]: e.target.value });
+  };
 
   const handleLoginClick = () => {
     setShowOverlay(true);
@@ -67,29 +64,33 @@ export default function Login({ onClose }) {
     }
   };
 
-  const handleSubmit = async(e)=>{
-    e.preventDefault()
-   
-    if(!email || !password)
-    {
-      setError("all credentials are required.")
-    }else{
-      try{
-        const res = await axios.post('http://localhost:8000/api/user/login/', logindata)
-        const response= res.data
-        console.log(res)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!email || !password) {
+      setError("all credentials are required.");
+    } else {
+      try {
+        const res = await axios.post(
+          "http://localhost:8000/api/user/login/",
+          logindata
+        );
+        const response = res.data;
+        console.log(res);
         if (res.status === 200) {
-          localStorage.setItem('access', JSON.stringify(response.token.access))
-          localStorage.setItem('refresh', JSON.stringify(response.token.refresh))
-          localStorage.setItem('user', JSON.stringify(response.user))
-          navigate('/')
-          toast.success('login successful')
-          onClose()
+          localStorage.setItem("access", JSON.stringify(response.token.access));
+          localStorage.setItem(
+            "refresh",
+            JSON.stringify(response.token.refresh)
+          );
+          localStorage.setItem("user", JSON.stringify(response.user));
+          navigate("/");
+          toast.success("login successful");
+          onClose();
         }
-      }catch(error){
+      } catch (error) {
         console.error("An error occurred:", error);
 
-        
         if (error.response) {
           console.error("Response error:", error.response.data);
           const errorResponse = error.response.data;
@@ -97,11 +98,8 @@ export default function Login({ onClose }) {
           toast.error(errorResponse.errors.non_field_errors[0]);
         }
       }
-      
     }
-
-   
- }
+  };
 
   return (
     <>
@@ -140,10 +138,7 @@ export default function Login({ onClose }) {
             />
             {passwordError && <p className="error">{passwordError}</p>}
 
-            <button
-              className="logIn-button"
-              type="submit"
-            >
+            <button className="logIn-button" type="submit">
               Log in
             </button>
             <p className="or">or</p>
@@ -164,11 +159,9 @@ export default function Login({ onClose }) {
           </form>
 
           <div className="bottom">
-
             <div className="fogot-password">
               <a href="/fogotpassword">Forgot your password?</a>
             </div>
-
             Still not registered?
             <a className="reg" href="/register">
               {" "}

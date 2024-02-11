@@ -11,21 +11,24 @@ import Button from "@mui/material/Button";
 import TravelItinerary from "./SchedulesPart";
 import Map from "../../components/Maps/Leaflet";
 import { Schedule } from "@mui/icons-material";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const ScheduleSize = () => {
   const [coords, setCoords] = useState([]);
   const [plans, setPlans] = useState([]);
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  let user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         let resultList = [];
 
-        const userId = 1; // Assuming the user ID is 1
-        const url = `http://127.0.0.1:8000/api/schedules/user-schedules/?user_id=${userId}`;
+        const url = `http://127.0.0.1:8000/api/schedules/user-schedules/?user_id=${user.userId}`;
         const response = await axios.get(url);
         let x = response.data[0].x
           .trim()
@@ -62,11 +65,18 @@ const ScheduleSize = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   function sendMail() {
+    let formData = new FormData();
+    formData.append("userId", user.userId);
+    formData.append("email", user.email);
+
     return axios
-      .post("http://127.0.0.1:8000/api/schedules/sendMail/", {})
+      .post("http://127.0.0.1:8000/api/schedules/sendMail/", formData)
       .then((response) => {
         console.log("Response:", response.data);
-        alert("Email sent successfully");
+        // alert("Email sent successfully");
+        toast.success("Email Sent!!!");
+        navigate("/");
+
         return response.data;
       })
       .catch((error) => {
