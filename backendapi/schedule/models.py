@@ -13,8 +13,8 @@ class Schedule(models.Model):
     att = models.CharField(max_length=1000,null=True)
     hotels = models.CharField(max_length=1000,null=True)
     userId = models.ForeignKey(User, on_delete=models.CASCADE)
-    x = models.CharField(max_length=150,null=True)
-    y = models.CharField(max_length=150,null=True)
+    x = models.CharField(max_length=1500,null=True)
+    y = models.CharField(max_length=1500,null=True)
 
 
     class Meta:

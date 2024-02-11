@@ -17,6 +17,8 @@ class UserScheduleListView(ListAPIView):
         user_id = request.GET.get("user_id")
         print(user_id)
         user_schedules = Schedule.objects.filter(userId=user_id).order_by("-scheduleId")
+        print(user_schedules)
+
         serializer = ScheduleSerializer(user_schedules, many=True)
         serializer.data[0]["att"] = serializer.data[0]["att"].split("\n")[1:]
         serializer.data[0]["hotels"] = serializer.data[0]["hotels"].split("\n")[1:]
@@ -132,7 +134,7 @@ class SchedulerCreate(APIView):
             "type": data["trip"],
             "att": str(att["Name"]),
             "hotels": str(hotel),
-            "userId": 1,
+            "userId": data["userId"],
             "x": str(x),
             "y": str(y),
         }

@@ -108,6 +108,7 @@ class HotelCountView(APIView):
         total_hotels = Hotel.objects.count()
         data = {"title": "Hotels", "amount": total_hotels}
         return Response(data, status=200)
+    
 
 
 class UserImagesListView(ListAPIView):
