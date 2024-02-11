@@ -891,7 +891,7 @@ const UploadPlaces = () => {
     formData.append("description", placeDescription);
     formData.append("userId", user.userId);
 
-    formData.append("placeName", placeName);
+    
     formData.append("coordinateX", latitude);
     formData.append("coordinateY", longitude);
     formData.append("category", placeCategory);
@@ -906,8 +906,10 @@ const UploadPlaces = () => {
 
     const getApiEndpoint = () => {
       if (location.pathname.includes("/Places")) {
+        formData.append("placeName", placeName);
         return "http://127.0.0.1:8000/api/places/places/";
       } else if (location.pathname.includes("/Hotels")) {
+        formData.append("hotelName", placeName);
         return "http://127.0.0.1:8000/api/hotels/hotels/";
       } else {
         console.log("Unidentified API endpoint");
@@ -915,6 +917,7 @@ const UploadPlaces = () => {
     };
     const apiUrl = getApiEndpoint();
     console.log(apiUrl);
+    alert(location.pathname.includes("/Hotels"));
 
     axios
       .post(apiUrl, formData)

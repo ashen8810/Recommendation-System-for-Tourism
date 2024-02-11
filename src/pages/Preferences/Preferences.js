@@ -62,6 +62,7 @@ class FinalForm extends Component {
   closePopup = () => {
     this.setState({ isPopupOpen: false });
   };
+  
   toSchedule = () => {};
   render() {
     return (

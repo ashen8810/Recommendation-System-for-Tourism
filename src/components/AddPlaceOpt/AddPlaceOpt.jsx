@@ -24,7 +24,7 @@ const AddPlaceOpt = ({entityType}) => {
           </span>
       </div>
 
-      {isOpen && <UploadPlaces entityType={entityType} />}
+      {isOpen && <UploadPlaces />}
 
     </div>
 
