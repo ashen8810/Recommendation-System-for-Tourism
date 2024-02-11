@@ -13,6 +13,9 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from profanity import profanity
 from hotel.utils import Util
 from .utilss import upload_photo
+from account.models import User
+from django.utils import timezone
+from account.models import Notification
 
 
 class PlaceList(APIView):
@@ -26,12 +29,15 @@ class PlaceList(APIView):
             if request.method == "POST":
                 # Check if "image" exists in request.FILES
                 if "image" not in request.FILES:
-                    return Response({"error": "No image file provided"}, status=status.HTTP_400_BAD_REQUEST)
-                
+                    return Response(
+                        {"error": "No image file provided"},
+                        status=status.HTTP_400_BAD_REQUEST,
+                    )
+
                 # Read and upload the image
                 image_content = request.FILES["image"].read()
                 link = upload_photo(image_content)
-                
+
                 # Modify request data
                 data1 = request.data
                 print(link)
@@ -49,7 +55,6 @@ class PlaceList(APIView):
                 # data1["coordinateY"] = round(float(data1["coordinateY"],5))
                 # print(type(data1["coordinateX"]))
 
-                
                 # Serialize data
                 serializer = PlaceSerializer(data=data1)
                 # print(serializer)
@@ -61,7 +66,10 @@ class PlaceList(APIView):
                 else:
                     return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
-            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response(
+                {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
     def put(self, request, placeId):
         try:
             place = Place.objects.get(placeId=placeId)
@@ -130,8 +138,7 @@ class PlaceDetailsView(ListAPIView):
     serializer_class = PlaceDetailSerializer
 
     def get_queryset(self):
-        places = Place.objects.get_queryset().order_by('placeId')
-
+        places = Place.objects.get_queryset().order_by("placeId")
 
         return places
 
@@ -168,6 +175,10 @@ class SavePlaceCommentView(APIView):
 
             if contains_profanity:
                 Util.send_code_to_admin(user_id)
+                user = User.objects.get(userId=user_id)
+                content = f"{user.userName} has used offensive language necessary actions needed. email{user.email}"
+                Notification.objects.create(content=content, dateTime=timezone.now())
+
                 return Response(
                     {
                         "warning": "Your comment contains profanity. Please review before submitting."

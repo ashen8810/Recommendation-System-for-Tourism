@@ -1,6 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status, generics
 from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
 from account.serializers import (
     UserChangePasswordSerializer,
     UserLoginSerializer,
@@ -12,6 +13,7 @@ from account.serializers import (
     LogoutUserSerializer,
     BanUserSerializer,
     UserListSerializer,
+    NotificationSerializer,
 )
 from django.contrib.auth import authenticate
 from account.renderers import UserRenderer
@@ -19,7 +21,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 from django.utils.encoding import smart_str, DjangoUnicodeDecodeError
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
-from .models import User, OneTimePassword
+from .models import User, OneTimePassword, Notification
 from rest_framework.generics import GenericAPIView
 from django.utils.http import urlsafe_base64_decode
 from .utils import Util
@@ -347,3 +349,10 @@ class BanUserView(APIView):
             )
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class LatestNotificationsListView(ListAPIView):
+    serializer_class = NotificationSerializer
+
+    def get_queryset(self):
+        return Notification.objects.order_by("-dateTime")[:5]

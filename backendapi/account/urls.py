@@ -15,6 +15,7 @@ from account.views import (
     UserCountView,
     UserListView,
     BanUserView,
+    LatestNotificationsListView,
 )
 
 from rest_framework_simplejwt.views import TokenRefreshView
@@ -50,4 +51,5 @@ urlpatterns = [
     path("user-count/", UserCountView.as_view(), name="user-count"),
     path("users/", UserListView.as_view(), name="users"),
     path("ban/", BanUserView.as_view(), name="ban"),
+    path("notification/", LatestNotificationsListView.as_view(), name="notification"),
 ]

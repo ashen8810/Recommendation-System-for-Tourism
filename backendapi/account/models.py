@@ -201,10 +201,10 @@ class OneTimePassword(models.Model):
 
 
 class Notification(models.Model):
-    notificationId = models.CharField(
-        primary_key=True, editable=False, db_column="NotificationId", max_length=255
+    notificationId = models.AutoField(
+        primary_key=True, editable=False, db_column="NotificationId"
     )
-    adminId = models.ForeignKey(Admin, on_delete=models.CASCADE)
+    # adminId = models.ForeignKey(Admin, on_delete=models.CASCADE)
     content = models.CharField(max_length=255)
     dateTime = models.DateTimeField()
 

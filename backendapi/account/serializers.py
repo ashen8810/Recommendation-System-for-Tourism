@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from account.models import User, Admin
+from account.models import User, Admin, Notification
 
 from django.utils.encoding import smart_str, force_bytes, DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
@@ -272,3 +272,10 @@ class LogoutUserSerializer(serializers.Serializer):
 class BanUserSerializer(serializers.Serializer):
     email = serializers.EmailField()
     duration = serializers.IntegerField()
+
+
+class NotificationSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Notification
+        fields = "__all__"
