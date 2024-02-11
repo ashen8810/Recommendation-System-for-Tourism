@@ -21,6 +21,9 @@ from .serializer import (
 )
 from .utils import Util
 from profanity import profanity
+from account.models import User
+from django.utils import timezone
+from account.models import Notification
 
 
 class HotelList(APIView):
@@ -149,6 +152,9 @@ class SaveHotelCommentView(APIView):
 
             if contains_profanity:
                 Util.send_code_to_admin(user_id)
+                user = User.objects.get(userId=user_id)
+                content = f"{user.userName} has used offensive language necessary actions needed.\n email{user.email}"
+                Notification.objects.create(content=content, dateTime=timezone.now())
                 return Response(
                     {
                         "warning": "Your comment contains profanity. Please review before submitting."

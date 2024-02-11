@@ -176,7 +176,7 @@ class SavePlaceCommentView(APIView):
             if contains_profanity:
                 Util.send_code_to_admin(user_id)
                 user = User.objects.get(userId=user_id)
-                content = f"{user.userName} has used offensive language necessary actions needed. email{user.email}"
+                content = f"{user.userName} has used offensive language necessary actions needed.\n email{user.email}"
                 Notification.objects.create(content=content, dateTime=timezone.now())
 
                 return Response(
