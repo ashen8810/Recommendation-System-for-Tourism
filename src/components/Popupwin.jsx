@@ -175,19 +175,22 @@ const handleSubmit= async()=>{
           <div className="comment-container" style={{display:"flex", flexDirection:"column" ,gap:"1rem", marginTop:"10px"}}>
                 
                 {comments.map((comment) => (
-                    <div key={comment.commentId} style={{boxShadow:"box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)"}}>
-                      <p>{comment.comment}</p>
+                    <div key={comment.commentId} style={{boxShadow:"box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)", display:"flex", flexDirection:"column"}}>
+                      <p>Annonymous</p>
+                      <p style={{marginTop:"0.2rem"}}>{comment.comment}</p>
                     </div>
                   ))
                 }
                 {/* {console.log(comments)} */}
-            </div>
+          </div>
+
   
           <div className='starRating'>
            <StarRating/>
           </div>
       </div>
 
+      
       <div className="mapSection">
         <Leaflet2 xcoord={props.x} ycoord={props.y} />
       </div>
