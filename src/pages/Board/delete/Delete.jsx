@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, TextField , Typography} from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -37,7 +37,14 @@ const Delete = () => {
     }}
     >
       {/* <Header title="DELETE USER" subtitle="Delete a User Profile" /> */}
-      <Box sx={{display:"flex",alignItems:"center", justifyContent:"center",fontWeight:"500", fontSize:"1.2rem", color:"#ff5d5d"}}>Delete User</Box>
+      <Typography
+      variant="h4"
+      align="center"
+      sx={{ fontWeight: "500", color: "#ff5d5d" }}
+    >
+      Delete User
+    </Typography>
+      {/* <Box sx={{display:"flex",alignItems:"center", justifyContent:"center",fontWeight:"500", fontSize:"1.2rem", color:"#ff5d5d"}}>Delete User</Box> */}
       <Formik
         onSubmit={handleFormSubmit}
         initialValues={initialValues}
